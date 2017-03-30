@@ -1,0 +1,74 @@
+{
+  "mentions": [
+    {
+      "id": 501,
+      "readAt": null,
+      "post": {
+        "id": 309,
+        "topicId": 203,
+        "topic": {
+          "id": 203,
+          "name": "Techies",
+          "description": "",
+          "suggestion": "Techies",
+          "isDirectMessage": false,
+          "lastPostedAt": "2014-06-30T02:32:29Z",
+          "createdAt": "2014-06-05T02:32:29Z",
+          "updatedAt": "2014-06-05T02:32:29Z"
+        },
+        "replyTo": null,
+        "message": "@jessica Help me!",
+        "account": {
+          "id": 102,
+          "name": "moss",
+          "fullName": "Moss",
+          "suggestion": "Moss",
+          "imageUrl": "http://typetalk.local:8484/accounts/102/profile_image.png?t=1403749949000",
+          "isBot": false,
+          "createdAt": "2014-06-26T02:32:29Z",
+          "updatedAt": "2014-06-26T02:32:29Z"
+        },
+        "attachments": [],
+        "links": [],
+        "directMessage": null,
+        "createdAt": "2014-07-02T03:32:29Z",
+        "updatedAt": "2014-07-02T03:32:29Z"
+      }
+    },
+    {
+      "id": 500,
+      "readAt": "2014-06-30T15:00:00Z",
+      "post": {
+        "id": 308,
+        "topicId": 202,
+        "topic": {
+          "id": 202,
+          "name": "Arts & Crafts Club",
+          "description": "",
+          "suggestion": "Arts & Crafts Club",
+          "isDirectMessage": false,
+          "lastPostedAt": "2014-06-30T02:32:29Z",
+          "createdAt": "2014-06-04T02:32:29Z",
+          "updatedAt": "2014-06-04T02:32:29Z"
+        },
+        "replyTo": null,
+        "message": "@jessica What do you think about this?",
+        "account": {
+          "id": 101,
+          "name": "ahorowitz",
+          "fullName": "AHorowitz",
+          "suggestion": "AHorowitz",
+          "imageUrl": "http://typetalk.local:8484/accounts/101/profile_image.png?t=1403663549000",
+          "isBot": false,
+          "createdAt": "2014-06-25T02:32:29Z",
+          "updatedAt": "2014-06-25T02:32:29Z"
+        },
+        "attachments": [],
+        "links": [],
+        "directMessage": null,
+        "createdAt": "2014-07-01T03:32:29Z",
+        "updatedAt": "2014-07-01T03:32:29Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "topic": {
+    "id": 222,
+    "name": "jessica,ahorowitz",
+    "description": "",
+    "suggestion": "jessica,ahorowitz",
+    "isDirectMessage": true,
+    "lastPostedAt": "2016-12-21T10:12:09Z",
+    "createdAt": "2016-12-21T10:12:09Z",
+    "updatedAt": "2016-12-21T10:12:09Z"
+  },
+  "post": {
+    "id": 334,
+    "topicId": 222,
+    "replyTo": null,
+    "message": "your message",
+    "account": {
+      "id": 100,
+      "name": "jessica",
+      "fullName": "Jessica Fitzherbert",
+      "suggestion": "Jessica Fitzherbert",
+      "imageUrl": "http://typetalk.local:8484/accounts/100/profile_image.png?t=1403577149000",
+      "isBot": false,
+      "createdAt": "2014-06-24T02:32:29Z",
+      "updatedAt": "2014-06-24T02:32:29Z"
+    },
+    "mention": null,
+    "attachments": [],
+    "likes": [],
+    "talks": [],
+    "links": [],
+    "createdAt": "2016-12-21T10:12:09Z",
+    "updatedAt": "2016-12-21T10:12:09Z"
+  },
+  "mentions": [],
+  "exceedsAttachmentLimit": false,
+  "directMessage": {
+    "account": {
+      "id": 101,
+      "name": "ahorowitz",
+      "fullName": "AHorowitz",
+      "suggestion": "AHorowitz",
+      "imageUrl": "http://typetalk.local:8484/accounts/101/profile_image.png?t=1403663549000",
+      "isBot": false,
+      "createdAt": "2014-06-25T02:32:29Z",
+      "updatedAt": "2014-06-25T02:32:29Z"
+    }
+  }
+}

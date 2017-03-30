@@ -1,0 +1,18 @@
+{
+  "account": {
+    "id": 101,
+    "name": "ahorowitz",
+    "fullName": "AHorowitz",
+    "suggestion": "AHorowitz",
+    "mailAddress": "ahorowitz@example.com",
+    "imageUrl": "http://typetalk.local:8484/accounts/101/profile_image.png?t=1403663549000",
+    "createdAt": "2014-06-25T02:32:29Z",
+    "updatedAt": "2014-06-25T02:32:29Z",
+    "imageUpdatedAt": "2014-06-25T02:32:29Z"
+  },
+  "status": {
+    "presence": "away",
+    "web": null,
+    "mobile": null
+  }
+}

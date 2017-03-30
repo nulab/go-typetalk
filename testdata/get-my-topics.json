@@ -1,0 +1,166 @@
+{
+  "topics": [
+    {
+      "topic": {
+        "id": 208,
+        "name": "IT Peeps",
+        "description": "",
+        "suggestion": "IT Peeps",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-07-01T02:32:29Z",
+        "createdAt": "2014-06-10T02:32:29Z",
+        "updatedAt": "2014-06-10T02:32:29Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 208,
+        "postId": 304,
+        "count": 3
+      }
+    },
+    {
+      "topic": {
+        "id": 206,
+        "name": "VisualDesigners",
+        "description": "",
+        "suggestion": "VisualDesigners",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-08T02:32:29Z",
+        "updatedAt": "2014-06-08T02:32:29Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 206,
+        "postId": 0,
+        "count": 0
+      }
+    },
+    {
+      "topic": {
+        "id": 204,
+        "name": "Creatives Home",
+        "description": "",
+        "suggestion": "Creatives Home",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-06T02:32:29Z",
+        "updatedAt": "2014-06-06T02:32:29Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 204,
+        "postId": 0,
+        "count": 0
+      }
+    },
+    {
+      "topic": {
+        "id": 201,
+        "name": "Communications Team",
+        "description": "",
+        "suggestion": "Communications Team",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-03T02:32:29Z",
+        "updatedAt": "2014-06-03T02:32:29Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 201,
+        "postId": 0,
+        "count": 0
+      }
+    },
+    {
+      "topic": {
+        "id": 207,
+        "name": "Art Directors",
+        "description": "",
+        "suggestion": "Art Directors",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-09T02:32:29Z",
+        "updatedAt": "2014-06-09T02:32:29Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 207,
+        "postId": 0,
+        "count": 0
+      }
+    },
+    {
+      "topic": {
+        "id": 205,
+        "name": "UI/UX",
+        "description": "",
+        "suggestion": "UI/UX",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-07T02:32:29Z",
+        "updatedAt": "2014-06-07T02:32:29Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 205,
+        "postId": 0,
+        "count": 0
+      }
+    },
+    {
+      "topic": {
+        "id": 202,
+        "name": "Arts & Crafts Club",
+        "description": "",
+        "suggestion": "Arts & Crafts Club",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-04T02:32:29Z",
+        "updatedAt": "2014-06-04T02:32:29Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 202,
+        "postId": 0,
+        "count": 1
+      }
+    },
+    {
+      "topic": {
+        "id": 200,
+        "name": "Creative Technologists",
+        "description": "",
+        "suggestion": "Creative Technologists",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-02T02:32:29Z",
+        "updatedAt": "2014-06-02T02:32:29Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 200,
+        "postId": 0,
+        "count": 0
+      }
+    },
+    {
+      "topic": {
+        "id": 203,
+        "name": "Techies",
+        "description": "",
+        "suggestion": "Techies",
+        "isDirectMessage": false,
+        "lastPostedAt": "2014-06-30T02:32:29Z",
+        "createdAt": "2014-06-05T02:32:29Z",
+        "updatedAt": "2014-06-05T02:32:29Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 203,
+        "postId": 0,
+        "count": 1
+      }
+    }
+  ]
+}
