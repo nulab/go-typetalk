@@ -1,0 +1,55 @@
+{
+  "mySpaces": [
+    {
+      "space": {
+        "key": "abcdefghij",
+        "name": "Joe Tech Inc.",
+        "enabled": true,
+        "imageUrl": "http://nulabapps.local:18080/nulab-account-web/spaces/abcdefghij/photo/large"
+      },
+      "myRole": "ADMIN",
+      "isPaymentAdmin": true,
+      "myPlan": {
+        "plan": {
+          "key": "typetalk.free",
+          "name": "Free Plan",
+          "limitNumberOfUsers": 10,
+          "limitTotalAttachmentSize": 1073741824
+        },
+        "enabled": true,
+        "trial": null,
+        "numberOfUsers": 6,
+        "totalAttachmentSize": 0,
+        "createdAt": "2016-01-10T02:32:29Z",
+        "updatedAt": "2016-12-21T10:12:18Z"
+      }
+    },
+    {
+      "space": {
+        "key": "0123456789",
+        "name": "Nu team",
+        "enabled": true,
+        "imageUrl": "http://nulabapps.local:18080/nulab-account-web/spaces/0123456789/photo/large"
+      },
+      "myRole": "USER",
+      "isPaymentAdmin": false,
+      "myPlan": {
+        "plan": {
+          "key": "typetalk.starter",
+          "name": "Starter Plan",
+          "limitNumberOfUsers": 10,
+          "limitTotalAttachmentSize": 10737418240
+        },
+        "enabled": true,
+        "trial": {
+          "endDate": "2017-01-04",
+          "daysLeft": 15
+        },
+        "numberOfUsers": 2,
+        "totalAttachmentSize": 0,
+        "createdAt": "2016-12-06T01:11:43Z",
+        "updatedAt": "2016-12-21T01:11:43Z"
+      }
+    }
+  ]
+}

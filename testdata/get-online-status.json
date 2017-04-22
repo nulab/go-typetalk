@@ -1,0 +1,38 @@
+{
+  "accounts": [
+    {
+      "account": {
+        "id": 101,
+        "name": "ahorowitz",
+        "fullName": "AHorowitz",
+        "suggestion": "AHorowitz",
+        "imageUrl": "http://typetalk.local:8484/accounts/101/profile_image.png?t=1403663549000",
+        "isBot": false,
+        "createdAt": "2014-06-25T02:32:29Z",
+        "updatedAt": "2014-06-25T02:32:29Z"
+      },
+      "status": {
+        "presence": "away",
+        "web": null,
+        "mobile": null
+      }
+    },
+    {
+      "account": {
+        "id": 100,
+        "name": "jessica",
+        "fullName": "Jessica Fitzherbert",
+        "suggestion": "Jessica Fitzherbert",
+        "imageUrl": "http://typetalk.local:8484/accounts/100/profile_image.png?t=1403577149000",
+        "isBot": false,
+        "createdAt": "2014-06-24T02:32:29Z",
+        "updatedAt": "2014-06-24T02:32:29Z"
+      },
+      "status": {
+        "presence": "away",
+        "web": null,
+        "mobile": null
+      }
+    }
+  ]
+}

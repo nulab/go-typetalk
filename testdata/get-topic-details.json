@@ -1,0 +1,78 @@
+{
+  "topic": {
+    "id": 208,
+    "name": "IT Peeps",
+    "description": "",
+    "suggestion": "IT Peeps",
+    "isDirectMessage": false,
+    "lastPostedAt": "2016-12-21T10:12:02Z",
+    "createdAt": "2014-06-10T02:32:29Z",
+    "updatedAt": "2014-06-10T02:32:29Z"
+  },
+  "mySpace": {
+    "space": {
+      "key": "abcdefghij",
+      "name": "Joe Tech Inc.",
+      "enabled": true,
+      "imageUrl": "http://nulabapps.local:18080/nulab-account-web/spaces/abcdefghij/photo/large"
+    },
+    "myRole": "ADMIN",
+    "isPaymentAdmin": true,
+    "myPlan": {
+      "plan": {
+        "key": "typetalk.free",
+        "name": "Free Plan",
+        "limitNumberOfUsers": 10,
+        "limitTotalAttachmentSize": 1073741824
+      },
+      "enabled": true,
+      "trial": null,
+      "numberOfUsers": 7,
+      "totalAttachmentSize": 0,
+      "createdAt": "2016-01-10T02:32:29Z",
+      "updatedAt": "2016-12-21T10:12:16Z"
+    }
+  },
+  "teams": [],
+  "groups": [
+    {
+      "group": {
+        "id": 1100,
+        "key": "groupkey01",
+        "name": "Joe Tech Inc. All",
+        "suggestion": "Joe Tech Inc. All",
+        "imageUrl": "http://nulabapps.local:18080/nulab-account-web/spaces/abcdefghij/groups/groupkey01/photo/medium",
+        "createdAt": "2014-06-10T02:32:29Z",
+        "updatedAt": "2014-06-10T02:32:29Z"
+      },
+      "memberCount": 4
+    }
+  ],
+  "accounts": [
+    {
+      "id": 105,
+      "name": "brad",
+      "fullName": "BradMarshalls",
+      "suggestion": "BradMarshalls",
+      "imageUrl": "http://typetalk.local:8484/accounts/105/profile_image.png?t=1404009149000",
+      "isBot": false,
+      "createdAt": "2014-06-29T02:32:29Z",
+      "updatedAt": "2014-06-29T02:32:29Z"
+    },
+    {
+      "id": 104,
+      "name": "cooper",
+      "fullName": "CooperDaChopper",
+      "suggestion": "CooperDaChopper",
+      "imageUrl": "http://typetalk.local:8484/accounts/104/profile_image.png?t=1403922749000",
+      "isBot": false,
+      "createdAt": "2014-06-28T02:32:29Z",
+      "updatedAt": "2014-06-28T02:32:29Z"
+    }
+  ],
+  "invitingAccounts": [],
+  "invites": [],
+  "accountsForApi": [],
+  "integrations": [],
+  "remainingInvitations": null
+}

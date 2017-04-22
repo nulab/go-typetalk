@@ -1,0 +1,22 @@
+{
+  "mention": {
+    "unread": 1
+  },
+  "access": {
+    "unopened": 1
+  },
+  "invite": {
+    "team": {
+      "pending": 0
+    },
+    "topic": {
+      "pending": 2
+    }
+  },
+  "like": {
+    "receive": null
+  },
+  "directMessage": {
+    "unreadTopics": 1
+  }
+}

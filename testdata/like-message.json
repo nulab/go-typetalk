@@ -1,0 +1,48 @@
+{
+  "like": {
+    "id": 604,
+    "postId": 305,
+    "topicId": 208,
+    "comment": "",
+    "account": {
+      "id": 100,
+      "name": "jessica",
+      "fullName": "Jessica Fitzherbert",
+      "suggestion": "Jessica Fitzherbert",
+      "imageUrl": "http://typetalk.local:8484/accounts/100/profile_image.png?t=1403577149000",
+      "isBot": false,
+      "createdAt": "2014-06-24T02:32:29Z",
+      "updatedAt": "2014-06-24T02:32:29Z"
+    },
+    "createdAt": "2016-12-21T10:12:06Z"
+  },
+  "post": {
+    "id": 305,
+    "topicId": 208,
+    "replyTo": null,
+    "message": "And I'm a 32 year old IT-man who works in a basement. Word.",
+    "account": {
+      "id": 104,
+      "name": "cooper",
+      "fullName": "CooperDaChopper",
+      "suggestion": "CooperDaChopper",
+      "imageUrl": "http://typetalk.local:8484/accounts/104/profile_image.png?t=1403922749000",
+      "isBot": false,
+      "createdAt": "2014-06-28T02:32:29Z",
+      "updatedAt": "2014-06-28T02:32:29Z"
+    },
+    "createdAt": "2014-06-30T14:32:29Z",
+    "updatedAt": "2014-06-30T14:32:29Z"
+  },
+  "topic": {
+    "id": 208,
+    "name": "IT Peeps",
+    "description": "",
+    "suggestion": "IT Peeps",
+    "isDirectMessage": false,
+    "lastPostedAt": "2016-12-21T10:12:02Z",
+    "createdAt": "2014-06-10T02:32:29Z",
+    "updatedAt": "2014-06-10T02:32:29Z"
+  },
+  "directMessage": null
+}

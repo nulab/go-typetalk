@@ -1,0 +1,4 @@
+package: github.com/vvatanabe/go-typetalk
+import: []
+testImport:
+- package: golang.org/x/oauth2
