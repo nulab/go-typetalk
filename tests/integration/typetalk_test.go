@@ -3,7 +3,7 @@ package tests
 import (
 	"context"
 	"encoding/json"
-	"github.com/vvatanabe/go-typetalk/typetalk"
+	"github.com/nulab/go-typetalk/typetalk"
 	"golang.org/x/oauth2"
 	"net/http"
 	"net/url"
