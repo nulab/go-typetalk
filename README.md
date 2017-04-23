@@ -1,7 +1,6 @@
-# go-typetalk
+# go-typetalk [![Build Status](https://travis-ci.org/nulab/go-typetalk.svg?branch=master)](https://travis-ci.org/nulab/go-typetalk) [![Coverage Status](https://coveralls.io/repos/github/nulab/go-typetalk/badge.svg?branch=master)](https://coveralls.io/github/nulab/go-typetalk?branch=master)
 
 go-typetalk is a GO client library for accessing the [Typetalk API](http://developer.nulab-inc.com/docs/typetalk).
-
 
 ## Prerequisite
 
