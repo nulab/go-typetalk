@@ -3,6 +3,10 @@ go:
   - 1.7.x
   - 1.8.x
   - master
+before_install:
+  - go get github.com/mattn/goveralls
+  - go get github.com/axw/gocov/gocov
+  - go get golang.org/x/tools/cmd/cover
 script:
- - go tool vet ./typetalk
- - go test -cover -v -race ./typetalk
+  - go test -v -covermode=count -coverprofile=coverage.out ./typetalk
+  - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service travis-ci -repotoken $COVERALLS_TOKEN
