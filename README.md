@@ -4,7 +4,7 @@ go-typetalk is a GO client library for accessing the [Typetalk API](http://devel
 
 ## Prerequisite
 
-To use this library, you must have a valid client ID and client secret provided by Typetalk. To register a new client application.
+To use this library, you must have a valid [client id and client secret](https://developer.nulab-inc.com/docs/typetalk/auth#oauth2) provided by Typetalk and register a new client application. Or you can use the [Typetalk Token](https://developer.nulab-inc.com/docs/typetalk/auth#tttoken). 
 
 ## Installation
 
@@ -14,7 +14,28 @@ This package can be installed with the go get command:
 $ go get github.com/nulab/go-typetalk
 ```
 
-## Examples
+## Usage
+
+### Access APIs using Typetalk Token
+
+``` go
+package main
+
+import (
+	"context"
+	"github.com/nulab/go-typetalk/typetalk"
+)
+
+func main() {
+	client := typetalk.NewClient(nil).SetTypetalkToken("yourTypetalkToken")
+	ctx := context.Background()
+	topicId, postId := 1, 2
+	message := "Hello"
+	profile, resp, err := client.Messages.PostMessage(ctx, topicId, postId, message, nil)
+}
+```
+
+### Access APIs using OAuth2 Access Token
 
 ``` go
 package main
@@ -63,6 +84,4 @@ For bugs, questions and discussions please use the Github Issues.
 
 ## License
 
-MIT License
-
-* http://www.opensource.org/licenses/mit-license.php
+[MIT License](http://www.opensource.org/licenses/mit-license.php)
