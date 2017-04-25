@@ -3,19 +3,21 @@ package tests
 import (
 	"context"
 	"encoding/json"
-	"github.com/nulab/go-typetalk/typetalk"
-	"golang.org/x/oauth2"
 	"net/http"
 	"net/url"
 	"os"
 	"strconv"
 	"testing"
+
+	"github.com/nulab/go-typetalk/typetalk"
+	"golang.org/x/oauth2"
 )
 
 var (
-	client  *typetalk.Client
-	topicId int
-	postId  int
+	client                   *typetalk.Client
+	clientUsingTypetalkToken *typetalk.Client
+	topicId                  int
+	postId                   int
 )
 
 type AccessToken struct {
@@ -35,7 +37,7 @@ func init() {
 		postId = v
 	}
 	if clientId == "" || clientSecret == "" {
-		print("!!! Integration test requires client_id and client_secret. !!!\n\n")
+		print("!!! Integration test using OAuth2 requires client_id and client_secret. !!!\n\n")
 		client = typetalk.NewClient(nil)
 	} else {
 		form := url.Values{}
@@ -57,6 +59,14 @@ func init() {
 			&oauth2.Token{AccessToken: v.AccessToken},
 		))
 		client = typetalk.NewClient(tc)
+	}
+
+	typetalkToken := os.Getenv("TT_TOKEN")
+	if typetalkToken == "" {
+		print("!!! Integration test using Typetalk Token requires Typetalk Token. !!!\n\n")
+		clientUsingTypetalkToken = typetalk.NewClient(nil)
+	} else {
+		clientUsingTypetalkToken = typetalk.NewClient(nil).SetTypetalkToken(typetalkToken)
 	}
 }
 

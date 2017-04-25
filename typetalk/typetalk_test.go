@@ -169,10 +169,17 @@ func Test_sanitizeURL_should_sanitize_typetalk_token_value(t *testing.T) {
 	}
 }
 
-func TestErrorResponse_Error(t *testing.T) {
+func Test_ErrorResponse_Error(t *testing.T) {
 	res := &http.Response{Request: &http.Request{}}
 	err := ErrorResponse{ErrorType: "error type", Response: res}
 	if err.Error() == "" {
-		t.Errorf("Expected non-empty ErrorResponse.Error()")
+		t.Error("Expected non-empty ErrorResponse.Error()")
+	}
+}
+
+func Test_Client_newRequest_should_add_typetalk_token_to_header_if_use_SetTypetalkToken(t *testing.T) {
+	req, _ := NewClient(nil).SetTypetalkToken("mytypetalktoken").newRequest("GET", "example", nil)
+	if token := req.Header.Get("X-Typetalk-Token"); token != "mytypetalktoken" {
+		t.Errorf("Invalid Typetalk Token: %s", token)
 	}
 }

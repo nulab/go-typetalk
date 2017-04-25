@@ -30,7 +30,7 @@ type Client struct {
 
 	BaseURL       *url.URL
 	UserAgent     string
-	TypetalkToken string
+	typetalkToken string
 
 	common service
 
@@ -42,6 +42,11 @@ type Client struct {
 	Organizations *OrganizationsService
 	Talks         *TalksService
 	Topics        *TopicsService
+}
+
+func (c *Client) SetTypetalkToken(token string) *Client {
+	c.typetalkToken = token
+	return c
 }
 
 func (c *Client) newRequest(method, urlStr string, body interface{}) (*http.Request, error) {
@@ -68,6 +73,9 @@ func (c *Client) newRequest(method, urlStr string, body interface{}) (*http.Requ
 	if c.UserAgent != "" {
 		req.Header.Set("User-Agent", c.UserAgent)
 	}
+	if c.typetalkToken != "" {
+		req.Header.Set("X-Typetalk-Token", c.typetalkToken)
+	}
 	return req, nil
 }
 
@@ -88,7 +96,12 @@ func (c *Client) newUploadRequest(urlStr string, reader io.Reader, size int64, m
 		mediaType = defaultMediaType
 	}
 	req.Header.Set("Content-Type", mediaType)
-	req.Header.Set("User-Agent", c.UserAgent)
+	if c.UserAgent != "" {
+		req.Header.Set("User-Agent", c.UserAgent)
+	}
+	if c.typetalkToken != "" {
+		req.Header.Set("X-Typetalk-Token", c.typetalkToken)
+	}
 	return req, nil
 
 }
