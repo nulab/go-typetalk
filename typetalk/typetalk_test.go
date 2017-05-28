@@ -6,6 +6,7 @@ import (
 	"net/http/httptest"
 	"net/url"
 	"reflect"
+	"strconv"
 	"testing"
 )
 
@@ -181,5 +182,39 @@ func Test_Client_newRequest_should_add_typetalk_token_to_header_if_use_SetTypeta
 	req, _ := NewClient(nil).SetTypetalkToken("mytypetalktoken").newRequest("GET", "example", nil)
 	if token := req.Header.Get("X-Typetalk-Token"); token != "mytypetalktoken" {
 		t.Errorf("Invalid Typetalk Token: %s", token)
+	}
+}
+
+func Test_Client_structToValues_should_convert_struct_to_url_values(t *testing.T) {
+	type User struct {
+		ID   int    `json:"id"`
+		Name string `json:"name"`
+	}
+	user := User{9184675, "nu-man"}
+	if values, err := structToValues(user); err != nil {
+		t.Errorf("structToValues failed to convert: %v", err)
+	} else {
+		if got := values.Get("id"); !reflect.DeepEqual(got, strconv.Itoa(user.ID)) {
+			t.Errorf("structToValues returned id %v, want %v", got, user.ID)
+		}
+		if got := values.Get("name"); !reflect.DeepEqual(got, user.Name) {
+			t.Errorf("structToValues returned name %v, want %v", got, user.Name)
+		}
+	}
+}
+
+func Test_Client_addQueries_should_add_queries_to_url(t *testing.T) {
+	type Option struct {
+		ID   int    `json:"id"`
+		Name string `json:"name"`
+	}
+	opt := Option{9184675, "nu-man"}
+	if got, err := addQueries("http://localhost:80/example", opt); err != nil {
+		t.Errorf("addQueries failed: %v", err)
+	} else {
+		want := "http://localhost:80/example?id=9184675&name=nu-man"
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("addQueries returned got %v, want %v", got, want)
+		}
 	}
 }

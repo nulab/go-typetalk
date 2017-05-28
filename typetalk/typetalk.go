@@ -59,7 +59,12 @@ func (c *Client) newRequest(method, urlStr string, body interface{}) (*http.Requ
 
 	var buf io.Reader
 	if body != nil {
-		buf = strings.NewReader(structToValues(body).Encode())
+		if values, err := structToValues(body); err != nil {
+			return nil, err
+		} else {
+			buf = strings.NewReader(values.Encode())
+		}
+
 	}
 
 	req, err := http.NewRequest(method, u.String(), buf)
@@ -245,10 +250,14 @@ func checkResponse(r *http.Response) error {
 	return errorResponse
 }
 
-func structToValues(data interface{}) url.Values {
+func structToValues(data interface{}) (url.Values, error) {
 	result := make(map[string]interface{})
 	b, _ := json.Marshal(data)
-	json.Unmarshal(b, &result)
+	d := json.NewDecoder(strings.NewReader(string(b)))
+	d.UseNumber()
+	if err := d.Decode(&result); err != nil {
+		return nil, err
+	}
 	values := url.Values{}
 	for k, v := range result {
 		if as, ok := v.([]interface{}); ok {
@@ -259,7 +268,7 @@ func structToValues(data interface{}) url.Values {
 			values.Add(k, fmt.Sprintf("%v", v))
 		}
 	}
-	return values
+	return values, nil
 }
 
 func addQueries(s string, opt interface{}) (string, error) {
@@ -273,8 +282,12 @@ func addQueries(s string, opt interface{}) (string, error) {
 		return s, err
 	}
 
-	u.RawQuery = structToValues(opt).Encode()
-	return u.String(), nil
+	if values, err := structToValues(opt); err != nil {
+		return s, err
+	} else {
+		u.RawQuery = values.Encode()
+		return u.String(), nil
+	}
 }
 
 func sanitizeURL(uri *url.URL) *url.URL {
