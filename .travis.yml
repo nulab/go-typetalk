@@ -8,7 +8,4 @@ before_install:
   - go get golang.org/x/tools/cmd/cover
 script:
   - go test -v -covermode=count -coverprofile=coverage.out ./typetalk
-  - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service travis-ci -repotoken $COVERALLS_TOKEN
-env:
-  global:
-    secure: "hh9T7ua79E5QqasxxmCG0ctr73nShJyl1GRnJnwf4QUUhq+dVpT11KWlrDju1BbhpD0EWB52GrAiuyQmPiTODZPaCALnioy8FP/rzqLJGYHSzIu47M7mBIiupZmP4WiqdMEYtSXrn6BEGzwhRt9s/ihZ+i0pgNgU9ietnyadftasOZPMMZmvTydiZc+y7+ukWPrVc3VphINSCNMNfflIJrTtAA3rZHvzkdBdgGDPRwbWZ8xQkc75RMe9byvyTFUC/Pk4sylnIVknjgDLCZDkLXDQsRal/Hy8xsuAmb4ZE5QfKz5lg4S/yj+Uw4LseJr2wgv7bKnoaBKHzjWJ/YkmtCKoMJWbl4D2kp0LQ3k5dISXhLMGsLxcrdx8I8Twd8eLdAUo8JBiQwm9aCZ/m661MdztHghwk/BIarwDEGnddgoFcaVKeo+sI1I/PQVd0CoCXa3B2WA6oGT5EUX1OjL3I4XHwp6fyehbvFdnPGn5aMHeZDKFBYJt97NxUcPOr+sTTbS+XznoioTz0Iw6q0DiBVsQ/lEwLot67ANDtV7tU/nt56OwC77D6Hrzr+gub77tAuVlx3wEtamzYnciCQzvoUgYRdpxYhfMMgeHbsHemddw77HFvd2f/grwZ/PkevUW8qUTSYrSVH9AOyj0Aa7zmGMFedYTXRkD06sObxdxyGc="
+  - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service travis-ci
