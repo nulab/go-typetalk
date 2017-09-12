@@ -4,7 +4,7 @@ go-typetalk is a GO client library for accessing the [Typetalk API](http://devel
 
 ## Prerequisite
 
-To use this library, you must have a valid [client id and client secret](https://developer.nulab-inc.com/docs/typetalk/auth#oauth2) provided by Typetalk and register a new client application. Or you can use the [Typetalk Token](https://developer.nulab-inc.com/docs/typetalk/auth#tttoken). 
+To use this library, you must have a valid [client id and client secret](https://developer.nulab-inc.com/docs/typetalk/auth#oauth2) provided by Typetalk and register a new client application. Or you can use the [Typetalk Token](https://developer.nulab-inc.com/docs/typetalk/auth#tttoken).
 
 ## Installation
 
@@ -62,7 +62,7 @@ func main() {
 	form.Add("client_secret", "yourClientSecret")
 	form.Add("grant_type", "client_credentials")
 	form.Add("scope", "topic.read,topic.post,topic.write,topic.delete,my")
-	resp, err := http.PostForm("https://typetalk.in/oauth2/access_token", form)
+	resp, err := http.PostForm("https://typetalk.com/oauth2/access_token", form)
 	if err != nil {
 		print("Client Credential request returned error")
 	}
