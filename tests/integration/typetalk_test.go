@@ -45,7 +45,7 @@ func init() {
 		form.Add("client_secret", clientSecret)
 		form.Add("grant_type", "client_credentials")
 		form.Add("scope", "topic.read,topic.post,topic.write,topic.delete,my")
-		resp, err := http.PostForm("https://typetalk.in/oauth2/access_token", form)
+		resp, err := http.PostForm("https://typetalk.com/oauth2/access_token", form)
 		if err != nil {
 			print("Client Credential request returned error")
 		}

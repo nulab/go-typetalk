@@ -15,7 +15,7 @@ import (
 const (
 	libraryVersion = "1.0.1"
 	apiVersion     = "v1"
-	defaultBaseURL = "https://typetalk.in/api/"
+	defaultBaseURL = "https://typetalk.com/api/"
 	userAgent      = "go-typetalk/" + libraryVersion
 
 	defaultMediaType = "application/octet-stream"
