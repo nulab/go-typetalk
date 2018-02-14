@@ -31,7 +31,7 @@ func main() {
 	ctx := context.Background()
 	topicId, postId := 1, 2
 	message := "Hello"
-	profile, resp, err := client.Messages.PostMessage(ctx, topicId, postId, message, nil)
+	profile, resp, err := client.Messages.PostMessage(ctx, topicId, message, nil)
 }
 ```
 
