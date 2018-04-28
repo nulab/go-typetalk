@@ -35,5 +35,5 @@ func main() {
 	))
 
 	client := v1.NewClient(tc)
-	profile, resp, err := client.Accounts.GetMyProfile(context.Background())
+	client.Accounts.GetMyProfile(context.Background())
 }

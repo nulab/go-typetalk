@@ -12,5 +12,5 @@ func main() {
 	ctx := context.Background()
 	topicId := 1
 	message := "Hello"
-	profile, resp, err := client.Messages.PostMessage(ctx, topicId, message, nil)
+	client.Messages.PostMessage(ctx, topicId, message, nil)
 }
