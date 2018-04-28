@@ -1,8 +1,10 @@
-package typetalk
+package v1
 
 import (
 	"context"
 	"time"
+	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type LikesService service
@@ -38,14 +40,14 @@ type GetLikesOptions struct {
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-receive/
 func (s *LikesService) GetLikesReceive(ctx context.Context, opt *GetLikesOptions) ([]*ReceiveLikedPost, *Response, error) {
-	u, err := addQueries("likes/receive", opt)
+	u, err := AddQueries("likes/receive", opt)
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *struct {
 		LikedPosts []*ReceiveLikedPost `json:"likedPosts"`
 	}
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result.LikedPosts, resp, nil
@@ -54,14 +56,14 @@ func (s *LikesService) GetLikesReceive(ctx context.Context, opt *GetLikesOptions
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-give/
 func (s *LikesService) GetLikesGive(ctx context.Context, opt *GetLikesOptions) ([]*GiveLikedPost, *Response, error) {
-	u, err := addQueries("likes/give", opt)
+	u, err := AddQueries("likes/give", opt)
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *struct {
 		GiveLikedPost []*GiveLikedPost `json:"likedPosts"`
 	}
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result.GiveLikedPost, resp, nil
@@ -70,14 +72,14 @@ func (s *LikesService) GetLikesGive(ctx context.Context, opt *GetLikesOptions) (
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-discover/
 func (s *LikesService) GetLikesDiscover(ctx context.Context, opt *GetLikesOptions) ([]*DiscoverLikedPost, *Response, error) {
-	u, err := addQueries("likes/discover", opt)
+	u, err := AddQueries("likes/discover", opt)
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *struct {
 		DiscoverLikedPost []*DiscoverLikedPost `json:"likedPosts"`
 	}
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result.DiscoverLikedPost, resp, nil
@@ -102,7 +104,7 @@ func (s *LikesService) ReadReceivedLikes(ctx context.Context, likeId int) (*Read
 	u := "likes/receive/bookmark/save"
 
 	var result *ReadReceivedLikesResult
-	if resp, err := s.client.post(ctx, u, &readReceivedLikesOptions{likeId}, result); err != nil {
+	if resp, err := s.client.Post(ctx, u, &readReceivedLikesOptions{likeId}, result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil

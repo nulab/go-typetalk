@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 func Test_TopicsService_CreateTopic_should_create_a_topic(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/create-topic.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "create-topic.json")
 	mux.HandleFunc("/topics",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")
@@ -44,7 +44,7 @@ func Test_TopicsService_UpdateTopic_should_update_a_topic(t *testing.T) {
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/update-topic.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "update-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "PUT")
@@ -70,7 +70,7 @@ func Test_TopicsService_DeleteTopic_should_delete_a_topic(t *testing.T) {
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/delete-topic.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "delete-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "DELETE")
@@ -92,7 +92,7 @@ func Test_TopicsService_GetTopicDetails_should_get_a_topic_details(t *testing.T)
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/get-topic-details.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-topic-details.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -114,7 +114,7 @@ func Test_TopicsService_GetTopicMessages_should_get_some_topic_messages(t *testi
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/get-topic-messages.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-topic-messages.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -141,7 +141,7 @@ func Test_TopicsService_UpdateTopicMembers_should_add_some_topic_members(t *test
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/update-topic-members.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "update-topic-members.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/members/update", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")
@@ -182,7 +182,7 @@ func Test_TopicsService_FavoriteTopic_should_favorite_topic(t *testing.T) {
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/favorite-topic.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "favorite-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")
@@ -204,7 +204,7 @@ func Test_TopicsService_UnfavoriteTopic_should_unfavorite_topic(t *testing.T) {
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/unfavorite-topic.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "unfavorite-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "DELETE")
@@ -227,7 +227,7 @@ func Test_TopicsService_ReadMessagesInTopic_should_read_some_messages_in_topic(t
 	defer teardown()
 	topicId := 1
 	postId := 1
-	b, _ := ioutil.ReadFile("../testdata/read-messages-in-topic.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "read-messages-in-topic.json")
 	mux.HandleFunc("/bookmarks",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "PUT")
@@ -254,7 +254,7 @@ func Test_TopicsService_ReadMessagesInTopic_should_read_some_messages_in_topic(t
 func Test_TopicsService_GetMyTopics_should_get_some_topics(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-my-topics.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-my-topics.json")
 	mux.HandleFunc("/topics",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")

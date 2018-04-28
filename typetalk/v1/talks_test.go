@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -15,7 +15,7 @@ func Test_TalksService_CreateTalk_should_create_a_talk(t *testing.T) {
 	defer teardown()
 	topicId := 1
 	talkName := "test"
-	b, _ := ioutil.ReadFile("../testdata/create-talk.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "create-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")
@@ -45,7 +45,7 @@ func Test_TalksService_UpdateTalk_should_update_a_talk_name(t *testing.T) {
 	topicId := 1
 	talkId := 1
 	talkName := "test"
-	b, _ := ioutil.ReadFile("../testdata/update-talk.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "update-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "PUT")
@@ -71,7 +71,7 @@ func Test_TalksService_DeleteTalk_should_delete_a_talk(t *testing.T) {
 	defer teardown()
 	topicId := 1
 	talkId := 1
-	b, _ := ioutil.ReadFile("../testdata/update-talk.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "update-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "DELETE")
@@ -93,7 +93,7 @@ func Test_TalksService_GetTalkList_should_get_talk_list(t *testing.T) {
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/get-talk-list.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-talk-list.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -118,7 +118,7 @@ func Test_TalksService_GetMessagesInTalk_should_get_some_messages_in_talk(t *tes
 	defer teardown()
 	topicId := 1
 	talkId := 1
-	b, _ := ioutil.ReadFile("../testdata/get-messages-in-talk.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-messages-in-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d/posts", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -146,7 +146,7 @@ func Test_TalksService_AddMessageToTalk_should_add_some_messages_to_talk(t *test
 	defer teardown()
 	topicId := 1
 	talkId := 1
-	b, _ := ioutil.ReadFile("../testdata/add-messages-to-talk.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "add-messages-to-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d/posts", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")
@@ -174,7 +174,7 @@ func Test_TalksService_RemoveMessagesFromTalk_should_remove_some_messages_from_t
 	defer teardown()
 	topicId := 1
 	talkId := 1
-	b, _ := ioutil.ReadFile("../testdata/remove-messages-from-talk.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "remove-messages-from-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d/posts", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "DELETE")

@@ -1,9 +1,12 @@
-package typetalk
+package v1
 
 import (
 	"context"
 	"fmt"
 	"time"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type AccountsService service
@@ -46,7 +49,7 @@ type OnlineStatus struct {
 func (s *AccountsService) GetMyProfile(ctx context.Context) (*Profile, *Response, error) {
 	u := "profile"
 	var result *Profile
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -57,7 +60,7 @@ func (s *AccountsService) GetMyProfile(ctx context.Context) (*Profile, *Response
 func (s *AccountsService) GetFriendProfile(ctx context.Context, accountName string) (*Profile, *Response, error) {
 	u := fmt.Sprintf("profile/%s", accountName)
 	var result *Profile
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -72,12 +75,12 @@ type GetMyFriendsOptions struct {
 
 // https://developer.nulab-inc.com/docs/typetalk/api/2/get-friends
 func (s *AccountsService) GetMyFriends(ctx context.Context, opt *GetMyFriendsOptions) (*Friends, *Response, error) {
-	u, err := addQueries("search/friends", opt)
+	u, err := AddQueries("search/friends", opt)
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *Friends
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -90,12 +93,12 @@ type searchAccountsOptions struct {
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/search-accounts
 func (s *AccountsService) SearchAccounts(ctx context.Context, nameOrEmailAddress string) (*Account, *Response, error) {
-	u, err := addQueries("search/accounts", &searchAccountsOptions{nameOrEmailAddress})
+	u, err := AddQueries("search/accounts", &searchAccountsOptions{nameOrEmailAddress})
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *Account
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -108,12 +111,12 @@ type getOnlineStatusOptions struct {
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-online-status
 func (s *AccountsService) GetOnlineStatus(ctx context.Context, accountIds ...int) (*OnlineStatus, *Response, error) {
-	u, err := addQueries("accounts/status", &getOnlineStatusOptions{accountIds})
+	u, err := AddQueries("accounts/status", &getOnlineStatusOptions{accountIds})
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *OnlineStatus
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil

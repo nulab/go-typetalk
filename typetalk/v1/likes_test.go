@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-likes-receive.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-receive.json")
 	mux.HandleFunc("/likes/receive",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -39,7 +39,7 @@ func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
 func Test_LikesService_GetLikesGive_should_get_Likes(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-likes-give.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-give.json")
 	mux.HandleFunc("/likes/give",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -65,7 +65,7 @@ func Test_LikesService_GetLikesGive_should_get_Likes(t *testing.T) {
 func Test_LikesService_GetLikesDiscover_should_get_Likes(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-likes-discover.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-discover.json")
 	mux.HandleFunc("/likes/discover",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -91,7 +91,7 @@ func Test_LikesService_GetLikesDiscover_should_get_Likes(t *testing.T) {
 func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/read-received-likes.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "read-received-likes.json")
 	mux.HandleFunc("/likes/receive/bookmark/save",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")

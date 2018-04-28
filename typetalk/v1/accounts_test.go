@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 func Test_AccountsService_GetMyProfile_should_get_a_profile(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-my-profile.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-my-profile.json")
 	mux.HandleFunc("/profile", func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "GET")
 		fmt.Fprint(w, string(b))
@@ -34,7 +34,7 @@ func Test_AccountsService_GetMyProfile_should_get_a_profile(t *testing.T) {
 func Test_AccountsService_GetFriendProfile_should_get_a_profile(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-friend-profile.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-friend-profile.json")
 	accountName := "ahorowitz"
 	mux.HandleFunc(fmt.Sprintf("/profile/%s", accountName), func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "GET")
@@ -56,7 +56,7 @@ func Test_AccountsService_GetFriendProfile_should_get_a_profile(t *testing.T) {
 func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-my-friends.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-my-friends.json")
 	mux.HandleFunc("/search/friends", func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "GET")
 		testQueryValues(t, r, values{
@@ -86,7 +86,7 @@ func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {
 func Test_AccountsService_SearchAccounts_should_get_some_accounts(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/search-accounts.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "search-accounts.json")
 	mux.HandleFunc("/search/accounts", func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "GET")
 		testQueryValues(t, r, values{
@@ -110,7 +110,7 @@ func Test_AccountsService_SearchAccounts_should_get_some_accounts(t *testing.T) 
 func Test_AccountsService_GetOnlineStatus_should_get_some_accounts_online_status(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-online-status.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-online-status.json")
 	mux.HandleFunc("/accounts/status", func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "GET")
 		testQueryValues(t, r, values{

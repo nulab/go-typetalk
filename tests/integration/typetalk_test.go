@@ -9,13 +9,14 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/nulab/go-typetalk/typetalk"
 	"golang.org/x/oauth2"
+	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/v1"
 )
 
 var (
-	client                   *typetalk.Client
-	clientUsingTypetalkToken *typetalk.Client
+	client                   *v1.Client
+	clientUsingTypetalkToken *v1.Client
 	topicId                  int
 	postId                   int
 )
@@ -38,7 +39,7 @@ func init() {
 	}
 	if clientId == "" || clientSecret == "" {
 		print("!!! Integration test using OAuth2 requires client_id and client_secret. !!!\n\n")
-		client = typetalk.NewClient(nil)
+		client = v1.NewClient(nil)
 	} else {
 		form := url.Values{}
 		form.Add("client_id", clientId)
@@ -58,19 +59,20 @@ func init() {
 		tc := oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(
 			&oauth2.Token{AccessToken: v.AccessToken},
 		))
-		client = typetalk.NewClient(tc)
+		client = v1.NewClient(tc)
 	}
 
 	typetalkToken := os.Getenv("TT_TOKEN")
 	if typetalkToken == "" {
 		print("!!! Integration test using Typetalk Token requires Typetalk Token. !!!\n\n")
-		clientUsingTypetalkToken = typetalk.NewClient(nil)
+		clientUsingTypetalkToken = v1.NewClient(nil)
 	} else {
-		clientUsingTypetalkToken = typetalk.NewClient(nil).SetTypetalkToken(typetalkToken)
+		clientUsingTypetalkToken = v1.NewClient(nil)
+		clientUsingTypetalkToken.SetTypetalkToken(typetalkToken)
 	}
 }
 
-func test(t *testing.T, result interface{}, resp *typetalk.Response, err error) {
+func test(t *testing.T, result interface{}, resp *shared.Response, err error) {
 	if err != nil {
 		t.Fatalf("Returned error: %v", err)
 	}

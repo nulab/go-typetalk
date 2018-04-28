@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -8,6 +8,9 @@ import (
 	"mime"
 	"os"
 	"path/filepath"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type FilesService service
@@ -31,13 +34,13 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, fi
 	}
 
 	mediaType := mime.TypeByExtension(filepath.Ext(file.Name()))
-	req, err := s.client.newUploadRequest(u, file, stat.Size(), mediaType)
+	req, err := s.client.NewUploadRequest(u, file, stat.Size(), mediaType)
 	if err != nil {
 		return nil, nil, err
 	}
 
 	attachmentFile := &AttachmentFile{}
-	if resp, err := s.client.do(ctx, req, attachmentFile); err != nil {
+	if resp, err := s.client.Do(ctx, req, attachmentFile); err != nil {
 		return nil, resp, err
 	} else {
 		return attachmentFile, resp, nil
@@ -48,14 +51,14 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, fi
 func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicId, postId, attachmentId int, filename string) (io.ReadCloser, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d/attachments/%d/%s", topicId, postId, attachmentId, filename)
 
-	req, err := s.client.newRequest("GET", u, nil)
+	req, err := s.client.NewRequest("GET", u, nil)
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Accept", defaultMediaType)
+	req.Header.Set("Accept", DefaultMediaType)
 
-	resp, err := s.client.client.Do(req)
-	if err := checkResponse(resp); err != nil {
+	resp, err := s.client.Client.Do(req)
+	if err := CheckResponse(resp); err != nil {
 		resp.Body.Close()
 		return nil, err
 	} else {

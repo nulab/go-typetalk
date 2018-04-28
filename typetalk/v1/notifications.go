@@ -1,7 +1,9 @@
-package typetalk
+package v1
 
 import (
 	"context"
+
+	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type NotificationsService service
@@ -45,7 +47,7 @@ type NotificationCount struct {
 func (s *NotificationsService) GetNotificationList(ctx context.Context) (*NotificationList, *Response, error) {
 	u := "notifications"
 	var result *NotificationList
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -56,7 +58,7 @@ func (s *NotificationsService) GetNotificationList(ctx context.Context) (*Notifi
 func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*NotificationCount, *Response, error) {
 	u := "notifications/status"
 	var result *NotificationCount
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -69,7 +71,7 @@ func (s *NotificationsService) ReadNotification(ctx context.Context) (*Access, *
 	var result *struct {
 		Access *Access `json:"access"`
 	}
-	if resp, err := s.client.put(ctx, u, nil, &result); err != nil {
+	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result.Access, resp, nil

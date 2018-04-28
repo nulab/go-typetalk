@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 func Test_OrganizationsService_GetMyOrganizations_should_get_my_organizations(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-my-organizations.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-my-organizations.json")
 	mux.HandleFunc("/spaces",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -38,7 +38,7 @@ func Test_OrganizationsService_GetOrganizationMembers_should_get_some_organizati
 	setup()
 	defer teardown()
 	spaceKey := "test"
-	b, _ := ioutil.ReadFile("../testdata/get-organization-members.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-organization-members.json")
 	mux.HandleFunc(fmt.Sprintf("/spaces/%s/members", spaceKey),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")

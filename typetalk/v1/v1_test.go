@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"fmt"
@@ -8,6 +8,9 @@ import (
 	"reflect"
 	"strconv"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 var (
@@ -16,13 +19,15 @@ var (
 	server *httptest.Server
 )
 
+const fixturesPath = "../../testdata/"
+
 func setup() {
 	mux = http.NewServeMux()
 	server = httptest.NewServer(mux)
 
 	client = NewClient(nil)
-	url, _ := url.Parse(server.URL)
-	client.BaseURL = url
+	parsedURL, _ := url.Parse(server.URL)
+	client.client.BaseURL = parsedURL
 }
 
 func teardown() {
@@ -74,7 +79,7 @@ func Test_CheckResponse_should_return_invalid_request_error(t *testing.T) {
 	resp.Header = make(map[string][]string)
 	resp.Header.Add("WWW-Authenticate", `Bearer error="invalid_request", error_description="Access token is not found"`)
 
-	err := checkResponse(resp)
+	err := CheckResponse(resp)
 	if err == nil {
 		t.Error("error is nil")
 	}
@@ -95,7 +100,7 @@ func Test_CheckResponse_should_return_access_token_is_not_found_error(t *testing
 	resp.Header = make(map[string][]string)
 	resp.Header.Add("WWW-Authenticate", `Bearer error="invalid_token", error_description="The access token is not found"`)
 
-	err := checkResponse(resp)
+	err := CheckResponse(resp)
 	if err == nil {
 		t.Error("error is nil")
 	}
@@ -116,7 +121,7 @@ func Test_CheckResponse_should_return_access_token_expired_error(t *testing.T) {
 	resp.Header = make(map[string][]string)
 	resp.Header.Add("WWW-Authenticate", `Bearer error="invalid_token", error_description="The access token expired"`)
 
-	err := checkResponse(resp)
+	err := CheckResponse(resp)
 	if err == nil {
 		t.Error("error is nil")
 	}
@@ -137,7 +142,7 @@ func Test_CheckResponse_should_return_invalid_scope_error(t *testing.T) {
 	resp.Header = make(map[string][]string)
 	resp.Header.Add("WWW-Authenticate", `Bearer error="invalid_scope"`)
 
-	err := checkResponse(resp)
+	err := CheckResponse(resp)
 	if err == nil {
 		t.Error("error is nil")
 	}
@@ -164,7 +169,7 @@ func Test_sanitizeURL_should_sanitize_typetalk_token_value(t *testing.T) {
 		inURL, _ := url.Parse(tt.in)
 		want, _ := url.Parse(tt.want)
 
-		if got := sanitizeURL(inURL); !reflect.DeepEqual(got, want) {
+		if got := SanitizeURL(inURL); !reflect.DeepEqual(got, want) {
 			t.Errorf("sanitizeURL(%v) returned %v, want %v", tt.in, got, want)
 		}
 	}
@@ -179,7 +184,9 @@ func Test_ErrorResponse_Error(t *testing.T) {
 }
 
 func Test_Client_newRequest_should_add_typetalk_token_to_header_if_use_SetTypetalkToken(t *testing.T) {
-	req, _ := NewClient(nil).SetTypetalkToken("mytypetalktoken").newRequest("GET", "example", nil)
+	req, _ := NewClient(nil).
+		SetTypetalkToken("mytypetalktoken").
+		client.NewRequest("GET", "example", nil)
 	if token := req.Header.Get("X-Typetalk-Token"); token != "mytypetalktoken" {
 		t.Errorf("Invalid Typetalk Token: %s", token)
 	}
@@ -191,7 +198,7 @@ func Test_Client_structToValues_should_convert_struct_to_url_values(t *testing.T
 		Name string `json:"name"`
 	}
 	user := User{9184675, "nu-man"}
-	if values, err := structToValues(user); err != nil {
+	if values, err := StructToValues(user); err != nil {
 		t.Errorf("structToValues failed to convert: %v", err)
 	} else {
 		if got := values.Get("id"); !reflect.DeepEqual(got, strconv.Itoa(user.ID)) {
@@ -209,7 +216,7 @@ func Test_Client_addQueries_should_add_queries_to_url(t *testing.T) {
 		Name string `json:"name"`
 	}
 	opt := Option{9184675, "nu-man"}
-	if got, err := addQueries("http://localhost:80/example", opt); err != nil {
+	if got, err := AddQueries("http://localhost:80/example", opt); err != nil {
 		t.Errorf("addQueries failed: %v", err)
 	} else {
 		want := "http://localhost:80/example?id=9184675&name=nu-man"

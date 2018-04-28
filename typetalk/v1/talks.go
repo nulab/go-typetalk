@@ -1,9 +1,12 @@
-package typetalk
+package v1
 
 import (
 	"context"
 	"fmt"
 	"time"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type TalksService service
@@ -62,7 +65,7 @@ type CreateTalkOptions struct {
 func (s *TalksService) CreateTalk(ctx context.Context, topicId int, talkName string, postIds ...int) (*CreatedTalkResult, *Response, error) {
 	u := fmt.Sprintf("topics/%d/talks", topicId)
 	var result *CreatedTalkResult
-	if resp, err := s.client.post(ctx, u, &CreateTalkOptions{talkName, postIds}, &result); err != nil {
+	if resp, err := s.client.Post(ctx, u, &CreateTalkOptions{talkName, postIds}, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -75,13 +78,13 @@ type updateTalkOptions struct {
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/update-talk
 func (s *TalksService) UpdateTalk(ctx context.Context, topicId, talkId int, talkName string) (*UpdatedTalkResult, *Response, error) {
-	u, err := addQueries(fmt.Sprintf("topics/%d/talks/%d", topicId, talkId), &updateTalkOptions{talkName})
+	u, err := AddQueries(fmt.Sprintf("topics/%d/talks/%d", topicId, talkId), &updateTalkOptions{talkName})
 	if err != nil {
 		return nil, nil, err
 	}
 
 	var result *UpdatedTalkResult
-	if resp, err := s.client.put(ctx, u, nil, &result); err != nil {
+	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -92,7 +95,7 @@ func (s *TalksService) UpdateTalk(ctx context.Context, topicId, talkId int, talk
 func (s *TalksService) DeleteTalk(ctx context.Context, topicId, talkId int) (*DeletedTalkResult, *Response, error) {
 	u := fmt.Sprintf("topics/%d/talks/%d", topicId, talkId)
 	var result *DeletedTalkResult
-	if resp, err := s.client.delete(ctx, u, &result); err != nil {
+	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -105,7 +108,7 @@ func (s *TalksService) GetTalkList(ctx context.Context, topicId int) ([]*Talk, *
 	var result *struct {
 		Talks []*Talk `json:"talks"`
 	}
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result.Talks, resp, nil
@@ -114,12 +117,12 @@ func (s *TalksService) GetTalkList(ctx context.Context, topicId int) ([]*Talk, *
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-talk
 func (s *TalksService) GetMessagesInTalk(ctx context.Context, topicId, talkId int, opt *GetMessagesOptions) (*MessagesInTalk, *Response, error) {
-	u, err := addQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), opt)
+	u, err := AddQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), opt)
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *MessagesInTalk
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -134,7 +137,7 @@ type addMessageToTalkOptions struct {
 func (s *TalksService) AddMessagesToTalk(ctx context.Context, topicId, talkId int, postIds ...int) (*MessagesInTalk, *Response, error) {
 	u := fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId)
 	var result *MessagesInTalk
-	if resp, err := s.client.post(ctx, u, &addMessageToTalkOptions{postIds}, &result); err != nil {
+	if resp, err := s.client.Post(ctx, u, &addMessageToTalkOptions{postIds}, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -145,12 +148,12 @@ type removeMessagesFromTalkOptions addMessageToTalkOptions
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/remove-message-from-talk
 func (s *TalksService) RemoveMessagesFromTalk(ctx context.Context, topicId, talkId int, postIds ...int) (*RemovedMessagesResult, *Response, error) {
-	u, err := addQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), &removeMessagesFromTalkOptions{postIds})
+	u, err := AddQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), &removeMessagesFromTalkOptions{postIds})
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *RemovedMessagesResult
-	if resp, err := s.client.delete(ctx, u, &result); err != nil {
+	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil

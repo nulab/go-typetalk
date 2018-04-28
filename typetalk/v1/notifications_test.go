@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -13,7 +13,7 @@ import (
 func Test_NotificationsService_GetNotificationList_should_get_some_notifications(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-notification-list.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-notification-list.json")
 	mux.HandleFunc("/notifications",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -34,7 +34,7 @@ func Test_NotificationsService_GetNotificationList_should_get_some_notifications
 func Test_NotificationsService_GetNotificationCount_should_get_notification_count(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-notification-count.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-notification-count.json")
 	mux.HandleFunc("/notifications/status",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -55,7 +55,7 @@ func Test_NotificationsService_GetNotificationCount_should_get_notification_coun
 func Test_NotificationsService_ReadNotification_should_read_notification(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/read-notification.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "read-notification.json")
 	mux.HandleFunc("/notifications",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "PUT")

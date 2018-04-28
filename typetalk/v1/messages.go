@@ -1,9 +1,12 @@
-package typetalk
+package v1
 
 import (
 	"context"
 	"fmt"
 	"time"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type MessagesService service
@@ -101,7 +104,7 @@ func (s *MessagesService) PostMessage(ctx context.Context, topicId int, message 
 		opt = &PostMessageOptions{}
 	}
 	var result *PostedMessageResult
-	if resp, err := s.client.post(ctx, u, &postMessageOptions{opt, message}, &result); err != nil {
+	if resp, err := s.client.Post(ctx, u, &postMessageOptions{opt, message}, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -114,7 +117,7 @@ type updateMessageOptions struct {
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/update-message
 func (s *MessagesService) UpdateMessage(ctx context.Context, topicId, postId int, message string) (*UpdatedMessageResult, *Response, error) {
-	u, err := addQueries(
+	u, err := AddQueries(
 		fmt.Sprintf("topics/%d/posts/%d", topicId, postId),
 		updateMessageOptions{Message: message},
 	)
@@ -123,7 +126,7 @@ func (s *MessagesService) UpdateMessage(ctx context.Context, topicId, postId int
 	}
 
 	var result *UpdatedMessageResult
-	if resp, err := s.client.put(ctx, u, nil, &result); err != nil {
+	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -134,7 +137,7 @@ func (s *MessagesService) UpdateMessage(ctx context.Context, topicId, postId int
 func (s *MessagesService) DeleteMessage(ctx context.Context, topicId, postId int) (*Post, *Response, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
 	var result *Post
-	if resp, err := s.client.delete(ctx, u, &result); err != nil {
+	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -145,7 +148,7 @@ func (s *MessagesService) DeleteMessage(ctx context.Context, topicId, postId int
 func (s *MessagesService) GetMessage(ctx context.Context, topicId, postId int) (*Message, *Response, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
 	var result *Message
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -156,7 +159,7 @@ func (s *MessagesService) GetMessage(ctx context.Context, topicId, postId int) (
 func (s *MessagesService) LikeMessage(ctx context.Context, topicId, postId int) (*LikedMessageResult, *Response, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d/like", topicId, postId)
 	var result *LikedMessageResult
-	if resp, err := s.client.post(ctx, u, nil, &result); err != nil {
+	if resp, err := s.client.Post(ctx, u, nil, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -169,7 +172,7 @@ func (s *MessagesService) UnlikeMessage(ctx context.Context, topicId, postId int
 	var result *struct {
 		Like Like `json:"like"`
 	}
-	if resp, err := s.client.delete(ctx, u, &result); err != nil {
+	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return &result.Like, resp, nil
@@ -183,7 +186,7 @@ func (s *MessagesService) PostDirectMessage(ctx context.Context, accountName, me
 		opt = &PostMessageOptions{}
 	}
 	var result *PostedMessageResult
-	if resp, err := s.client.post(ctx, u, &postMessageOptions{opt, message}, &result); err != nil {
+	if resp, err := s.client.Post(ctx, u, &postMessageOptions{opt, message}, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -198,12 +201,12 @@ type GetMessagesOptions struct {
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-direct-messages
 func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName string, opt *GetMessagesOptions) (*DirectMessages, *Response, error) {
-	u, err := addQueries(fmt.Sprintf("messages/@%s", accountName), opt)
+	u, err := AddQueries(fmt.Sprintf("messages/@%s", accountName), opt)
 	if err != nil {
 		return nil, nil, err
 	}
 	var result *DirectMessages
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
@@ -216,7 +219,7 @@ func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context) ([]*Dire
 	var result *struct {
 		Topics []*DirectMessageTopic `json:"topics"`
 	}
-	if resp, err := s.client.get(ctx, u, &result); err != nil {
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result.Topics, resp, nil

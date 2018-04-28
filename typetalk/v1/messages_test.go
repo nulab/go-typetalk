@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -14,7 +14,7 @@ func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {
 	setup()
 	defer teardown()
 	topicId := 1
-	b, _ := ioutil.ReadFile("../testdata/post-message.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "post-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%v", topicId), func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "POST")
 		testFormValues(t, r, values{
@@ -61,7 +61,7 @@ func Test_MessagesService_UpdateMessage_should_update_a_message(t *testing.T) {
 	topicId := 1
 	postId := 1
 	message := "hello"
-	b, _ := ioutil.ReadFile("../testdata/update-message.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "update-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "PUT")
@@ -85,7 +85,7 @@ func Test_MessagesService_DeleteMessage_should_delete_a_message(t *testing.T) {
 	defer teardown()
 	topicId := 1
 	postId := 1
-	b, _ := ioutil.ReadFile("../testdata/delete-message.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "delete-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "DELETE")
@@ -108,7 +108,7 @@ func Test_MessagesService_GetMessage_should_get_a_message(t *testing.T) {
 	defer teardown()
 	topicId := 1
 	postId := 1
-	b, _ := ioutil.ReadFile("../testdata/get-message.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -131,7 +131,7 @@ func Test_MessagesService_LikeMessage_should_like_a_message(t *testing.T) {
 	defer teardown()
 	topicId := 1
 	postId := 1
-	b, _ := ioutil.ReadFile("../testdata/like-message.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "like-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")
@@ -154,7 +154,7 @@ func Test_MessagesService_UnikeMessage_should_unlike_a_message(t *testing.T) {
 	defer teardown()
 	topicId := 1
 	postId := 1
-	b, _ := ioutil.ReadFile("../testdata/unlike-message.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "unlike-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "DELETE")
@@ -176,7 +176,7 @@ func Test_MessagesService_PostDirectMessage_should_post_dairect_message(t *testi
 	setup()
 	defer teardown()
 	accountName := "test"
-	b, _ := ioutil.ReadFile("../testdata/post-direct-message.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "post-direct-message.json")
 	mux.HandleFunc(fmt.Sprintf("/messages/@%s", accountName),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "POST")
@@ -222,7 +222,7 @@ func Test_MessagesService_GetDirectMessages_should_get_some_direct_messages(t *t
 	setup()
 	defer teardown()
 	accountName := "test"
-	b, _ := ioutil.ReadFile("../testdata/get-direct-messages.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-direct-messages.json")
 	mux.HandleFunc(fmt.Sprintf("/messages/@%s", accountName),
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")
@@ -248,7 +248,7 @@ func Test_MessagesService_GetDirectMessages_should_get_some_direct_messages(t *t
 func Test_MessagesService_GetMyDirectMessageTopics_should_get_some_topics_of_direct_message(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-my-direct-message-topics.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-my-direct-message-topics.json")
 	mux.HandleFunc("/messages",
 		func(w http.ResponseWriter, r *http.Request) {
 			testMethod(t, r, "GET")

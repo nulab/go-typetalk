@@ -1,4 +1,4 @@
-package typetalk
+package v1
 
 import (
 	"context"
@@ -14,7 +14,7 @@ func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {
 	setup()
 	defer teardown()
 	mentionId := 1
-	b, _ := ioutil.ReadFile("../testdata/read-mention.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "read-mention.json")
 	mux.HandleFunc(fmt.Sprintf("/mentions/%d", mentionId), func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "PUT")
 		fmt.Fprint(w, string(b))
@@ -36,7 +36,7 @@ func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {
 func Test_MentionsService_GetMentionList_should_get_some_mentions(t *testing.T) {
 	setup()
 	defer teardown()
-	b, _ := ioutil.ReadFile("../testdata/get-mention-list.json")
+	b, _ := ioutil.ReadFile(fixturesPath + "get-mention-list.json")
 	mux.HandleFunc("/mentions", func(w http.ResponseWriter, r *http.Request) {
 		testMethod(t, r, "GET")
 		testQueryValues(t, r, values{
