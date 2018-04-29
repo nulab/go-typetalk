@@ -17,6 +17,8 @@ type service struct {
 
 type Client struct {
 	client *internal.ClientCore
+
+	Topics        *TopicsService
 }
 
 func (c *Client) SetTypetalkToken(token string) *Client {
@@ -34,8 +36,7 @@ func NewClient(httpClient *http.Client) *Client {
 
 	common := &service{client: c.client}
 
-	// TODO remove
-	println(common)
+	c.Topics = (*TopicsService)(common)
 
 	return c
 }

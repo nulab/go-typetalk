@@ -6,6 +6,7 @@ import (
 	"time"
 
 	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 type TopicsService service
@@ -34,9 +35,16 @@ type FavoriteTopicWithUnread struct {
 	Unread   Unread `json:"unread"`
 }
 
+type getMyTopicsOptions struct {
+	SpaceKey string `json:"spaceKey"`
+}
+
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-topics/
-func (s *TopicsService) GetMyTopics(ctx context.Context) ([]*FavoriteTopicWithUnread, *Response, error) {
-	u := "topics"
+func (s *TopicsService) GetMyTopics(ctx context.Context, spaceKey string) ([]*FavoriteTopicWithUnread, *Response, error) {
+	u, err := internal.AddQueries("topics", &getMyTopicsOptions{spaceKey})
+	if err != nil {
+		return nil, nil, err
+	}
 	var result *struct {
 		Topics []*FavoriteTopicWithUnread `json:"topics"`
 	}
