@@ -19,7 +19,7 @@ var (
 	server *httptest.Server
 )
 
-const fixturesPath = "../../testdata/"
+const fixturesPath = "../../testdata/v1/"
 
 func setup() {
 	mux = http.NewServeMux()
