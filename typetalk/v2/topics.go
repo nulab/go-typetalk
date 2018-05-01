@@ -6,7 +6,7 @@ import (
 	"time"
 
 	. "github.com/nulab/go-typetalk/typetalk/shared"
-	"github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 type TopicsService service
@@ -41,7 +41,7 @@ type getMyTopicsOptions struct {
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-topics/
 func (s *TopicsService) GetMyTopics(ctx context.Context, spaceKey string) ([]*FavoriteTopicWithUnread, *Response, error) {
-	u, err := internal.AddQueries("topics", &getMyTopicsOptions{spaceKey})
+	u, err := AddQueries("topics", &getMyTopicsOptions{spaceKey})
 	if err != nil {
 		return nil, nil, err
 	}
