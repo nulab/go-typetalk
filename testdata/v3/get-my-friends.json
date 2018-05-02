@@ -1,0 +1,44 @@
+{
+  "accounts": [
+    {
+      "id": 2497,
+      "name": "Dom",
+      "fullName": "Dom Lewis",
+      "suggestion": "Dom Lewis",
+      "imageUrl": "https://dev.typetalk.com/accounts/2497/profile_image.png?t=1510596200433",
+      "isBot": false,
+      "createdAt": "2016-01-27T09:54:48Z",
+      "updatedAt": "2018-02-20T04:49:37Z"
+    },
+    {
+      "id": 2500,
+      "name": "Jessica",
+      "fullName": "Jessica Lee",
+      "suggestion": "Jessica Lee",
+      "imageUrl": "https://dev.typetalk.com/accounts/2500/profile_image.png?t=1454061730873",
+      "isBot": false,
+      "createdAt": "2016-01-27T09:55:35Z",
+      "updatedAt": "2018-03-13T09:40:15Z"
+    },
+    {
+      "id": 2499,
+      "name": "Moss",
+      "fullName": "Moss Harris",
+      "suggestion": "Moss Harris",
+      "imageUrl": "https://dev.typetalk.com/accounts/2499/profile_image.png?t=1453891379196",
+      "isBot": false,
+      "createdAt": "2016-01-27T09:55:23Z",
+      "updatedAt": "2018-02-23T03:14:51Z"
+    },
+    {
+      "id": 2498,
+      "name": "Stefanie",
+      "fullName": "Stefanie Fisher",
+      "suggestion": "Stefanie Fisher",
+      "imageUrl": "https://dev.typetalk.com/accounts/2498/profile_image.png?t=1453891479138",
+      "isBot": false,
+      "createdAt": "2016-01-27T09:55:09Z",
+      "updatedAt": "2018-02-20T04:49:37Z"
+    }
+  ]
+}
