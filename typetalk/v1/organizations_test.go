@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_OrganizationsService_GetMyOrganizations_should_get_my_organizations(t *testing.T) {
@@ -16,8 +18,8 @@ func Test_OrganizationsService_GetMyOrganizations_should_get_my_organizations(t 
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-organizations.json")
 	mux.HandleFunc("/spaces",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
-			testQueryValues(t, r, values{"excludesGuest": true})
+			TestMethod(t, r, "GET")
+			TestQueryValues(t, r, Values{"excludesGuest": true})
 			fmt.Fprint(w, string(b))
 		})
 
@@ -41,7 +43,7 @@ func Test_OrganizationsService_GetOrganizationMembers_should_get_some_organizati
 	b, _ := ioutil.ReadFile(fixturesPath + "get-organization-members.json")
 	mux.HandleFunc(fmt.Sprintf("/spaces/%s/members", spaceKey),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
+			TestMethod(t, r, "GET")
 			fmt.Fprint(w, string(b))
 		})
 

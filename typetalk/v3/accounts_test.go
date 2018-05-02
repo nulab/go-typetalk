@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {
@@ -15,8 +17,8 @@ func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-friends.json")
 	mux.HandleFunc("/search/friends", func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
-		testQueryValues(t, r, values{
+		TestMethod(t, r, "GET")
+		TestQueryValues(t, r, Values{
 			"spaceKey": "qwerty",
 			"q":        "hello",
 			"offset":   10,

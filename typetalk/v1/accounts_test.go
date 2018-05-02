@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_AccountsService_GetMyProfile_should_get_a_profile(t *testing.T) {
@@ -15,7 +17,7 @@ func Test_AccountsService_GetMyProfile_should_get_a_profile(t *testing.T) {
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-profile.json")
 	mux.HandleFunc("/profile", func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
+		TestMethod(t, r, "GET")
 		fmt.Fprint(w, string(b))
 	})
 
@@ -37,7 +39,7 @@ func Test_AccountsService_GetFriendProfile_should_get_a_profile(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-friend-profile.json")
 	accountName := "ahorowitz"
 	mux.HandleFunc(fmt.Sprintf("/profile/%s", accountName), func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
+		TestMethod(t, r, "GET")
 		fmt.Fprint(w, string(b))
 	})
 
@@ -58,8 +60,8 @@ func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-friends.json")
 	mux.HandleFunc("/search/friends", func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
-		testQueryValues(t, r, values{
+		TestMethod(t, r, "GET")
+		TestQueryValues(t, r, Values{
 			"q":      "test",
 			"offset": 10,
 			"count":  2,
@@ -88,8 +90,8 @@ func Test_AccountsService_SearchAccounts_should_get_some_accounts(t *testing.T) 
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "search-accounts.json")
 	mux.HandleFunc("/search/accounts", func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
-		testQueryValues(t, r, values{
+		TestMethod(t, r, "GET")
+		TestQueryValues(t, r, Values{
 			"nameOrEmailAddress": "test",
 		})
 		fmt.Fprint(w, string(b))
@@ -112,8 +114,8 @@ func Test_AccountsService_GetOnlineStatus_should_get_some_accounts_online_status
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-online-status.json")
 	mux.HandleFunc("/accounts/status", func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
-		testQueryValues(t, r, values{
+		TestMethod(t, r, "GET")
+		TestQueryValues(t, r, Values{
 			"accountIds[0]": 1,
 			"accountIds[1]": 2,
 			"accountIds[2]": 3,

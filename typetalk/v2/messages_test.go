@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_MessagesService_SearchMessages_should_get_some_posts(t *testing.T) {
@@ -16,8 +18,8 @@ func Test_MessagesService_SearchMessages_should_get_some_posts(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "search-messages.json")
 	mux.HandleFunc("/search/posts",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
-			testQueryValues(t, r, values{
+			TestMethod(t, r, "GET")
+			TestQueryValues(t, r, Values{
 				"spaceKey":       "qwerty",
 				"q":              "hello",
 				"hasAttachments": true,

@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
@@ -16,8 +18,8 @@ func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-receive.json")
 	mux.HandleFunc("/likes/receive",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
-			testQueryValues(t, r, values{
+			TestMethod(t, r, "GET")
+			TestQueryValues(t, r, Values{
 				"spaceKey": "qwerty",
 				"from":     1,
 			})
@@ -43,8 +45,8 @@ func Test_LikesService_GetLikesGive_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-give.json")
 	mux.HandleFunc("/likes/give",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
-			testQueryValues(t, r, values{
+			TestMethod(t, r, "GET")
+			TestQueryValues(t, r, Values{
 				"spaceKey": "qwerty",
 				"from":     1,
 			})
@@ -70,8 +72,8 @@ func Test_LikesService_GetLikesDiscover_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-discover.json")
 	mux.HandleFunc("/likes/discover",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
-			testQueryValues(t, r, values{
+			TestMethod(t, r, "GET")
+			TestQueryValues(t, r, Values{
 				"spaceKey": "qwerty",
 				"from":     1,
 			})
@@ -97,8 +99,8 @@ func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "read-received-likes.json")
 	mux.HandleFunc("/likes/receive/bookmark/save",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "POST")
-			testFormValues(t, r, values{
+			TestMethod(t, r, "POST")
+			TestFormValues(t, r, Values{
 				"spaceKey": "qwerty",
 				"likeId":     1,
 			})

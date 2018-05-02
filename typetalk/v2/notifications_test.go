@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_NotificationsService_GetNotificationCount_should_get_notification_count(t *testing.T) {
@@ -16,7 +18,7 @@ func Test_NotificationsService_GetNotificationCount_should_get_notification_coun
 	b, _ := ioutil.ReadFile(fixturesPath + "get-notification-count.json")
 	mux.HandleFunc("/notifications/status",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
+			TestMethod(t, r, "GET")
 			fmt.Fprint(w, string(b))
 		})
 
@@ -37,7 +39,7 @@ func Test_NotificationsService_ReadNotification_should_read_notification(t *test
 	b, _ := ioutil.ReadFile(fixturesPath + "read-notification.json")
 	mux.HandleFunc("/notifications",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "PUT")
+			TestMethod(t, r, "PUT")
 			fmt.Fprint(w, string(b))
 		})
 

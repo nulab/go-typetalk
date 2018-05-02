@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {
@@ -16,7 +18,7 @@ func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {
 	mentionId := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "read-mention.json")
 	mux.HandleFunc(fmt.Sprintf("/mentions/%d", mentionId), func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "PUT")
+		TestMethod(t, r, "PUT")
 		fmt.Fprint(w, string(b))
 	})
 
@@ -38,8 +40,8 @@ func Test_MentionsService_GetMentionList_should_get_some_mentions(t *testing.T) 
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-mention-list.json")
 	mux.HandleFunc("/mentions", func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
-		testQueryValues(t, r, values{
+		TestMethod(t, r, "GET")
+		TestQueryValues(t, r, Values{
 			"from":   10,
 			"unread": true,
 		})

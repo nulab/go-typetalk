@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_FilesService_UploadAttachmentFile_should_upload_an_attachment_file(t *testing.T) {
@@ -20,7 +20,7 @@ func Test_FilesService_UploadAttachmentFile_should_upload_an_attachment_file(t *
 	topicId := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "upload-attachment-file.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%v/attachments", topicId), func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "POST")
+		TestMethod(t, r, "POST")
 		fmt.Fprint(w, string(b))
 	})
 
@@ -46,8 +46,8 @@ func Test_FilesService_DownloadAttachmentFile_should_download_an_attachment_file
 	filename := "sample.jpg"
 	b, _ := ioutil.ReadFile(fixturesPath + filename)
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/attachments/%d/%s", topicId, postId, attachmentId, filename), func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "GET")
-		testHeader(t, r, "Accept", internal.DefaultMediaType)
+		TestMethod(t, r, "GET")
+		TestHeader(t, r, "Accept", DefaultMediaType)
 		w.Header().Set("Content-Type", "application/octet-stream")
 		w.Header().Set("Content-Disposition", "attachment; filename="+filename)
 		fmt.Fprint(w, string(b))

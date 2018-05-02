@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"reflect"
 	"testing"
+
+	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {
@@ -16,8 +18,8 @@ func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {
 	topicId := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "post-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%v", topicId), func(w http.ResponseWriter, r *http.Request) {
-		testMethod(t, r, "POST")
-		testFormValues(t, r, values{
+		TestMethod(t, r, "POST")
+		TestFormValues(t, r, Values{
 			"message":                 "hello",
 			"replyTo":                 2,
 			"showLinkMeta":            true,
@@ -64,8 +66,8 @@ func Test_MessagesService_UpdateMessage_should_update_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "update-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "PUT")
-			testQueryValues(t, r, values{"message": message})
+			TestMethod(t, r, "PUT")
+			TestQueryValues(t, r, Values{"message": message})
 			fmt.Fprint(w, string(b))
 		})
 
@@ -88,7 +90,7 @@ func Test_MessagesService_DeleteMessage_should_delete_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "delete-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "DELETE")
+			TestMethod(t, r, "DELETE")
 			fmt.Fprint(w, string(b))
 		})
 
@@ -111,7 +113,7 @@ func Test_MessagesService_GetMessage_should_get_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
+			TestMethod(t, r, "GET")
 			fmt.Fprint(w, string(b))
 		})
 
@@ -134,7 +136,7 @@ func Test_MessagesService_LikeMessage_should_like_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "like-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "POST")
+			TestMethod(t, r, "POST")
 			fmt.Fprint(w, string(b))
 		})
 
@@ -157,7 +159,7 @@ func Test_MessagesService_UnikeMessage_should_unlike_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "unlike-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "DELETE")
+			TestMethod(t, r, "DELETE")
 			fmt.Fprint(w, string(b))
 		})
 
@@ -179,8 +181,8 @@ func Test_MessagesService_PostDirectMessage_should_post_dairect_message(t *testi
 	b, _ := ioutil.ReadFile(fixturesPath + "post-direct-message.json")
 	mux.HandleFunc(fmt.Sprintf("/messages/@%s", accountName),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "POST")
-			testFormValues(t, r, values{
+			TestMethod(t, r, "POST")
+			TestFormValues(t, r, Values{
 				"message":                 "hello",
 				"replyTo":                 2,
 				"showLinkMeta":            true,
@@ -225,8 +227,8 @@ func Test_MessagesService_GetDirectMessages_should_get_some_direct_messages(t *t
 	b, _ := ioutil.ReadFile(fixturesPath + "get-direct-messages.json")
 	mux.HandleFunc(fmt.Sprintf("/messages/@%s", accountName),
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
-			testQueryValues(t, r, values{
+			TestMethod(t, r, "GET")
+			TestQueryValues(t, r, Values{
 				"count":     10,
 				"from":      1,
 				"direction": "backward",
@@ -251,7 +253,7 @@ func Test_MessagesService_GetMyDirectMessageTopics_should_get_some_topics_of_dir
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-direct-message-topics.json")
 	mux.HandleFunc("/messages",
 		func(w http.ResponseWriter, r *http.Request) {
-			testMethod(t, r, "GET")
+			TestMethod(t, r, "GET")
 			fmt.Fprint(w, string(b))
 		})
 
