@@ -26,7 +26,7 @@ func Test_MentionsService_GetMentionList_should_get_some_mentions(t *testing.T) 
 		fmt.Fprint(w, string(b))
 	})
 
-	result, _, err := client.Mentions.GetMentionList(context.Background(), &GetMentionListOptions{"qwerty", 10, true})
+	result, _, err := client.Mentions.GetMentionList(context.Background(), "qwerty", &GetMentionListOptions{10, true})
 	if err != nil {
 		t.Errorf("returned error: %v", err)
 	}

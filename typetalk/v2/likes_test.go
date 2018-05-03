@@ -26,7 +26,7 @@ func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Likes.GetLikesReceive(context.Background(), &GetLikesOptions{"qwerty", 1})
+	result, _, err := client.Likes.GetLikesReceive(context.Background(), "qwerty", &GetLikesOptions{ 1})
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -53,7 +53,7 @@ func Test_LikesService_GetLikesGive_should_get_Likes(t *testing.T) {
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Likes.GetLikesGive(context.Background(), &GetLikesOptions{"qwerty", 1})
+	result, _, err := client.Likes.GetLikesGive(context.Background(), "qwerty", &GetLikesOptions{1})
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -80,7 +80,7 @@ func Test_LikesService_GetLikesDiscover_should_get_Likes(t *testing.T) {
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Likes.GetLikesDiscover(context.Background(), &GetLikesOptions{"qwerty", 1})
+	result, _, err := client.Likes.GetLikesDiscover(context.Background(), "qwerty", &GetLikesOptions{1})
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -107,7 +107,7 @@ func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Likes.ReadReceivedLikes(context.Background(), &ReadReceivedLikesOptions{"qwerty", 1})
+	result, _, err := client.Likes.ReadReceivedLikes(context.Background(), "qwerty", &ReadReceivedLikesOptions{1})
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
