@@ -16,6 +16,21 @@ $ go get github.com/nulab/go-typetalk
 
 ## Usage
 
+### Import
+
+Use v1:
+``` go
+import "github.com/nulab/go-typetalk/typetalk/v1"
+```
+Use v2:
+``` go
+import "github.com/nulab/go-typetalk/typetalk/v2"
+```
+Use v3:
+``` go
+import "github.com/nulab/go-typetalk/typetalk/v3"
+```
+
 ### Access APIs using Typetalk Token
 
 ``` go
