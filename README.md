@@ -23,13 +23,15 @@ package main
 
 import (
 	"context"
-	"github.com/nulab/go-typetalk/typetalk"
+
+	"github.com/nulab/go-typetalk/typetalk/v1"
 )
 
 func main() {
-	client := typetalk.NewClient(nil).SetTypetalkToken("yourTypetalkToken")
+	client := v1.NewClient(nil)
+	client.SetTypetalkToken("yourTypetalkToken")
 	ctx := context.Background()
-	topicId, postId := 1, 2
+	topicId := 1
 	message := "Hello"
 	profile, resp, err := client.Messages.PostMessage(ctx, topicId, message, nil)
 }
@@ -43,10 +45,11 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"github.com/nulab/go-typetalk/typetalk"
-	"golang.org/x/oauth2"
 	"net/http"
 	"net/url"
+
+	"github.com/nulab/go-typetalk/typetalk/v1"
+	"golang.org/x/oauth2"
 )
 
 type AccessToken struct {
@@ -62,18 +65,18 @@ func main() {
 	form.Add("client_secret", "yourClientSecret")
 	form.Add("grant_type", "client_credentials")
 	form.Add("scope", "topic.read,topic.post,topic.write,topic.delete,my")
-	resp, err := http.PostForm("https://typetalk.com/oauth2/access_token", form)
+	oauth2resp, err := http.PostForm("https://typetalk.com/oauth2/access_token", form)
 	if err != nil {
 		print("Client Credential request returned error")
 	}
 	v := &AccessToken{}
-	json.NewDecoder(resp.Body).Decode(v)
+	json.NewDecoder(oauth2resp.Body).Decode(v)
 
 	tc := oauth2.NewClient(context.Background(), oauth2.StaticTokenSource(
 		&oauth2.Token{AccessToken: v.AccessToken},
 	))
 
-	client := typetalk.NewClient(tc)
+	client := v1.NewClient(tc)
 	profile, resp, err := client.Accounts.GetMyProfile(context.Background())
 }
 ```

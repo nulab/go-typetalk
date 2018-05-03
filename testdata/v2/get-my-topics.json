@@ -1,0 +1,251 @@
+{
+  "topics": [
+    {
+      "topic": {
+        "id": 5446,
+        "name": "test illo video",
+        "description": "",
+        "suggestion": "test illo video",
+        "isDirectMessage": false,
+        "lastPostedAt": "2018-03-09T12:33:04Z",
+        "createdAt": "2018-03-09T12:29:30Z",
+        "updatedAt": "2018-03-09T12:29:30Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 5446,
+        "postId": 163520,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 4829,
+        "name": "Coffee shop",
+        "description": "A topic for getting off-topic",
+        "suggestion": "Coffee shop",
+        "isDirectMessage": false,
+        "lastPostedAt": "2018-02-19T11:03:26Z",
+        "createdAt": "2017-11-13T22:27:21Z",
+        "updatedAt": "2017-12-21T02:41:00Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 4829,
+        "postId": 163086,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3538,
+        "name": "Marketing",
+        "description": "",
+        "suggestion": "Marketing",
+        "isDirectMessage": false,
+        "lastPostedAt": "2017-11-13T22:19:49Z",
+        "createdAt": "2016-01-28T02:29:24Z",
+        "updatedAt": "2017-11-13T17:42:09Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 3538,
+        "postId": 160926,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 4828,
+        "name": "Website Feedback",
+        "description": "A place to provide feedback on the recent redesign of our website",
+        "suggestion": "Website Feedback",
+        "isDirectMessage": false,
+        "lastPostedAt": "2017-11-13T18:57:22Z",
+        "createdAt": "2017-11-13T18:07:45Z",
+        "updatedAt": "2017-11-13T18:13:55Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 4828,
+        "postId": 160924,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 4483,
+        "name": "Design",
+        "description": "All about the world of visual design which include app ui/ux, website, news, tips and occasional banter among designers. Oh, and don't forget the weekend together.\n\nSome housekeeping:\n  1. Share your work and comment on others' work in a nice manners.\n  2. Report any issue to @Stefanie\n  3. Have fun typetalkin'! https://typetalk.com\n\nNote that this topic is open to everyone in the team!",
+        "suggestion": "Design",
+        "isDirectMessage": false,
+        "lastPostedAt": "2017-11-13T18:39:00Z",
+        "createdAt": "2017-03-21T20:04:45Z",
+        "updatedAt": "2018-02-19T06:58:35Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 4483,
+        "postId": 160915,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 4457,
+        "name": "All Company",
+        "description": "Company related announcements and info.",
+        "suggestion": "All Company",
+        "isDirectMessage": false,
+        "lastPostedAt": "2017-09-19T06:32:29Z",
+        "createdAt": "2017-03-03T07:37:59Z",
+        "updatedAt": "2017-03-21T21:14:21Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 4457,
+        "postId": 160020,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3540,
+        "name": "Strategy",
+        "description": "",
+        "suggestion": "Strategy",
+        "isDirectMessage": false,
+        "lastPostedAt": "2017-03-07T16:32:51Z",
+        "createdAt": "2016-01-28T02:29:24Z",
+        "updatedAt": "2017-11-13T17:41:49Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 3540,
+        "postId": 157928,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3536,
+        "name": "IT",
+        "description": "",
+        "suggestion": "IT",
+        "isDirectMessage": false,
+        "lastPostedAt": "2017-03-03T10:58:30Z",
+        "createdAt": "2016-01-28T02:29:23Z",
+        "updatedAt": "2017-11-13T17:39:01Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 3536,
+        "postId": 158388,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3539,
+        "name": "UI/UX",
+        "description": "",
+        "suggestion": "UI/UX",
+        "isDirectMessage": false,
+        "lastPostedAt": "2016-01-28T01:29:24Z",
+        "createdAt": "2016-01-28T02:29:24Z",
+        "updatedAt": "2016-01-28T02:29:24Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 3539,
+        "postId": 0,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3541,
+        "name": "Dev",
+        "description": "For the development team to coordinate on projects",
+        "suggestion": "Dev",
+        "isDirectMessage": false,
+        "lastPostedAt": "2016-01-27T23:29:24Z",
+        "createdAt": "2016-01-28T02:29:24Z",
+        "updatedAt": "2017-11-13T18:07:00Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 3541,
+        "postId": 0,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3542,
+        "name": "Beer Brewing Club",
+        "description": "",
+        "suggestion": "Beer Brewing Club",
+        "isDirectMessage": false,
+        "lastPostedAt": "2016-01-27T22:29:24Z",
+        "createdAt": "2016-01-28T02:29:24Z",
+        "updatedAt": "2017-03-21T21:13:44Z"
+      },
+      "favorite": true,
+      "unread": {
+        "topicId": 3542,
+        "postId": 0,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3543,
+        "name": "HR",
+        "description": "",
+        "suggestion": "HR",
+        "isDirectMessage": false,
+        "lastPostedAt": "2016-01-27T21:29:24Z",
+        "createdAt": "2016-01-28T02:29:24Z",
+        "updatedAt": "2017-11-13T17:43:00Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 3543,
+        "postId": 0,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    },
+    {
+      "topic": {
+        "id": 3544,
+        "name": "Industry News",
+        "description": "",
+        "suggestion": "Industry News",
+        "isDirectMessage": false,
+        "lastPostedAt": "2016-01-27T20:29:24Z",
+        "createdAt": "2016-01-28T02:29:24Z",
+        "updatedAt": "2017-11-13T17:43:28Z"
+      },
+      "favorite": false,
+      "unread": {
+        "topicId": 3544,
+        "postId": 0,
+        "count": 0,
+        "isOverCountLimit": false
+      }
+    }
+  ]
+}

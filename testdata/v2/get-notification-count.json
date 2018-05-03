@@ -1,0 +1,185 @@
+{
+  "statuses": [
+    {
+      "mySpace": {
+        "space": {
+          "key": "xxxxxxxxx",
+          "name": "Awesome Tech Inc.",
+          "enabled": true,
+          "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+        },
+        "myRole": "ADMIN",
+        "isPaymentAdmin": true,
+        "invitableRoles": [
+          "ADMIN",
+          "USER",
+          "GUEST"
+        ],
+        "myPlan": {
+          "plan": {
+            "key": "typetalk.standard10",
+            "name": "Standard 10 Users",
+            "limitNumberOfUsers": 10,
+            "limitTotalAttachmentSize": 10737418240
+          },
+          "enabled": true,
+          "trial": null,
+          "numberOfUsers": 4,
+          "totalAttachmentSize": 0,
+          "createdAt": "2016-01-27T09:37:27Z",
+          "updatedAt": "2018-03-09T12:29:30Z"
+        }
+      },
+      "space": {
+        "key": "xxxxxxxxx",
+        "name": "Awesome Tech Inc.",
+        "enabled": true,
+        "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+      },
+      "access": {
+        "unopened": 0,
+        "unopenedExcludeDM": 0
+      },
+      "like": {
+        "receive": {
+          "hasUnread": false,
+          "readLikeId": 19747
+        }
+      },
+      "directMessage": {
+        "unreadTopics": 0
+      }
+    },
+    {
+      "mySpace": {
+        "space": {
+          "key": "xxxxxxxxx",
+          "name": "Example Organization",
+          "enabled": true,
+          "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+        },
+        "myRole": "ADMIN",
+        "isPaymentAdmin": true,
+        "invitableRoles": [
+          "ADMIN",
+          "USER",
+          "GUEST"
+        ],
+        "myPlan": {
+          "plan": {
+            "key": "typetalk.starter",
+            "name": "Starter Plan",
+            "limitNumberOfUsers": 10,
+            "limitTotalAttachmentSize": 10737418240
+          },
+          "enabled": false,
+          "trial": {
+            "endDate": "2017-03-02",
+            "daysLeft": -375
+          },
+          "numberOfUsers": 2,
+          "totalAttachmentSize": 0,
+          "createdAt": "2016-01-29T09:58:11Z",
+          "updatedAt": "2018-02-19T10:54:29Z"
+        }
+      },
+      "space": {
+        "key": "xxxxxxxxx",
+        "name": "Example Organization",
+        "enabled": true,
+        "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+      },
+      "access": {
+        "unopened": 0,
+        "unopenedExcludeDM": 0
+      },
+      "like": {
+        "receive": {
+          "hasUnread": false,
+          "readLikeId": null
+        }
+      },
+      "directMessage": {
+        "unreadTopics": 0
+      }
+    },
+    {
+      "mySpace": {
+        "space": {
+          "key": "xxxxxxxxx",
+          "name": "Fabulous Tech Inc.",
+          "enabled": true,
+          "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+        },
+        "myRole": "ADMIN",
+        "isPaymentAdmin": true,
+        "invitableRoles": [
+          "ADMIN",
+          "USER",
+          "GUEST"
+        ],
+        "myPlan": {
+          "plan": {
+            "key": "typetalk.free",
+            "name": "Free Plan",
+            "limitNumberOfUsers": 10,
+            "limitTotalAttachmentSize": 1073741824
+          },
+          "enabled": true,
+          "trial": null,
+          "numberOfUsers": 2,
+          "totalAttachmentSize": 0,
+          "createdAt": "2018-02-23T03:17:16Z",
+          "updatedAt": "2018-02-23T03:20:05Z"
+        }
+      },
+      "space": {
+        "key": "xxxxxxxxx",
+        "name": "Fabulous Tech Inc.",
+        "enabled": true,
+        "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+      },
+      "access": {
+        "unopened": 0,
+        "unopenedExcludeDM": 0
+      },
+      "like": {
+        "receive": {
+          "hasUnread": false,
+          "readLikeId": null
+        }
+      },
+      "directMessage": {
+        "unreadTopics": 0
+      }
+    },
+    {
+      "mySpace": null,
+      "space": null,
+      "access": {
+        "unopened": 0,
+        "unopenedExcludeDM": 0
+      },
+      "like": {
+        "receive": {
+          "hasUnread": false,
+          "readLikeId": 19554
+        }
+      },
+      "directMessage": {
+        "unreadTopics": 0
+      }
+    }
+  ],
+  "doNotDisturb": {
+    "isSuppressed": false,
+    "manual": {
+      "remainingTimeInMinutes": null
+    },
+    "scheduled": {
+      "enabled": true,
+      "start": "22:00",
+      "end": "07:00"
+    }
+  }
+}
