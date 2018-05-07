@@ -30,11 +30,6 @@ func Test_V1_Messages_PostMessage_should_post_a_message_using_Typetalk_Token(t *
 	test(t, result, resp, err)
 }
 
-func Test_V1_Messages_UpdateMessage_should_update_a_message_using_Typetalk_Token(t *testing.T) {
-	result, resp, err := clientUsingTypetalkTokenV1.Messages.UpdateMessage(context.Background(), topicId, postId, "go-typetalk - Test_Messages_UpdateMessage_should_update_a_message_using_Typetalk_Token")
-	test(t, result, resp, err)
-}
-
 func Test_V2_Messages_SearchMessages_should_some_messages(t *testing.T) {
 	result, resp, err := clientV2.Messages.SearchMessages(context.Background(), spaceKey, "test", nil)
 	test(t, result, resp, err)

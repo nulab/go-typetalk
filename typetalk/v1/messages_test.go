@@ -67,7 +67,7 @@ func Test_MessagesService_UpdateMessage_should_update_a_message(t *testing.T) {
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, "PUT")
-			TestQueryValues(t, r, Values{"message": message})
+			TestFormValues(t, r, Values{"message": message})
 			fmt.Fprint(w, string(b))
 		})
 

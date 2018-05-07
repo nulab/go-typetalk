@@ -112,21 +112,14 @@ func (s *MessagesService) PostMessage(ctx context.Context, topicId int, message 
 }
 
 type updateMessageOptions struct {
-	Message string `json:"message,omitempty"`
+	Message string `json:"message"`
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/update-message
 func (s *MessagesService) UpdateMessage(ctx context.Context, topicId, postId int, message string) (*UpdatedMessageResult, *Response, error) {
-	u, err := AddQueries(
-		fmt.Sprintf("topics/%d/posts/%d", topicId, postId),
-		updateMessageOptions{Message: message},
-	)
-	if err != nil {
-		return nil, nil, err
-	}
-
+	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
 	var result *UpdatedMessageResult
-	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
+	if resp, err := s.client.Put(ctx, u, &updateMessageOptions{Message: message}, &result); err != nil {
 		return nil, resp, err
 	} else {
 		return result, resp, nil
