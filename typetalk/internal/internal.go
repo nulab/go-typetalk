@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"net/url"
 	"reflect"
@@ -111,12 +110,7 @@ func (c *ClientCore) Do(ctx context.Context, req *http.Request, v interface{}) (
 		return nil, err
 	}
 
-	defer func() {
-		// Drain up to 512 bytes and close the body to let the Transport reuse the connection
-		// refs: https://github.com/google/go-github/pull/317
-		io.CopyN(ioutil.Discard, resp.Body, 512)
-		resp.Body.Close()
-	}()
+	defer resp.Body.Close()
 
 	response := &shared.Response{Response: resp}
 
