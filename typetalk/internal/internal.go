@@ -44,7 +44,6 @@ func (c *ClientCore) NewRequest(method, urlStr string, body interface{}) (*http.
 		} else {
 			buf = strings.NewReader(values.Encode())
 		}
-
 	}
 
 	req, err := http.NewRequest(method, u.String(), buf)
@@ -109,7 +108,6 @@ func (c *ClientCore) Do(ctx context.Context, req *http.Request, v interface{}) (
 		}
 		return nil, err
 	}
-
 	defer resp.Body.Close()
 
 	response := &shared.Response{Response: resp}
@@ -199,15 +197,19 @@ func StructToValues(data interface{}) (url.Values, error) {
 	}
 	values := url.Values{}
 	for k, v := range result {
-		if as, ok := v.([]interface{}); ok {
-			for i, v := range as {
-				values.Add(fmt.Sprintf(k, i), fmt.Sprintf("%v", v))
-			}
-		} else {
-			values.Add(k, fmt.Sprintf("%v", v))
-		}
+		addValues(values, k, v)
 	}
 	return values, nil
+}
+
+func addValues(values url.Values, k string, v interface{}) {
+	if as, ok := v.([]interface{}); ok {
+		for i, v := range as {
+			addValues(values, fmt.Sprintf(k, i), v)
+		}
+	} else {
+		values.Add(k, fmt.Sprintf("%v", v))
+	}
 }
 
 func AddQueries(s string, opt interface{}) (string, error) {
