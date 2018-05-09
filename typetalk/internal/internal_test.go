@@ -7,6 +7,8 @@ import (
 	"strconv"
 	"testing"
 
+	"time"
+
 	. "github.com/nulab/go-typetalk/typetalk/shared"
 )
 
@@ -115,10 +117,13 @@ func Test_sanitizeURL_should_sanitize_typetalk_token_value(t *testing.T) {
 
 func Test_Client_structToValues_should_convert_struct_to_url_values(t *testing.T) {
 	type User struct {
-		ID   int    `json:"id"`
-		Name string `json:"name"`
+		ID         int        `json:"id"`
+		Name       string     `json:"name"`
+		Groups     []string   `json:"groups[%d]"`
+		CreateDate *time.Time `json:"create_date,omitempty"`
 	}
-	user := User{9184675, "nu-man"}
+	createDate := time.Date(2018, time.May, 1, 0, 0, 0, 0, time.Local)
+	user := User{ID: 9184675, Name: "nu-man", Groups: []string{"red", "blue", "yellow"}, CreateDate: &createDate}
 	if values, err := StructToValues(user); err != nil {
 		t.Errorf("structToValues failed to convert: %v", err)
 	} else {
@@ -127,6 +132,18 @@ func Test_Client_structToValues_should_convert_struct_to_url_values(t *testing.T
 		}
 		if got := values.Get("name"); !reflect.DeepEqual(got, user.Name) {
 			t.Errorf("structToValues returned name %v, want %v", got, user.Name)
+		}
+		if got := values.Get("groups[0]"); !reflect.DeepEqual(got, user.Groups[0]) {
+			t.Errorf("structToValues returned groups[0] %v, want %v", got, user.Groups[0])
+		}
+		if got := values.Get("groups[1]"); !reflect.DeepEqual(got, user.Groups[1]) {
+			t.Errorf("structToValues returned groups[1] %v, want %v", got, user.Groups[1])
+		}
+		if got := values.Get("groups[2]"); !reflect.DeepEqual(got, user.Groups[2]) {
+			t.Errorf("structToValues returned groups[2] %v, want %v", got, user.Groups[2])
+		}
+		if got := values.Get("create_date"); !reflect.DeepEqual(got, user.CreateDate.Format(time.RFC3339)) {
+			t.Errorf("structToValues returned create_date %v, want %v", got, user.CreateDate.Format(time.RFC3339))
 		}
 	}
 }

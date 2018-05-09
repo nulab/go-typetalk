@@ -9,12 +9,16 @@ import (
 	"reflect"
 	"testing"
 
+	"time"
+
 	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
 func Test_MessagesService_SearchMessages_should_get_some_posts(t *testing.T) {
 	setup()
 	defer teardown()
+	from := time.Date(2018, time.May, 1, 0, 0, 0, 0, time.Local)
+	to := time.Date(2018, time.May, 3, 0, 0, 0, 0, time.Local)
 	b, _ := ioutil.ReadFile(fixturesPath + "search-messages.json")
 	mux.HandleFunc("/search/posts",
 		func(w http.ResponseWriter, r *http.Request) {
@@ -23,11 +27,13 @@ func Test_MessagesService_SearchMessages_should_get_some_posts(t *testing.T) {
 				"spaceKey":       "qwerty",
 				"q":              "hello",
 				"hasAttachments": true,
+				"from":           from.Format(time.RFC3339),
+				"to":             to.Format(time.RFC3339),
 			})
 			fmt.Fprint(w, string(b))
 		})
 
-	query := &SearchMessagesOptions{TopicIDs: []int{}, HasAttachments: true, AccountIDs: []int{}}
+	query := &SearchMessagesOptions{TopicIDs: []int{}, HasAttachments: true, AccountIDs: []int{}, From: &from, To: &to}
 	result, _, err := client.Messages.SearchMessages(context.Background(), "qwerty", "hello", query)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
