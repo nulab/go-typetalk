@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	LibraryVersion = "2.0.0"
+	LibraryVersion = "2.0.1"
 	DefaultBaseURL = "https://typetalk.com/api/"
 	UserAgent      = "go-typetalk/" + LibraryVersion
 
