@@ -5,9 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"mime"
 	"os"
-	"path/filepath"
 
 	. "github.com/nulab/go-typetalk/typetalk/internal"
 	. "github.com/nulab/go-typetalk/typetalk/shared"
@@ -32,9 +30,10 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, fi
 	if stat.IsDir() {
 		return nil, nil, errors.New("to upload can't be a directory")
 	}
-
-	mediaType := mime.TypeByExtension(filepath.Ext(file.Name()))
-	req, err := s.client.NewUploadRequest(u, file, stat.Size(), mediaType)
+	form := map[string]io.Reader{
+		"file": file,
+	}
+	req, err := s.client.NewMultipartRequest(u, form)
 	if err != nil {
 		return nil, nil, err
 	}
