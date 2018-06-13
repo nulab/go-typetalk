@@ -30,7 +30,6 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, fi
 	if stat.IsDir() {
 		return nil, nil, errors.New("to upload can't be a directory")
 	}
-
 	form := map[string]io.Reader{
 		"file": file,
 	}

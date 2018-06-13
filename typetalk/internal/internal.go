@@ -67,38 +67,38 @@ func (c *ClientCore) NewRequest(method, urlStr string, body interface{}) (*http.
 }
 
 func (c *ClientCore) NewMultipartRequest(urlStr string, values map[string]io.Reader) (*http.Request, error) {
-	var b bytes.Buffer
-	w := multipart.NewWriter(&b)
-	for key, r := range values {
-		var fw io.Writer
+	var buffer bytes.Buffer
+	multipartWriter := multipart.NewWriter(&buffer)
+	for key, reader := range values {
+		var fieldWriter io.Writer
 		var err error = nil
-		if x, ok := r.(io.Closer); ok {
-			defer x.Close()
+		if closable, ok := reader.(io.Closer); ok {
+			defer closable.Close()
 		}
-		if  x, ok := r.(*os.File); ok {
-			if fw, err = w.CreateFormFile(key, x.Name()); err != nil {
+		if  file, ok := reader.(*os.File); ok {
+			if fieldWriter, err = multipartWriter.CreateFormFile(key, file.Name()); err != nil {
 				return nil, err
 			}
 		} else {
-			if fw, err = w.CreateFormField(key); err != nil {
+			if fieldWriter, err = multipartWriter.CreateFormField(key); err != nil {
 				return nil, err
 			}
 		}
-		if  _, err = io.Copy(fw, r); err != nil {
+		if  _, err = io.Copy(fieldWriter, reader); err != nil {
 			return nil, err
 		}
 	}
-	w.Close()
+	multipartWriter.Close()
 	rel, err := url.Parse(urlStr)
 	if err != nil {
 		return nil, err
 	}
 	resolvedURL := c.BaseURL.ResolveReference(rel)
-	req, err := http.NewRequest("POST", resolvedURL.String(), &b)
+	req, err := http.NewRequest("POST", resolvedURL.String(), &buffer)
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Content-Type", w.FormDataContentType())
+	req.Header.Set("Content-Type", multipartWriter.FormDataContentType())
 	if c.UserAgent != "" {
 		req.Header.Set("User-Agent", c.UserAgent)
 	}
