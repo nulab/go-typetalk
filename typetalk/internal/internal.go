@@ -11,6 +11,9 @@ import (
 	"strings"
 
 	"github.com/nulab/go-typetalk/typetalk/shared"
+	"bytes"
+	"mime/multipart"
+	"os"
 )
 
 const (
@@ -54,6 +57,48 @@ func (c *ClientCore) NewRequest(method, urlStr string, body interface{}) (*http.
 	if body != nil {
 		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
+	if c.UserAgent != "" {
+		req.Header.Set("User-Agent", c.UserAgent)
+	}
+	if c.TypetalkToken != "" {
+		req.Header.Set("X-Typetalk-Token", c.TypetalkToken)
+	}
+	return req, nil
+}
+
+func (c *ClientCore) NewMultipartRequest(urlStr string, values map[string]io.Reader) (*http.Request, error) {
+	var b bytes.Buffer
+	w := multipart.NewWriter(&b)
+	for key, r := range values {
+		var fw io.Writer
+		var err error = nil
+		if x, ok := r.(io.Closer); ok {
+			defer x.Close()
+		}
+		if  x, ok := r.(*os.File); ok {
+			if fw, err = w.CreateFormFile(key, x.Name()); err != nil {
+				return nil, err
+			}
+		} else {
+			if fw, err = w.CreateFormField(key); err != nil {
+				return nil, err
+			}
+		}
+		if  _, err = io.Copy(fw, r); err != nil {
+			return nil, err
+		}
+	}
+	w.Close()
+	rel, err := url.Parse(urlStr)
+	if err != nil {
+		return nil, err
+	}
+	resolvedURL := c.BaseURL.ResolveReference(rel)
+	req, err := http.NewRequest("POST", resolvedURL.String(), &b)
+	if err != nil {
+		return nil, err
+	}
+	req.Header.Set("Content-Type", w.FormDataContentType())
 	if c.UserAgent != "" {
 		req.Header.Set("User-Agent", c.UserAgent)
 	}
