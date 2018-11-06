@@ -1,0 +1,68 @@
+{
+    "statuses": [
+        {
+            "mySpace": {
+                "space": {
+                    "key": "xxxxxxxxx",
+                    "name": "Awesome Tech Inc.",
+                    "enabled": true,
+                    "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+                },
+                "myRole": "ADMIN",
+                "isPaymentAdmin": true,
+                "invitableRoles": [
+                    "ADMIN",
+                    "USER",
+                    "GUEST"
+                ],
+                "myPlan": {
+                    "plan": {
+                        "key": "typetalk.standard10",
+                        "name": "Standard 10 Users",
+                        "limitNumberOfUsers": 10,
+                        "limitNumberOfAllowedAddresses": 10,
+                        "limitTotalAttachmentSize": 10737418240
+                    },
+                    "enabled": true,
+                    "trial": null,
+                    "numberOfUsers": 4,
+                    "numberOfAllowedAddresses": 0,
+                    "totalAttachmentSize": 14356,
+                    "createdAt": "2016-01-27T09:37:27Z",
+                    "updatedAt": "2018-09-10T02:24:16Z"
+                }
+            },
+            "access": {
+                "unopened": 1
+            },
+            "like": {
+                "receive": {
+                    "hasUnread": false,
+                    "readLikeId": 19811
+                }
+            },
+            "unreads": {
+                "topicIds": [
+                    4483
+                ],
+                "dmTopicIds": [
+                    6248
+                ]
+            }
+        }
+    ],
+    "notificationSettings": {
+        "favoriteTopicMobile": true,
+        "doNotDisturb": {
+            "isSuppressed": false,
+            "manual": {
+                "remainingTimeInMinutes": null
+            },
+            "scheduled": {
+                "enabled": true,
+                "start": "22:00",
+                "end": "07:00"
+            }
+        }
+    }
+}
