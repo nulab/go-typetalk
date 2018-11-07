@@ -1,12 +1,20 @@
 {
   "account": {
-    "id": 100,
-    "name": "jessica",
-    "fullName": "Jessica Fitzherbert",
-    "suggestion": "Jessica Fitzherbert",
-    "imageUrl": "http://typetalk.local:8484/accounts/100/profile_image.png?t=1403577149000",
-    "isBot": false,
-    "createdAt": "2014-06-24T02:32:29Z",
-    "updatedAt": "2014-06-24T02:32:29Z"
+      "id": 2500,
+      "name": "Jessica",
+      "fullName": "Jessica",
+      "suggestion": "Jessica",
+      "imageUrl": "https://typetalk.com/accounts/2500/profile_image.png?t=1454061730873",
+      "isBot": false,
+      "lang": "en-US",
+      "timezoneId": "Asia/Singapore",
+      "createdAt": "2016-01-27T09:55:35Z",
+      "updatedAt": "2018-10-29T03:01:43Z"
+  },
+  "lang": "en-US",
+  "theme": "light",
+  "post": {
+      "useCtrl": false,
+      "emojiSkinTone": "skin-tone-4"
   }
 }
