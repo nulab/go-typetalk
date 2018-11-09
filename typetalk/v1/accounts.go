@@ -18,6 +18,8 @@ type Account struct {
 	Suggestion     string     `json:"suggestion"`
 	ImageURL       string     `json:"imageUrl"`
 	IsBot          bool       `json:"isBot"`
+	Lang           string     `json:"lang"`
+	TimezoneId     string     `json:"timezoneId"`
 	CreatedAt      *time.Time `json:"createdAt"`
 	UpdatedAt      *time.Time `json:"updatedAt"`
 	ImageUpdatedAt *time.Time `json:"imageUpdatedAt"`
