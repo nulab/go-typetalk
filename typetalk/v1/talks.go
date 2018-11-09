@@ -11,17 +11,6 @@ import (
 
 type TalksService service
 
-type Topic struct {
-	ID              int        `json:"id"`
-	Name            string     `json:"name"`
-	Description     string     `json:"description"`
-	Suggestion      string     `json:"suggestion"`
-	IsDirectMessage bool       `json:"isDirectMessage"`
-	LastPostedAt    *time.Time `json:"lastPostedAt"`
-	CreatedAt       *time.Time `json:"createdAt"`
-	UpdatedAt       *time.Time `json:"updatedAt"`
-}
-
 type Talk struct {
 	ID         int         `json:"id"`
 	TopicID    int         `json:"topicId"`
