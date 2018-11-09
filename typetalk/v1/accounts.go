@@ -36,6 +36,16 @@ type AccountStatus struct {
 
 type Profile AccountStatus
 
+type MyProfile struct {
+	Account *Account `json:"account"`
+	Lang    string   `json:"lang"`
+	Theme   string   `json:"theme"`
+	Post    *struct {
+		UseCtrl       bool   `json:"useCtrl"`
+		EmojiSkinTone string `json:"emojiSkinTone"`
+	} `json:"post"`
+}
+
 type Friends struct {
 	Count    int              `json:"count"`
 	Accounts []*AccountStatus `json:"accounts"`
@@ -46,9 +56,9 @@ type OnlineStatus struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-profile
-func (s *AccountsService) GetMyProfile(ctx context.Context) (*Profile, *Response, error) {
+func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *Response, error) {
 	u := "profile"
-	var result *Profile
+	var result *MyProfile
 	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {

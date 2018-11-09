@@ -26,7 +26,7 @@ func Test_AccountsService_GetMyProfile_should_get_a_profile(t *testing.T) {
 		t.Errorf("returned error: %v", err)
 	}
 
-	want := &Profile{}
+	want := &MyProfile{}
 	json.Unmarshal(b, want)
 	if !reflect.DeepEqual(result, want) {
 		t.Errorf("returned content: got %v, want %v", result, want)
