@@ -1,0 +1,73 @@
+{
+    "count": 4,
+    "accounts": [
+        {
+            "account": {
+                "id": 2500,
+                "name": "Jessica",
+                "fullName": "Jessica",
+                "suggestion": "Jessica",
+                "imageUrl": "https://typetalk.com/accounts/2500/profile_image.png?t=1454061730873",
+                "isBot": false,
+                "createdAt": "2016-01-27T09:55:35Z",
+                "updatedAt": "2018-05-07T02:13:27Z"
+            },
+            "status": {
+                "presence": "away",
+                "web": null,
+                "mobile": null
+            }
+        },
+        {
+            "account": {
+                "id": 2499,
+                "name": "Moss",
+                "fullName": "Moss",
+                "suggestion": "Moss",
+                "imageUrl": "https://typetalk.com/accounts/2499/profile_image.png?t=1453891379196",
+                "isBot": false,
+                "createdAt": "2016-01-27T09:55:23Z",
+                "updatedAt": "2018-04-02T19:18:45Z"
+            },
+            "status": {
+                "presence": "away",
+                "web": null,
+                "mobile": null
+            }
+        },
+        {
+            "account": {
+                "id": 2498,
+                "name": "Stefanie",
+                "fullName": "Stefanie",
+                "suggestion": "Stefanie",
+                "imageUrl": "https://typetalk.com/accounts/2498/profile_image.png?t=1453891479138",
+                "isBot": false,
+                "createdAt": "2016-01-27T09:55:09Z",
+                "updatedAt": "2018-04-27T09:12:10Z"
+            },
+            "status": {
+                "presence": "away",
+                "web": null,
+                "mobile": null
+            }
+        },
+        {
+            "account": {
+                "id": 2497,
+                "name": "Will",
+                "fullName": "Will",
+                "suggestion": "Will",
+                "imageUrl": "https://typetalk.com/accounts/2497/profile_image.png?t=1510596200433",
+                "isBot": false,
+                "createdAt": "2016-01-27T09:54:48Z",
+                "updatedAt": "2018-04-02T19:11:48Z"
+            },
+            "status": {
+                "presence": "away",
+                "web": null,
+                "mobile": null
+            }
+        }
+    ]
+}

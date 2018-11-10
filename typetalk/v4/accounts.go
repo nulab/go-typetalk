@@ -1,4 +1,4 @@
-package v3
+package v4
 
 import (
 	"context"
@@ -21,6 +21,22 @@ type Account struct {
 	UpdatedAt  *time.Time `json:"updatedAt"`
 }
 
+type Status struct {
+	Presence *string     `json:"presence"`
+	Web      interface{} `json:"web"`
+	Mobile   interface{} `json:"mobile"`
+}
+
+type AccountStatus struct {
+	Account *Account `json:"account"`
+	Status  *Status  `json:"status"`
+}
+
+type Friends struct {
+	Count    int              `json:"count"`
+	Accounts []*AccountStatus `json:"accounts"`
+}
+
 type GetMyFriendsOptions struct {
 	Offset int `json:"offset,omitempty"`
 	Count  int `json:"count,omitempty"`
@@ -32,18 +48,16 @@ type getMyFriendsOptions struct {
 	Q        string `json:"q"`
 }
 
-// Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
-func (s *AccountsService) GetMyFriends(ctx context.Context, spaceKey, q string, opt *GetMyFriendsOptions) ([]*Account, *Response, error) {
+// https://developer.nulab-inc.com/docs/typetalk/api/4/get-friends
+func (s *AccountsService) GetMyFriends(ctx context.Context, spaceKey, q string, opt *GetMyFriendsOptions) (*Friends, *Response, error) {
 	u, err := AddQueries("search/friends", &getMyFriendsOptions{GetMyFriendsOptions: opt, SpaceKey: spaceKey, Q: q})
 	if err != nil {
 		return nil, nil, err
 	}
-	var result *struct {
-		Accounts []*Account `json:"accounts"`
-	}
+	var result *Friends
 	if resp, err := s.client.Get(ctx, u, &result); err != nil {
 		return nil, resp, err
 	} else {
-		return result.Accounts, resp, nil
+		return result, resp, nil
 	}
 }
