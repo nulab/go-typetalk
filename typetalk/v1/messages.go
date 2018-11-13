@@ -36,6 +36,7 @@ type Like struct {
 }
 
 type PostedMessageResult struct {
+	Space                  *Space         `json:"space"`
 	Topic                  *Topic         `json:"topic"`
 	Post                   *Post          `json:"post"`
 	Mentions               []*Mention     `json:"mentions"`
