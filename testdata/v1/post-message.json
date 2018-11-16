@@ -1,36 +1,42 @@
 {
+  "space": {
+      "key": "xxxxx",
+      "name": "Awesome Tech Inc.",
+      "enabled": true,
+      "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxx/photo/large"
+  },
   "topic": {
-    "id": 208,
-    "name": "IT Peeps",
-    "description": "",
-    "suggestion": "IT Peeps",
-    "isDirectMessage": false,
-    "lastPostedAt": "2016-12-21T10:11:57Z",
-    "createdAt": "2014-06-10T02:32:29Z",
-    "updatedAt": "2014-06-10T02:32:29Z"
+      "id": 4829,
+      "name": "Coffee shop",
+      "suggestion": "Coffee shop",
+      "isDirectMessage": false,
+      "lastPostedAt": "2018-11-06T07:56:42Z",
+      "createdAt": "2017-11-13T22:27:21Z",
+      "updatedAt": "2017-12-21T02:41:00Z",
+      "description": "A topic for getting off-topic"
   },
   "post": {
-    "id": 333,
-    "topicId": 208,
-    "replyTo": null,
-    "message": "Let's party like it's 1999!",
-    "account": {
-      "id": 100,
-      "name": "jessica",
-      "fullName": "Jessica Fitzherbert",
-      "suggestion": "Jessica Fitzherbert",
-      "imageUrl": "http://typetalk.local:8484/accounts/100/profile_image.png?t=1403577149000",
-      "isBot": false,
-      "createdAt": "2014-06-24T02:32:29Z",
-      "updatedAt": "2014-06-24T02:32:29Z"
-    },
-    "mention": null,
-    "attachments": [],
-    "likes": [],
-    "talks": [],
-    "links": [],
-    "createdAt": "2016-12-21T10:11:57Z",
-    "updatedAt": "2016-12-21T10:11:57Z"
+      "id": 167964,
+      "topicId": 4829,
+      "replyTo": null,
+      "message": "Hi",
+      "account": {
+          "id": 2500,
+          "name": "Jessica",
+          "fullName": "Jessica",
+          "suggestion": "Jessica",
+          "imageUrl": "https://typetalk.com/accounts/2500/profile_image.png?t=1454061730873",
+          "isBot": false,
+          "createdAt": "2016-01-27T09:55:35Z",
+          "updatedAt": "2018-11-06T07:54:44Z"
+      },
+      "mention": null,
+      "attachments": [],
+      "likes": [],
+      "talks": [],
+      "links": [],
+      "createdAt": "2018-11-06T07:56:42Z",
+      "updatedAt": "2018-11-06T07:56:42Z"
   },
   "mentions": [],
   "exceedsAttachmentLimit": false,
