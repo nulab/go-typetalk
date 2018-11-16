@@ -206,7 +206,7 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName str
 	}
 }
 
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-dm-topics
+// Deprecated: Use GetMyDirectMessageTopics in github.com/nulab/go-typetalk/typetalk/v2
 func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context) ([]*DirectMessageTopic, *Response, error) {
 	u := "messages"
 	var result *struct {
