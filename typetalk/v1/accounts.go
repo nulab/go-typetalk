@@ -85,7 +85,7 @@ type GetMyFriendsOptions struct {
 	Count  int    `json:"count,omitempty"`
 }
 
-// https://developer.nulab-inc.com/docs/typetalk/api/2/get-friends
+// Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
 func (s *AccountsService) GetMyFriends(ctx context.Context, opt *GetMyFriendsOptions) (*Friends, *Response, error) {
 	u, err := AddQueries("search/friends", opt)
 	if err != nil {
