@@ -57,6 +57,9 @@ func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicId, post
 	req.Header.Set("Accept", DefaultMediaType)
 
 	resp, err := s.client.Client.Do(req)
+	if err != nil {
+		return nil, err
+	}
 	if err := CheckResponse(resp); err != nil {
 		resp.Body.Close()
 		return nil, err
