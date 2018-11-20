@@ -103,7 +103,7 @@ type searchAccountsOptions struct {
 	NameOrEmailAddress string `json:"nameOrEmailAddress,omitempty"`
 }
 
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/search-accounts
+// Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
 func (s *AccountsService) SearchAccounts(ctx context.Context, nameOrEmailAddress string) (*Account, *Response, error) {
 	u, err := AddQueries("search/accounts", &searchAccountsOptions{nameOrEmailAddress})
 	if err != nil {
