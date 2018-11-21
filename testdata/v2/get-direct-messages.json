@@ -1,0 +1,85 @@
+{
+    "topic": {
+        "id": 70283,
+        "name": "jessica,ahorowitz",
+        "suggestion": "jessica,ahorowitz",
+        "isDirectMessage": true,
+        "lastPostedAt": "2018-11-20T11:54:28Z",
+        "createdAt": "2018-04-09T10:27:36Z",
+        "updatedAt": "2018-04-09T10:27:36Z"
+    },
+    "mySpace": {
+        "space": {
+            "key": "qwerty",
+            "name": "Nulab Inc.",
+            "enabled": true,
+            "imageUrl": "https://apps.nulab-inc.com/spaces/qwerty/photo/large"
+        },
+        "myRole": "USER",
+        "isPaymentAdmin": false,
+        "invitableRoles": [],
+        "myPlan": {
+            "plan": {
+                "key": "typetalk.standard10",
+                "name": "Standard 10 Users",
+                "limitNumberOfUsers": 10,
+                "limitNumberOfAllowedAddresses": 10,
+                "limitTotalAttachmentSize": 10737418240
+            },
+            "enabled": true,
+            "trial": null,
+            "numberOfUsers": 8,
+            "numberOfAllowedAddresses": 0,
+            "totalAttachmentSize": 14356,
+            "createdAt": "2016-01-05T09:21:53Z",
+            "updatedAt": "2018-11-21T12:47:06Z"
+        }
+    },
+    "directMessage": {
+        "account": {
+            "id": 123,
+            "name": "ahorowitz",
+            "fullName": "AHorowitz",
+            "suggestion": "AHorowitz",
+            "imageUrl": "https://typetalk.com/accounts/123/profile_image.png?t=1522114457218",
+            "isBot": false,
+            "createdAt": "2013-08-02T03:43:13Z",
+            "updatedAt": "2018-11-21T09:15:34Z"
+        },
+        "status": {
+            "presence": "away",
+            "web": null,
+            "mobile": null
+        }
+    },
+    "bookmark": {
+        "postId": 22695053,
+        "updatedAt": "2018-11-20T11:57:07Z"
+    },
+    "posts": [
+        {
+            "id": 22695053,
+            "topicId": 70283,
+            "replyTo": null,
+            "message": "test",
+            "account": {
+                "id": 456,
+                "name": "jessica",
+                "fullName": "Jessica",
+                "suggestion": "Jessica",
+                "imageUrl": "https://typetalk.com/accounts/456/profile_image.png?t=1524879783557",
+                "isBot": false,
+                "createdAt": "2017-09-01T01:55:05Z",
+                "updatedAt": "2018-11-21T12:48:48Z"
+            },
+            "mention": null,
+            "attachments": [],
+            "likes": [],
+            "talks": [],
+            "links": [],
+            "createdAt": "2018-04-09T10:27:36Z",
+            "updatedAt": "2018-04-09T10:27:36Z"
+        }
+    ],
+    "hasNext": false
+}

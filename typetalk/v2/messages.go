@@ -2,6 +2,7 @@ package v2
 
 import (
 	"context"
+	"fmt"
 
 	"time"
 
@@ -10,6 +11,19 @@ import (
 )
 
 type MessagesService service
+
+type DirectMessages struct {
+	Topic         *Topic         `json:"topic"`
+	DirectMessage *DirectMessage `json:"directMessage"`
+	Bookmark      *Bookmark      `json:"bookmark"`
+	Posts         []*Post        `json:"posts"`
+	HasNext       bool           `json:"hasNext"`
+}
+
+type Bookmark struct {
+	PostID    int       `json:"postId"`
+	UpdatedAt time.Time `json:"updatedAt"`
+}
 
 type SearchMessagesResult struct {
 	Count     int     `json:"count"`
@@ -29,6 +43,26 @@ type searchMessagesOptions struct {
 	*SearchMessagesOptions
 	SpaceKey string `json:"spaceKey"`
 	Q        string `json:"q"`
+}
+
+type GetMessagesOptions struct {
+	Count     int    `json:"count,omitempty"`
+	From      int    `json:"from,omitempty"`
+	Direction string `json:"direction,omitempty"`
+}
+
+// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-direct-messages
+func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accountName string, opt *GetMessagesOptions) (*DirectMessages, *Response, error) {
+	u, err := AddQueries(fmt.Sprintf("spaces/%s/messages/@%s", spaceKey, accountName), opt)
+	if err != nil {
+		return nil, nil, err
+	}
+	var result *DirectMessages
+	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+		return nil, resp, err
+	} else {
+		return result, resp, nil
+	}
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/search-messages/
