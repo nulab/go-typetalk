@@ -65,7 +65,7 @@ func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*Notif
 	}
 }
 
-// Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/1/open-notification
+// Deprecated: Use ReadNotification in github.com/nulab/go-typetalk/typetalk/v3
 func (s *NotificationsService) ReadNotification(ctx context.Context) (*Access, *Response, error) {
 	u := "notifications"
 	var result *struct {

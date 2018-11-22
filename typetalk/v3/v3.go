@@ -19,6 +19,7 @@ type Client struct {
 	client *internal.ClientCore
 
 	Accounts      *AccountsService
+	Notifications *NotificationsService
 }
 
 func (c *Client) SetTypetalkToken(token string) *Client {
@@ -37,6 +38,7 @@ func NewClient(httpClient *http.Client) *Client {
 	common := &service{client: c.client}
 
 	c.Accounts = (*AccountsService)(common)
+	c.Notifications = (*NotificationsService)(common)
 
 	return c
 }
