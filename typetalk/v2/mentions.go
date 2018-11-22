@@ -17,8 +17,8 @@ type Mention struct {
 }
 
 type GetMentionListOptions struct {
-	From     int    `json:"from,omitempty"`
-	Unread   bool   `json:"unread,omitempty"`
+	From   int  `json:"from,omitempty"`
+	Unread bool `json:"unread,omitempty"`
 }
 
 type getMentionListOptions struct {
@@ -27,7 +27,7 @@ type getMentionListOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-mentions
-func (s *MentionsService) GetMentionList(ctx context.Context, spaceKey string ,opt *GetMentionListOptions) ([]*Mention, *shared.Response, error) {
+func (s *MentionsService) GetMentionList(ctx context.Context, spaceKey string, opt *GetMentionListOptions) ([]*Mention, *shared.Response, error) {
 	u, err := internal.AddQueries("mentions", &getMentionListOptions{opt, spaceKey})
 	if err != nil {
 		return nil, nil, err

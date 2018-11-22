@@ -2,9 +2,9 @@ package v1
 
 import (
 	"context"
-	"time"
 	. "github.com/nulab/go-typetalk/typetalk/internal"
 	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"time"
 )
 
 type LikesService service

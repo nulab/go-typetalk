@@ -18,11 +18,11 @@ type service struct {
 type Client struct {
 	client *internal.ClientCore
 
-	Topics   *TopicsService
-	Likes    *LikesService
-	Mentions *MentionsService
+	Topics        *TopicsService
+	Likes         *LikesService
+	Mentions      *MentionsService
 	Notifications *NotificationsService
-	Messages *MessagesService
+	Messages      *MessagesService
 }
 
 func (c *Client) SetTypetalkToken(token string) *Client {
