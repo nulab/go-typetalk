@@ -14,6 +14,33 @@ import (
 	. "github.com/nulab/go-typetalk/typetalk/internal"
 )
 
+func Test_MessagesService_GetDirectMessages_should_get_some_direct_messages(t *testing.T) {
+	setup()
+	defer teardown()
+	spaceKey := "qwerty"
+	accountName := "test"
+	b, _ := ioutil.ReadFile(fixturesPath + "get-direct-messages.json")
+	mux.HandleFunc(fmt.Sprintf("/spaces/%s/messages/@%s", spaceKey, accountName),
+		func(w http.ResponseWriter, r *http.Request) {
+			TestMethod(t, r, "GET")
+			TestQueryValues(t, r, Values{
+				"count":     10,
+				"from":      1,
+				"direction": "backward",
+			})
+			fmt.Fprint(w, string(b))
+		})
+
+	result, _, err := client.Messages.GetDirectMessages(context.Background(), spaceKey, accountName, &GetMessagesOptions{10, 1, "backward"})
+	if err != nil {
+		t.Errorf("Returned error: %v", err)
+	}
+	want := &DirectMessages{}
+	json.Unmarshal(b, want)
+	if !reflect.DeepEqual(result, want) {
+		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
+	}
+}
 func Test_MessagesService_SearchMessages_should_get_some_posts(t *testing.T) {
 	setup()
 	defer teardown()

@@ -193,7 +193,7 @@ type GetMessagesOptions struct {
 	Direction string `json:"direction,omitempty"`
 }
 
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-direct-messages
+// Deprecated: Use GetDirectMessages in github.com/nulab/go-typetalk/typetalk/v2
 func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName string, opt *GetMessagesOptions) (*DirectMessages, *Response, error) {
 	u, err := AddQueries(fmt.Sprintf("messages/@%s", accountName), opt)
 	if err != nil {
