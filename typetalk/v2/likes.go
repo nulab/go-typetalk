@@ -88,7 +88,7 @@ type MyLike struct {
 }
 
 type GetLikesOptions struct {
-	From     int    `json:"from,omitempty"`
+	From int `json:"from,omitempty"`
 }
 
 type getLikesOptions struct {

@@ -26,7 +26,7 @@ func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Likes.GetLikesReceive(context.Background(), "qwerty", &GetLikesOptions{ 1})
+	result, _, err := client.Likes.GetLikesReceive(context.Background(), "qwerty", &GetLikesOptions{1})
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -102,7 +102,7 @@ func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 			TestMethod(t, r, "POST")
 			TestFormValues(t, r, Values{
 				"spaceKey": "qwerty",
-				"likeId":     1,
+				"likeId":   1,
 			})
 			fmt.Fprint(w, string(b))
 		})

@@ -20,8 +20,8 @@ func Test_MentionsService_GetMentionList_should_get_some_mentions(t *testing.T) 
 		TestMethod(t, r, "GET")
 		TestQueryValues(t, r, Values{
 			"spaceKey": "qwerty",
-			"from":   10,
-			"unread": true,
+			"from":     10,
+			"unread":   true,
 		})
 		fmt.Fprint(w, string(b))
 	})
