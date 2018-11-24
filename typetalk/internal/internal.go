@@ -71,11 +71,11 @@ func (c *ClientCore) NewMultipartRequest(urlStr string, values map[string]io.Rea
 	var buffer bytes.Buffer
 	multipartWriter := multipart.NewWriter(&buffer)
 	for key, reader := range values {
-		var fieldWriter io.Writer
-		var err error = nil
 		if closable, ok := reader.(io.Closer); ok {
 			defer closable.Close()
 		}
+		var fieldWriter io.Writer
+		var err error
 		if file, ok := reader.(*os.File); ok {
 			if fieldWriter, err = multipartWriter.CreateFormFile(key, file.Name()); err != nil {
 				return nil, err
