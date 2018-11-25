@@ -39,11 +39,11 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, fi
 	}
 
 	attachmentFile := &AttachmentFile{}
-	if resp, err := s.client.Do(ctx, req, attachmentFile); err != nil {
+	resp, err := s.client.Do(ctx, req, attachmentFile)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return attachmentFile, resp, nil
 	}
+	return attachmentFile, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/download-attachment
@@ -63,7 +63,6 @@ func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicId, post
 	if err := CheckResponse(resp); err != nil {
 		resp.Body.Close()
 		return nil, err
-	} else {
-		return resp.Body, nil
 	}
+	return resp.Body, nil
 }

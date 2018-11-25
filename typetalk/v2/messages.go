@@ -58,11 +58,11 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accou
 		return nil, nil, err
 	}
 	var result *DirectMessages
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/search-messages/
@@ -72,9 +72,9 @@ func (s *MessagesService) SearchMessages(ctx context.Context, spaceKey, q string
 		return nil, nil, err
 	}
 	var result *SearchMessagesResult
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }

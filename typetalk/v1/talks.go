@@ -54,11 +54,11 @@ type CreateTalkOptions struct {
 func (s *TalksService) CreateTalk(ctx context.Context, topicId int, talkName string, postIds ...int) (*CreatedTalkResult, *Response, error) {
 	u := fmt.Sprintf("topics/%d/talks", topicId)
 	var result *CreatedTalkResult
-	if resp, err := s.client.Post(ctx, u, &CreateTalkOptions{talkName, postIds}, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, &CreateTalkOptions{talkName, postIds}, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type updateTalkOptions struct {
@@ -73,22 +73,22 @@ func (s *TalksService) UpdateTalk(ctx context.Context, topicId, talkId int, talk
 	}
 
 	var result *UpdatedTalkResult
-	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
+	resp, err := s.client.Put(ctx, u, nil, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/delete-talk
 func (s *TalksService) DeleteTalk(ctx context.Context, topicId, talkId int) (*DeletedTalkResult, *Response, error) {
 	u := fmt.Sprintf("topics/%d/talks/%d", topicId, talkId)
 	var result *DeletedTalkResult
-	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
+	resp, err := s.client.Delete(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-talks
@@ -97,11 +97,11 @@ func (s *TalksService) GetTalkList(ctx context.Context, topicId int) ([]*Talk, *
 	var result *struct {
 		Talks []*Talk `json:"talks"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.Talks, resp, nil
 	}
+	return result.Talks, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-talk
@@ -111,11 +111,11 @@ func (s *TalksService) GetMessagesInTalk(ctx context.Context, topicId, talkId in
 		return nil, nil, err
 	}
 	var result *MessagesInTalk
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type addMessageToTalkOptions struct {
@@ -126,11 +126,11 @@ type addMessageToTalkOptions struct {
 func (s *TalksService) AddMessagesToTalk(ctx context.Context, topicId, talkId int, postIds ...int) (*MessagesInTalk, *Response, error) {
 	u := fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId)
 	var result *MessagesInTalk
-	if resp, err := s.client.Post(ctx, u, &addMessageToTalkOptions{postIds}, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, &addMessageToTalkOptions{postIds}, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type removeMessagesFromTalkOptions addMessageToTalkOptions
@@ -142,9 +142,9 @@ func (s *TalksService) RemoveMessagesFromTalk(ctx context.Context, topicId, talk
 		return nil, nil, err
 	}
 	var result *RemovedMessagesResult
-	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
+	resp, err := s.client.Delete(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }

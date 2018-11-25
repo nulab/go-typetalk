@@ -55,9 +55,9 @@ func (s *AccountsService) GetMyFriends(ctx context.Context, spaceKey, q string, 
 		return nil, nil, err
 	}
 	var result *Friends
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }

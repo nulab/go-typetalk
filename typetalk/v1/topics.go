@@ -74,11 +74,11 @@ type CreateTopicOptions struct {
 func (s *TopicsService) CreateTopic(ctx context.Context, opt *CreateTopicOptions) (*TopicDetails, *Response, error) {
 	u := "topics"
 	var result *TopicDetails
-	if resp, err := s.client.Post(ctx, u, opt, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, opt, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type UpdateTopicOptions struct {
@@ -90,33 +90,33 @@ type UpdateTopicOptions struct {
 func (s *TopicsService) UpdateTopic(ctx context.Context, topicId int, opt *UpdateTopicOptions) (*TopicDetails, *Response, error) {
 	u := fmt.Sprintf("topics/%d", topicId)
 	var result *TopicDetails
-	if resp, err := s.client.Put(ctx, u, opt, &result); err != nil {
+	resp, err := s.client.Put(ctx, u, opt, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/delete-topic
 func (s *TopicsService) DeleteTopic(ctx context.Context, topicId int) (*Topic, *Response, error) {
 	u := fmt.Sprintf("topics/%d", topicId)
 	var result *Topic
-	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
+	resp, err := s.client.Delete(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-topic-details
 func (s *TopicsService) GetTopicDetails(ctx context.Context, topicId int) (*TopicDetails, *Response, error) {
 	u := fmt.Sprintf("topics/%d", topicId)
 	var result *TopicDetails
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type GetTopicMessagesOptions struct {
@@ -132,11 +132,11 @@ func (s *TopicsService) GetTopicMessages(ctx context.Context, topicId int, opt *
 		return nil, nil, err
 	}
 	var result *TopicMessages
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type UpdateTopicMembersOptions struct {
@@ -153,33 +153,33 @@ type UpdateTopicMembersOptions struct {
 func (s *TopicsService) UpdateTopicMembers(ctx context.Context, topicId int, opt *UpdateTopicMembersOptions) (*TopicDetails, *Response, error) {
 	u := fmt.Sprintf("topics/%d/members/update", topicId)
 	var result *TopicDetails
-	if resp, err := s.client.Post(ctx, u, opt, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, opt, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/favorite-topic
 func (s *TopicsService) FavoriteTopic(ctx context.Context, topicId int) (*FavoriteTopic, *Response, error) {
 	u := fmt.Sprintf("topics/%d/favorite", topicId)
 	var result *FavoriteTopic
-	if resp, err := s.client.Post(ctx, u, nil, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, nil, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/unfavorite-topic
 func (s *TopicsService) UnfavoriteTopic(ctx context.Context, topicId int) (*FavoriteTopic, *Response, error) {
 	u := fmt.Sprintf("topics/%d/favorite", topicId)
 	var result *FavoriteTopic
-	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
+	resp, err := s.client.Delete(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type readMessagesInTopicOptions struct {
@@ -196,11 +196,11 @@ func (s *TopicsService) ReadMessagesInTopic(ctx context.Context, topicId, postId
 	var result *struct {
 		Unread *Unread `json:"unread"`
 	}
-	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
+	resp, err := s.client.Put(ctx, u, nil, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.Unread, resp, nil
 	}
+	return result.Unread, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-topics
@@ -209,9 +209,9 @@ func (s *TopicsService) GetMyTopics(ctx context.Context) ([]*FavoriteTopicWithUn
 	var result *struct {
 		Topics []*FavoriteTopicWithUnread `json:"topics"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.Topics, resp, nil
 	}
+	return result.Topics, resp, nil
 }

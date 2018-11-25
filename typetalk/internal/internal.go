@@ -43,11 +43,11 @@ func (c *ClientCore) NewRequest(method, urlStr string, body interface{}) (*http.
 
 	var buf io.Reader
 	if body != nil {
-		if values, err := StructToValues(body); err != nil {
+		values, err := StructToValues(body)
+		if err != nil {
 			return nil, err
-		} else {
-			buf = strings.NewReader(values.Encode())
 		}
+		buf = strings.NewReader(values.Encode())
 	}
 
 	req, err := http.NewRequest(method, u.String(), buf)
@@ -269,10 +269,10 @@ func AddQueries(s string, opt interface{}) (string, error) {
 		return s, err
 	}
 
-	if values, err := StructToValues(opt); err != nil {
+	values, err := StructToValues(opt)
+	if err != nil {
 		return s, err
-	} else {
-		u.RawQuery = values.Encode()
-		return u.String(), nil
 	}
+	u.RawQuery = values.Encode()
+	return u.String(), nil
 }

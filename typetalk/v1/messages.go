@@ -105,11 +105,11 @@ func (s *MessagesService) PostMessage(ctx context.Context, topicId int, message 
 		opt = &PostMessageOptions{}
 	}
 	var result *PostedMessageResult
-	if resp, err := s.client.Post(ctx, u, &postMessageOptions{opt, message}, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, &postMessageOptions{opt, message}, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type updateMessageOptions struct {
@@ -120,44 +120,44 @@ type updateMessageOptions struct {
 func (s *MessagesService) UpdateMessage(ctx context.Context, topicId, postId int, message string) (*UpdatedMessageResult, *Response, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
 	var result *UpdatedMessageResult
-	if resp, err := s.client.Put(ctx, u, &updateMessageOptions{Message: message}, &result); err != nil {
+	resp, err := s.client.Put(ctx, u, &updateMessageOptions{Message: message}, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/delete-message
 func (s *MessagesService) DeleteMessage(ctx context.Context, topicId, postId int) (*Post, *Response, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
 	var result *Post
-	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
+	resp, err := s.client.Delete(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-message
 func (s *MessagesService) GetMessage(ctx context.Context, topicId, postId int) (*Message, *Response, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
 	var result *Message
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/1/favorite-topic
 func (s *MessagesService) LikeMessage(ctx context.Context, topicId, postId int) (*LikedMessageResult, *Response, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d/like", topicId, postId)
 	var result *LikedMessageResult
-	if resp, err := s.client.Post(ctx, u, nil, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, nil, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/1/unfavorite-topic
@@ -166,11 +166,11 @@ func (s *MessagesService) UnlikeMessage(ctx context.Context, topicId, postId int
 	var result *struct {
 		Like Like `json:"like"`
 	}
-	if resp, err := s.client.Delete(ctx, u, &result); err != nil {
+	resp, err := s.client.Delete(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return &result.Like, resp, nil
 	}
+	return &result.Like, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/1/post-direct-message
@@ -180,11 +180,11 @@ func (s *MessagesService) PostDirectMessage(ctx context.Context, accountName, me
 		opt = &PostMessageOptions{}
 	}
 	var result *PostedMessageResult
-	if resp, err := s.client.Post(ctx, u, &postMessageOptions{opt, message}, &result); err != nil {
+	resp, err := s.client.Post(ctx, u, &postMessageOptions{opt, message}, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type GetMessagesOptions struct {
@@ -200,11 +200,11 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName str
 		return nil, nil, err
 	}
 	var result *DirectMessages
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Deprecated: Use GetMyDirectMessageTopics in github.com/nulab/go-typetalk/typetalk/v2
@@ -213,9 +213,9 @@ func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context) ([]*Dire
 	var result *struct {
 		Topics []*DirectMessageTopic `json:"topics"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.Topics, resp, nil
 	}
+	return result.Topics, resp, nil
 }
