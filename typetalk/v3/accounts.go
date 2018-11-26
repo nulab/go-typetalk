@@ -41,9 +41,9 @@ func (s *AccountsService) GetMyFriends(ctx context.Context, spaceKey, q string, 
 	var result *struct {
 		Accounts []*Account `json:"accounts"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.Accounts, resp, nil
 	}
+	return result.Accounts, resp, nil
 }

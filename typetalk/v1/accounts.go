@@ -61,22 +61,22 @@ type OnlineStatus struct {
 func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *Response, error) {
 	u := "profile"
 	var result *MyProfile
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-friend-profile
 func (s *AccountsService) GetFriendProfile(ctx context.Context, accountName string) (*Profile, *Response, error) {
 	u := fmt.Sprintf("profile/%s", accountName)
 	var result *Profile
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type GetMyFriendsOptions struct {
@@ -92,11 +92,11 @@ func (s *AccountsService) GetMyFriends(ctx context.Context, opt *GetMyFriendsOpt
 		return nil, nil, err
 	}
 	var result *Friends
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type searchAccountsOptions struct {
@@ -110,11 +110,11 @@ func (s *AccountsService) SearchAccounts(ctx context.Context, nameOrEmailAddress
 		return nil, nil, err
 	}
 	var result *Account
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 type getOnlineStatusOptions struct {
@@ -128,9 +128,9 @@ func (s *AccountsService) GetOnlineStatus(ctx context.Context, accountIds ...int
 		return nil, nil, err
 	}
 	var result *OnlineStatus
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }

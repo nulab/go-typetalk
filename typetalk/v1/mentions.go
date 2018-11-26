@@ -23,11 +23,11 @@ func (s *MentionsService) ReadMention(ctx context.Context, mentionId int) (*Ment
 	var result *struct {
 		Mention Mention `json:"mention"`
 	}
-	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
+	resp, err := s.client.Put(ctx, u, nil, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return &result.Mention, resp, nil
 	}
+	return &result.Mention, resp, nil
 }
 
 type GetMentionListOptions struct {
@@ -44,9 +44,9 @@ func (s *MentionsService) GetMentionList(ctx context.Context, opt *GetMentionLis
 	var result *struct {
 		Mentions []*Mention `json:"mentions"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.Mentions, resp, nil
 	}
+	return result.Mentions, resp, nil
 }

@@ -47,22 +47,22 @@ type NotificationCount struct {
 func (s *NotificationsService) GetNotificationList(ctx context.Context) (*NotificationList, *Response, error) {
 	u := "notifications"
 	var result *NotificationList
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-notification-status
 func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*NotificationCount, *Response, error) {
 	u := "notifications/status"
 	var result *NotificationCount
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
 
 // Deprecated: Use ReadNotification in github.com/nulab/go-typetalk/typetalk/v3
@@ -71,9 +71,9 @@ func (s *NotificationsService) ReadNotification(ctx context.Context) (*Access, *
 	var result *struct {
 		Access *Access `json:"access"`
 	}
-	if resp, err := s.client.Put(ctx, u, nil, &result); err != nil {
+	resp, err := s.client.Put(ctx, u, nil, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.Access, resp, nil
 	}
+	return result.Access, resp, nil
 }

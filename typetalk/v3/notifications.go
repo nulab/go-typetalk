@@ -32,9 +32,9 @@ type readNotificationOptions struct {
 func (s *NotificationsService) ReadNotification(ctx context.Context, spaceKey string) (*ReadNotificationResult, *Response, error) {
 	u := "notifications"
 	var result *ReadNotificationResult
-	if resp, err := s.client.Put(ctx, u, &readNotificationOptions{spaceKey}, &result); err != nil {
+	resp, err := s.client.Put(ctx, u, &readNotificationOptions{spaceKey}, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }

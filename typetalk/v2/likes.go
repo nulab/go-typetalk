@@ -105,11 +105,11 @@ func (s *LikesService) GetLikesReceive(ctx context.Context, spaceKey string, opt
 	var result *struct {
 		LikedPosts []*ReceiveLikedPost `json:"likedPosts"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.LikedPosts, resp, nil
 	}
+	return result.LikedPosts, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-give/
@@ -121,11 +121,11 @@ func (s *LikesService) GetLikesGive(ctx context.Context, spaceKey string, opt *G
 	var result *struct {
 		GiveLikedPost []*GiveLikedPost `json:"likedPosts"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.GiveLikedPost, resp, nil
 	}
+	return result.GiveLikedPost, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-discover/
@@ -137,11 +137,11 @@ func (s *LikesService) GetLikesDiscover(ctx context.Context, spaceKey string, op
 	var result *struct {
 		DiscoverLikedPost []*DiscoverLikedPost `json:"likedPosts"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.DiscoverLikedPost, resp, nil
 	}
+	return result.DiscoverLikedPost, resp, nil
 }
 
 type ReadReceivedLikesOptions struct {
@@ -166,9 +166,9 @@ type ReadReceivedLikesResult struct {
 func (s *LikesService) ReadReceivedLikes(ctx context.Context, spaceKey string, opt *ReadReceivedLikesOptions) (*ReadReceivedLikesResult, *Response, error) {
 	u := "likes/receive/bookmark/save"
 	var result *ReadReceivedLikesResult
-	if resp, err := s.client.Post(ctx, u, &readReceivedLikesOptions{ReadReceivedLikesOptions: opt, SpaceKey: spaceKey}, result); err != nil {
+	resp, err := s.client.Post(ctx, u, &readReceivedLikesOptions{ReadReceivedLikesOptions: opt, SpaceKey: spaceKey}, result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }

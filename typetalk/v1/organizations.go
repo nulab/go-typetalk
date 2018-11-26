@@ -73,20 +73,20 @@ func (s *OrganizationsService) GetMyOrganizations(ctx context.Context, excludesG
 	var result *struct {
 		MySpaces []*Organization `json:"mySpaces"`
 	}
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result.MySpaces, resp, nil
 	}
+	return result.MySpaces, resp, nil
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-space-members
 func (s *OrganizationsService) GetOrganizationMembers(ctx context.Context, spaceKey string) (*OrganizationMembers, *Response, error) {
 	u := fmt.Sprintf("spaces/%s/members", spaceKey)
 	var result *OrganizationMembers
-	if resp, err := s.client.Get(ctx, u, &result); err != nil {
+	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
 		return nil, resp, err
-	} else {
-		return result, resp, nil
 	}
+	return result, resp, nil
 }
