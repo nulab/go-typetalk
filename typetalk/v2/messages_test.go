@@ -41,6 +41,54 @@ func Test_MessagesService_GetDirectMessages_should_get_some_direct_messages(t *t
 		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
 	}
 }
+
+func Test_MessagesService_PostDirectMessage_should_post_dairect_message(t *testing.T) {
+	setup()
+	defer teardown()
+	spaceKey := "qwerty"
+	accountName := "test"
+	b, _ := ioutil.ReadFile(fixturesPath + "post-direct-message.json")
+	mux.HandleFunc(fmt.Sprintf("/spaces/%s/messages/@%s", spaceKey, accountName),
+		func(w http.ResponseWriter, r *http.Request) {
+			TestMethod(t, r, "POST")
+			TestFormValues(t, r, Values{
+				"message":                 "hello",
+				"replyTo":                 2,
+				"showLinkMeta":            true,
+				"fileKeys[0]":             "key0",
+				"fileKeys[1]":             "key1",
+				"fileKeys[2]":             "key2",
+				"talkIds[0]":              0,
+				"talkIds[1]":              1,
+				"talkIds[2]":              2,
+				"attachments[0].fileUrl":  "Url0",
+				"attachments[1].fileUrl":  "Url1",
+				"attachments[2].fileUrl":  "Url2",
+				"attachments[0].fileName": "Name0",
+				"attachments[1].fileName": "Name1",
+				"attachments[2].fileName": "Name2",
+			})
+			fmt.Fprint(w, string(b))
+		})
+
+	result, _, err := client.Messages.PostDirectMessage(context.Background(), spaceKey, accountName, "hello", &PostMessageOptions{
+		ReplyTo:      2,
+		ShowLinkMeta: true,
+		FileKeys:     []string{"key0", "key1", "key2"},
+		TalkIds:      []int{0, 1, 2},
+		FileUrls:     []string{"Url0", "Url1", "Url2"},
+		FileNames:    []string{"Name0", "Name1", "Name2"},
+	})
+	if err != nil {
+		t.Errorf("Returned error: %v", err)
+	}
+	want := &PostedMessageResult{}
+	json.Unmarshal(b, want)
+	if !reflect.DeepEqual(result, want) {
+		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
+	}
+}
+
 func Test_MessagesService_SearchMessages_should_get_some_posts(t *testing.T) {
 	setup()
 	defer teardown()
