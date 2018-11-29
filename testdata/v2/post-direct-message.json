@@ -1,0 +1,56 @@
+{
+    "space": {
+        "key": "xxxxxxxx",
+        "name": "Awesome Tech Inc.",
+        "enabled": true,
+        "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxx/photo/large"
+    },
+    "topic": {
+        "id": 3917,
+        "name": "Jessica,StefHull",
+        "suggestion": "Jessica,StefHull",
+        "isDirectMessage": true,
+        "lastPostedAt": "2018-11-26T01:09:12Z",
+        "createdAt": "2016-07-06T02:51:03Z",
+        "updatedAt": "2016-08-17T08:30:58Z",
+        "description": ""
+    },
+    "post": {
+        "id": 168196,
+        "topicId": 3917,
+        "replyTo": null,
+        "message": "Sure!",
+        "contents": null,
+        "account": {
+            "id": 2500,
+            "name": "Jessica",
+            "fullName": "Jessica",
+            "suggestion": "Jessica",
+            "imageUrl": "https://typetalk.com/accounts/2500/profile_image.png?t=1454061730873",
+            "isBot": false,
+            "createdAt": "2016-01-27T09:55:35Z",
+            "updatedAt": "2018-11-26T01:07:27Z"
+        },
+        "mention": null,
+        "attachments": [],
+        "likes": [],
+        "talks": [],
+        "links": [],
+        "createdAt": "2018-11-26T01:09:12Z",
+        "updatedAt": "2018-11-26T01:09:12Z"
+    },
+    "mentions": [],
+    "exceedsAttachmentLimit": false,
+    "directMessage": {
+        "account": {
+            "id": 2498,
+            "name": "Stefanie",
+            "fullName": "Stefanie",
+            "suggestion": "Stefanie",
+            "imageUrl": "https://typetalk.com/accounts/2498/profile_image.png?t=1453891479138",
+            "isBot": false,
+            "createdAt": "2016-01-27T09:55:09Z",
+            "updatedAt": "2018-11-09T10:29:47Z"
+        }
+    }
+}

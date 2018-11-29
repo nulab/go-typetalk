@@ -39,6 +39,29 @@ type SearchMessagesOptions struct {
 	To             *time.Time `json:"to,omitempty"`
 }
 
+type PostMessageOptions struct {
+	ReplyTo      int      `json:"replyTo,omitempty"`
+	ShowLinkMeta bool     `json:"showLinkMeta,omitempty"`
+	FileKeys     []string `json:"fileKeys[%d],omitempty"`
+	TalkIds      []int    `json:"talkIds[%d],omitempty"`
+	FileUrls     []string `json:"attachments[%d].fileUrl,omitempty"`
+	FileNames    []string `json:"attachments[%d].fileName,omitempty"`
+}
+
+type postMessageOptions struct {
+	*PostMessageOptions
+	Message string `json:"message,omitempty"`
+}
+
+type PostedMessageResult struct {
+	Space                  *Space         `json:"space"`
+	Topic                  *Topic         `json:"topic"`
+	Post                   *Post          `json:"post"`
+	Mentions               []*Mention     `json:"mentions"`
+	ExceedsAttachmentLimit bool           `json:"exceedsAttachmentLimit"`
+	DirectMessage          *DirectMessage `json:"directMessage"`
+}
+
 type searchMessagesOptions struct {
 	*SearchMessagesOptions
 	SpaceKey string `json:"spaceKey"`
@@ -59,6 +82,20 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accou
 	}
 	var result *DirectMessages
 	resp, err := s.client.Get(ctx, u, &result)
+	if err != nil {
+		return nil, resp, err
+	}
+	return result, resp, nil
+}
+
+// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/post-direct-message
+func (s *MessagesService) PostDirectMessage(ctx context.Context, spaceKey, accountName, message string, opt *PostMessageOptions) (*PostedMessageResult, *Response, error) {
+	u := fmt.Sprintf("spaces/%s/messages/@%s", spaceKey, accountName)
+	if opt == nil {
+		opt = &PostMessageOptions{}
+	}
+	var result *PostedMessageResult
+	resp, err := s.client.Post(ctx, u, &postMessageOptions{opt, message}, &result)
 	if err != nil {
 		return nil, resp, err
 	}

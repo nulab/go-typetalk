@@ -173,7 +173,7 @@ func (s *MessagesService) UnlikeMessage(ctx context.Context, topicId, postId int
 	return &result.Like, resp, nil
 }
 
-// Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/1/post-direct-message
+// Deprecated: Use PostDirectMessage in github.com/nulab/go-typetalk/typetalk/v2
 func (s *MessagesService) PostDirectMessage(ctx context.Context, accountName, message string, opt *PostMessageOptions) (*PostedMessageResult, *Response, error) {
 	u := fmt.Sprintf("messages/@%s", accountName)
 	if opt == nil {
