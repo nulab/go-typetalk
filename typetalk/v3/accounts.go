@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type AccountsService service
@@ -33,8 +33,8 @@ type getMyFriendsOptions struct {
 }
 
 // Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
-func (s *AccountsService) GetMyFriends(ctx context.Context, spaceKey, q string, opt *GetMyFriendsOptions) ([]*Account, *Response, error) {
-	u, err := AddQueries("search/friends", &getMyFriendsOptions{GetMyFriendsOptions: opt, SpaceKey: spaceKey, Q: q})
+func (s *AccountsService) GetMyFriends(ctx context.Context, spaceKey, q string, opt *GetMyFriendsOptions) ([]*Account, *shared.Response, error) {
+	u, err := internal.AddQueries("search/friends", &getMyFriendsOptions{GetMyFriendsOptions: opt, SpaceKey: spaceKey, Q: q})
 	if err != nil {
 		return nil, nil, err
 	}

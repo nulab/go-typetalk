@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type LikesService service
@@ -97,8 +97,8 @@ type getLikesOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-receive/
-func (s *LikesService) GetLikesReceive(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*ReceiveLikedPost, *Response, error) {
-	u, err := AddQueries("likes/receive", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
+func (s *LikesService) GetLikesReceive(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*ReceiveLikedPost, *shared.Response, error) {
+	u, err := internal.AddQueries("likes/receive", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -113,8 +113,8 @@ func (s *LikesService) GetLikesReceive(ctx context.Context, spaceKey string, opt
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-give/
-func (s *LikesService) GetLikesGive(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*GiveLikedPost, *Response, error) {
-	u, err := AddQueries("likes/give", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
+func (s *LikesService) GetLikesGive(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*GiveLikedPost, *shared.Response, error) {
+	u, err := internal.AddQueries("likes/give", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -129,8 +129,8 @@ func (s *LikesService) GetLikesGive(ctx context.Context, spaceKey string, opt *G
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-discover/
-func (s *LikesService) GetLikesDiscover(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*DiscoverLikedPost, *Response, error) {
-	u, err := AddQueries("likes/discover", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
+func (s *LikesService) GetLikesDiscover(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*DiscoverLikedPost, *shared.Response, error) {
+	u, err := internal.AddQueries("likes/discover", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -163,7 +163,7 @@ type ReadReceivedLikesResult struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/save-read-likes/
-func (s *LikesService) ReadReceivedLikes(ctx context.Context, spaceKey string, opt *ReadReceivedLikesOptions) (*ReadReceivedLikesResult, *Response, error) {
+func (s *LikesService) ReadReceivedLikes(ctx context.Context, spaceKey string, opt *ReadReceivedLikesOptions) (*ReadReceivedLikesResult, *shared.Response, error) {
 	u := "likes/receive/bookmark/save"
 	var result *ReadReceivedLikesResult
 	resp, err := s.client.Post(ctx, u, &readReceivedLikesOptions{ReadReceivedLikesOptions: opt, SpaceKey: spaceKey}, result)

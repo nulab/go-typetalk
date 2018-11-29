@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type OrganizationsService service
@@ -65,8 +65,8 @@ type organizationsGetOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-spaces
-func (s *OrganizationsService) GetMyOrganizations(ctx context.Context, excludesGuest bool) ([]*Organization, *Response, error) {
-	u, err := AddQueries("spaces", &organizationsGetOptions{excludesGuest})
+func (s *OrganizationsService) GetMyOrganizations(ctx context.Context, excludesGuest bool) ([]*Organization, *shared.Response, error) {
+	u, err := internal.AddQueries("spaces", &organizationsGetOptions{excludesGuest})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,7 +81,7 @@ func (s *OrganizationsService) GetMyOrganizations(ctx context.Context, excludesG
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-space-members
-func (s *OrganizationsService) GetOrganizationMembers(ctx context.Context, spaceKey string) (*OrganizationMembers, *Response, error) {
+func (s *OrganizationsService) GetOrganizationMembers(ctx context.Context, spaceKey string) (*OrganizationMembers, *shared.Response, error) {
 	u := fmt.Sprintf("spaces/%s/members", spaceKey)
 	var result *OrganizationMembers
 	resp, err := s.client.Get(ctx, u, &result)

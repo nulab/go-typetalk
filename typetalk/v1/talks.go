@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type TalksService service
@@ -51,7 +51,7 @@ type CreateTalkOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/create-talk
-func (s *TalksService) CreateTalk(ctx context.Context, topicId int, talkName string, postIds ...int) (*CreatedTalkResult, *Response, error) {
+func (s *TalksService) CreateTalk(ctx context.Context, topicId int, talkName string, postIds ...int) (*CreatedTalkResult, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d/talks", topicId)
 	var result *CreatedTalkResult
 	resp, err := s.client.Post(ctx, u, &CreateTalkOptions{talkName, postIds}, &result)
@@ -66,8 +66,8 @@ type updateTalkOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/update-talk
-func (s *TalksService) UpdateTalk(ctx context.Context, topicId, talkId int, talkName string) (*UpdatedTalkResult, *Response, error) {
-	u, err := AddQueries(fmt.Sprintf("topics/%d/talks/%d", topicId, talkId), &updateTalkOptions{talkName})
+func (s *TalksService) UpdateTalk(ctx context.Context, topicId, talkId int, talkName string) (*UpdatedTalkResult, *shared.Response, error) {
+	u, err := internal.AddQueries(fmt.Sprintf("topics/%d/talks/%d", topicId, talkId), &updateTalkOptions{talkName})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -81,7 +81,7 @@ func (s *TalksService) UpdateTalk(ctx context.Context, topicId, talkId int, talk
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/delete-talk
-func (s *TalksService) DeleteTalk(ctx context.Context, topicId, talkId int) (*DeletedTalkResult, *Response, error) {
+func (s *TalksService) DeleteTalk(ctx context.Context, topicId, talkId int) (*DeletedTalkResult, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d/talks/%d", topicId, talkId)
 	var result *DeletedTalkResult
 	resp, err := s.client.Delete(ctx, u, &result)
@@ -92,7 +92,7 @@ func (s *TalksService) DeleteTalk(ctx context.Context, topicId, talkId int) (*De
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-talks
-func (s *TalksService) GetTalkList(ctx context.Context, topicId int) ([]*Talk, *Response, error) {
+func (s *TalksService) GetTalkList(ctx context.Context, topicId int) ([]*Talk, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d/talks", topicId)
 	var result *struct {
 		Talks []*Talk `json:"talks"`
@@ -105,8 +105,8 @@ func (s *TalksService) GetTalkList(ctx context.Context, topicId int) ([]*Talk, *
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-talk
-func (s *TalksService) GetMessagesInTalk(ctx context.Context, topicId, talkId int, opt *GetMessagesOptions) (*MessagesInTalk, *Response, error) {
-	u, err := AddQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), opt)
+func (s *TalksService) GetMessagesInTalk(ctx context.Context, topicId, talkId int, opt *GetMessagesOptions) (*MessagesInTalk, *shared.Response, error) {
+	u, err := internal.AddQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), opt)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -123,7 +123,7 @@ type addMessageToTalkOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/add-message-to-talk
-func (s *TalksService) AddMessagesToTalk(ctx context.Context, topicId, talkId int, postIds ...int) (*MessagesInTalk, *Response, error) {
+func (s *TalksService) AddMessagesToTalk(ctx context.Context, topicId, talkId int, postIds ...int) (*MessagesInTalk, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId)
 	var result *MessagesInTalk
 	resp, err := s.client.Post(ctx, u, &addMessageToTalkOptions{postIds}, &result)
@@ -136,8 +136,8 @@ func (s *TalksService) AddMessagesToTalk(ctx context.Context, topicId, talkId in
 type removeMessagesFromTalkOptions addMessageToTalkOptions
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/remove-message-from-talk
-func (s *TalksService) RemoveMessagesFromTalk(ctx context.Context, topicId, talkId int, postIds ...int) (*RemovedMessagesResult, *Response, error) {
-	u, err := AddQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), &removeMessagesFromTalkOptions{postIds})
+func (s *TalksService) RemoveMessagesFromTalk(ctx context.Context, topicId, talkId int, postIds ...int) (*RemovedMessagesResult, *shared.Response, error) {
+	u, err := internal.AddQueries(fmt.Sprintf("topics/%d/talks/%d/posts", topicId, talkId), &removeMessagesFromTalkOptions{postIds})
 	if err != nil {
 		return nil, nil, err
 	}

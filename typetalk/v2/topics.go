@@ -5,8 +5,8 @@ import (
 
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type TopicsService service
@@ -46,8 +46,8 @@ type DirectMessageTopic struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-topics/
-func (s *TopicsService) GetMyTopics(ctx context.Context, spaceKey string) ([]*FavoriteTopicWithUnread, *Response, error) {
-	u, err := AddQueries("topics", &getMyTopicsOptions{spaceKey})
+func (s *TopicsService) GetMyTopics(ctx context.Context, spaceKey string) ([]*FavoriteTopicWithUnread, *shared.Response, error) {
+	u, err := internal.AddQueries("topics", &getMyTopicsOptions{spaceKey})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -62,8 +62,8 @@ func (s *TopicsService) GetMyTopics(ctx context.Context, spaceKey string) ([]*Fa
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-dm-topics
-func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context, spaceKey string) ([]*DirectMessageTopic, *Response, error) {
-	u, err := AddQueries("messages", &getMyTopicsOptions{spaceKey})
+func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context, spaceKey string) ([]*DirectMessageTopic, *shared.Response, error) {
+	u, err := internal.AddQueries("messages", &getMyTopicsOptions{spaceKey})
 	if err != nil {
 		return nil, nil, err
 	}

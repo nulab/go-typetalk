@@ -5,7 +5,7 @@ import (
 
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type NotificationsService service
@@ -87,7 +87,7 @@ type Scheduled struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-notification-status
-func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*NotificationCount, *Response, error) {
+func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*NotificationCount, *shared.Response, error) {
 	u := "notifications/status"
 	var result *NotificationCount
 	resp, err := s.client.Get(ctx, u, &result)
@@ -98,7 +98,7 @@ func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*Notif
 }
 
 // Deprecated: Use ReadNotification in github.com/nulab/go-typetalk/typetalk/v3
-func (s *NotificationsService) ReadNotification(ctx context.Context) (*ReadNotificationResult, *Response, error) {
+func (s *NotificationsService) ReadNotification(ctx context.Context) (*ReadNotificationResult, *shared.Response, error) {
 	u := "notifications"
 	var result *ReadNotificationResult
 	resp, err := s.client.Put(ctx, u, nil, &result)
