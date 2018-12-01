@@ -50,7 +50,7 @@ func Test_MessagesService_PostDirectMessage_should_post_dairect_message(t *testi
 	b, _ := ioutil.ReadFile(fixturesPath + "post-direct-message.json")
 	mux.HandleFunc(fmt.Sprintf("/spaces/%s/messages/@%s", spaceKey, accountName),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"message":                 "hello",
 				"replyTo":                 2,

@@ -20,7 +20,7 @@ func Test_TalksService_CreateTalk_should_create_a_talk(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "create-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"talkName":   talkName,
 				"postIds[0]": 1,
@@ -151,7 +151,7 @@ func Test_TalksService_AddMessageToTalk_should_add_some_messages_to_talk(t *test
 	b, _ := ioutil.ReadFile(fixturesPath + "add-messages-to-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d/posts", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"postIds[0]": 1,
 				"postIds[1]": 2,

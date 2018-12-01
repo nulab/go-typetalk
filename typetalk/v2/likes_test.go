@@ -99,7 +99,7 @@ func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "read-received-likes.json")
 	mux.HandleFunc("/likes/receive/bookmark/save",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"spaceKey": "qwerty",
 				"likeId":   1,

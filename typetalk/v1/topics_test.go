@@ -18,7 +18,7 @@ func Test_TopicsService_CreateTopic_should_create_a_topic(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "create-topic.json")
 	mux.HandleFunc("/topics",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"name":             "nulab",
 				"spaceKey":         "balun",
@@ -146,7 +146,7 @@ func Test_TopicsService_UpdateTopicMembers_should_add_some_topic_members(t *test
 	b, _ := ioutil.ReadFile(fixturesPath + "update-topic-members.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/members/update", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"addAccountIds[0]":                        1,
 				"addGroupIds[0]":                          1,
@@ -187,7 +187,7 @@ func Test_TopicsService_FavoriteTopic_should_favorite_topic(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "favorite-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			fmt.Fprint(w, string(b))
 		})
 

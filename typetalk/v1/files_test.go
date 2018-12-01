@@ -20,7 +20,7 @@ func Test_FilesService_UploadAttachmentFile_should_upload_an_attachment_file(t *
 	topicId := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "upload-attachment-file.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%v/attachments", topicId), func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "POST")
+		TestMethod(t, r, http.MethodPost)
 		fmt.Fprint(w, string(b))
 	})
 

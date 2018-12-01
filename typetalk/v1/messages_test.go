@@ -18,7 +18,7 @@ func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {
 	topicId := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "post-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%v", topicId), func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "POST")
+		TestMethod(t, r, http.MethodPost)
 		TestFormValues(t, r, Values{
 			"message":                 "hello",
 			"replyTo":                 2,
@@ -136,7 +136,7 @@ func Test_MessagesService_LikeMessage_should_like_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "like-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -181,7 +181,7 @@ func Test_MessagesService_PostDirectMessage_should_post_dairect_message(t *testi
 	b, _ := ioutil.ReadFile(fixturesPath + "post-direct-message.json")
 	mux.HandleFunc(fmt.Sprintf("/messages/@%s", accountName),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"message":                 "hello",
 				"replyTo":                 2,
