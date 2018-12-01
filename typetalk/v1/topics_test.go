@@ -75,7 +75,7 @@ func Test_TopicsService_DeleteTopic_should_delete_a_topic(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "delete-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "DELETE")
+			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -209,7 +209,7 @@ func Test_TopicsService_UnfavoriteTopic_should_unfavorite_topic(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "unfavorite-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "DELETE")
+			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 

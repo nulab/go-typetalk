@@ -199,7 +199,7 @@ func (c *ClientCore) Put(ctx context.Context, url string, body interface{}, v in
 }
 
 func (c *ClientCore) Delete(ctx context.Context, url string, v interface{}) (*shared.Response, error) {
-	return c.Call(ctx, "DELETE", url, nil, v)
+	return c.Call(ctx, http.MethodDelete, url, nil, v)
 }
 
 func (c *ClientCore) Get(ctx context.Context, url string, v interface{}) (*shared.Response, error) {

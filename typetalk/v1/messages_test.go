@@ -90,7 +90,7 @@ func Test_MessagesService_DeleteMessage_should_delete_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "delete-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "DELETE")
+			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -159,7 +159,7 @@ func Test_MessagesService_UnikeMessage_should_unlike_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "unlike-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "DELETE")
+			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 

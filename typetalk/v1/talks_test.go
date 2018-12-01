@@ -76,7 +76,7 @@ func Test_TalksService_DeleteTalk_should_delete_a_talk(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "update-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "DELETE")
+			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -179,7 +179,7 @@ func Test_TalksService_RemoveMessagesFromTalk_should_remove_some_messages_from_t
 	b, _ := ioutil.ReadFile(fixturesPath + "remove-messages-from-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d/posts", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "DELETE")
+			TestMethod(t, r, http.MethodDelete)
 			TestQueryValues(t, r, Values{
 				"postIds[0]": 1,
 				"postIds[1]": 2,
