@@ -66,7 +66,7 @@ func Test_MessagesService_UpdateMessage_should_update_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "update-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "PUT")
+			TestMethod(t, r, http.MethodPut)
 			TestFormValues(t, r, Values{"message": message})
 			fmt.Fprint(w, string(b))
 		})

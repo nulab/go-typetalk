@@ -49,7 +49,7 @@ func Test_TopicsService_UpdateTopic_should_update_a_topic(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "update-topic.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "PUT")
+			TestMethod(t, r, http.MethodPut)
 			TestFormValues(t, r, Values{
 				"name":        "nulab",
 				"description": "This is a test topic.",
@@ -232,7 +232,7 @@ func Test_TopicsService_ReadMessagesInTopic_should_read_some_messages_in_topic(t
 	b, _ := ioutil.ReadFile(fixturesPath + "read-messages-in-topic.json")
 	mux.HandleFunc("/bookmarks",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "PUT")
+			TestMethod(t, r, http.MethodPut)
 			TestQueryValues(t, r, Values{
 				"topicId": 1,
 				"postId":  1,

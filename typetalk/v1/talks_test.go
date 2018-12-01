@@ -50,7 +50,7 @@ func Test_TalksService_UpdateTalk_should_update_a_talk_name(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "update-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "PUT")
+			TestMethod(t, r, http.MethodPut)
 			TestQueryValues(t, r, Values{
 				"talkName": talkName,
 			})

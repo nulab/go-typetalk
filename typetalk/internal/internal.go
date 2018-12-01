@@ -195,7 +195,7 @@ func (c *ClientCore) Post(ctx context.Context, url string, body interface{}, v i
 }
 
 func (c *ClientCore) Put(ctx context.Context, url string, body interface{}, v interface{}) (*shared.Response, error) {
-	return c.Call(ctx, "PUT", url, body, v)
+	return c.Call(ctx, http.MethodPut, url, body, v)
 }
 
 func (c *ClientCore) Delete(ctx context.Context, url string, v interface{}) (*shared.Response, error) {

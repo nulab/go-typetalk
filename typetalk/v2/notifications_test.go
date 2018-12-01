@@ -39,7 +39,7 @@ func Test_NotificationsService_ReadNotification_should_read_notification(t *test
 	b, _ := ioutil.ReadFile(fixturesPath + "read-notification.json")
 	mux.HandleFunc("/notifications",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "PUT")
+			TestMethod(t, r, http.MethodPut)
 			fmt.Fprint(w, string(b))
 		})
 

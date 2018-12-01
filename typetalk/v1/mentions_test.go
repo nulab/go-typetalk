@@ -18,7 +18,7 @@ func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {
 	mentionId := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "read-mention.json")
 	mux.HandleFunc(fmt.Sprintf("/mentions/%d", mentionId), func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "PUT")
+		TestMethod(t, r, http.MethodPut)
 		fmt.Fprint(w, string(b))
 	})
 
