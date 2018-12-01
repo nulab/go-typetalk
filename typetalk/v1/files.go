@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 
 	. "github.com/nulab/go-typetalk/typetalk/internal"
@@ -50,7 +51,7 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, fi
 func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicId, postId, attachmentId int, filename string) (io.ReadCloser, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d/attachments/%d/%s", topicId, postId, attachmentId, filename)
 
-	req, err := s.client.NewRequest("GET", u, nil)
+	req, err := s.client.NewRequest(http.MethodGet, u, nil)
 	if err != nil {
 		return nil, err
 	}

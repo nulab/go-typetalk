@@ -97,7 +97,7 @@ func Test_TopicsService_GetTopicDetails_should_get_a_topic_details(t *testing.T)
 	b, _ := ioutil.ReadFile(fixturesPath + "get-topic-details.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -119,7 +119,7 @@ func Test_TopicsService_GetTopicMessages_should_get_some_topic_messages(t *testi
 	b, _ := ioutil.ReadFile(fixturesPath + "get-topic-messages.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"count":     10,
 				"from":      3,
@@ -259,7 +259,7 @@ func Test_TopicsService_GetMyTopics_should_get_some_topics(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-topics.json")
 	mux.HandleFunc("/topics",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 

@@ -98,7 +98,7 @@ func Test_TalksService_GetTalkList_should_get_talk_list(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-talk-list.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks", topicId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -123,7 +123,7 @@ func Test_TalksService_GetMessagesInTalk_should_get_some_messages_in_talk(t *tes
 	b, _ := ioutil.ReadFile(fixturesPath + "get-messages-in-talk.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/talks/%d/posts", topicId, talkId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"count":     10,
 				"from":      3,

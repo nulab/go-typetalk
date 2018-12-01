@@ -22,7 +22,7 @@ func Test_MessagesService_GetDirectMessages_should_get_some_direct_messages(t *t
 	b, _ := ioutil.ReadFile(fixturesPath + "get-direct-messages.json")
 	mux.HandleFunc(fmt.Sprintf("/spaces/%s/messages/@%s", spaceKey, accountName),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"count":     10,
 				"from":      1,
@@ -97,7 +97,7 @@ func Test_MessagesService_SearchMessages_should_get_some_posts(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "search-messages.json")
 	mux.HandleFunc("/search/posts",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"spaceKey":       "qwerty",
 				"q":              "hello",

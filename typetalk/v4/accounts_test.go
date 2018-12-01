@@ -17,7 +17,7 @@ func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-friends.json")
 	mux.HandleFunc("/search/friends", func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "GET")
+		TestMethod(t, r, http.MethodGet)
 		TestQueryValues(t, r, Values{
 			"spaceKey": "qwerty",
 			"q":        "hello",

@@ -203,7 +203,7 @@ func (c *ClientCore) Delete(ctx context.Context, url string, v interface{}) (*sh
 }
 
 func (c *ClientCore) Get(ctx context.Context, url string, v interface{}) (*shared.Response, error) {
-	return c.Call(ctx, "GET", url, nil, v)
+	return c.Call(ctx, http.MethodGet, url, nil, v)
 }
 
 func CheckResponse(r *http.Response) error {

@@ -46,7 +46,7 @@ func Test_FilesService_DownloadAttachmentFile_should_download_an_attachment_file
 	filename := "sample.jpg"
 	b, _ := ioutil.ReadFile(fixturesPath + filename)
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/attachments/%d/%s", topicId, postId, attachmentId, filename), func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "GET")
+		TestMethod(t, r, http.MethodGet)
 		TestHeader(t, r, "Accept", DefaultMediaType)
 		w.Header().Set("Content-Type", "application/octet-stream")
 		w.Header().Set("Content-Disposition", "attachment; filename="+filename)

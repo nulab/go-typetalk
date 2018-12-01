@@ -113,7 +113,7 @@ func Test_MessagesService_GetMessage_should_get_a_message(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-message.json")
 	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -227,7 +227,7 @@ func Test_MessagesService_GetDirectMessages_should_get_some_direct_messages(t *t
 	b, _ := ioutil.ReadFile(fixturesPath + "get-direct-messages.json")
 	mux.HandleFunc(fmt.Sprintf("/messages/@%s", accountName),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"count":     10,
 				"from":      1,
@@ -253,7 +253,7 @@ func Test_MessagesService_GetMyDirectMessageTopics_should_get_some_topics_of_dir
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-direct-message-topics.json")
 	mux.HandleFunc("/messages",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 

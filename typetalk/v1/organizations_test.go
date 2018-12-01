@@ -18,7 +18,7 @@ func Test_OrganizationsService_GetMyOrganizations_should_get_my_organizations(t 
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-organizations.json")
 	mux.HandleFunc("/spaces",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{"excludesGuest": true})
 			fmt.Fprint(w, string(b))
 		})
@@ -43,7 +43,7 @@ func Test_OrganizationsService_GetOrganizationMembers_should_get_some_organizati
 	b, _ := ioutil.ReadFile(fixturesPath + "get-organization-members.json")
 	mux.HandleFunc(fmt.Sprintf("/spaces/%s/members", spaceKey),
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
