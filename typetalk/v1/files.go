@@ -21,9 +21,11 @@ type AttachmentFile struct {
 	FileSize    int    `json:"fileSize"`
 }
 
+// UploadAttachmentFile uploads attachment file.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/upload-attachment
-func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, file *os.File) (*AttachmentFile, *shared.Response, error) {
-	u := fmt.Sprintf("topics/%v/attachments", topicId)
+func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicID int, file *os.File) (*AttachmentFile, *shared.Response, error) {
+	u := fmt.Sprintf("topics/%v/attachments", topicID)
 	stat, err := file.Stat()
 	if err != nil {
 		return nil, nil, err
@@ -47,9 +49,11 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, fi
 	return attachmentFile, resp, nil
 }
 
+// DownloadAttachmentFile downloads attachemnt file.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/download-attachment
-func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicId, postId, attachmentId int, filename string) (io.ReadCloser, error) {
-	u := fmt.Sprintf("topics/%d/posts/%d/attachments/%d/%s", topicId, postId, attachmentId, filename)
+func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicID, postID, attachmentID int, filename string) (io.ReadCloser, error) {
+	u := fmt.Sprintf("topics/%d/posts/%d/attachments/%d/%s", topicID, postID, attachmentID, filename)
 
 	req, err := s.client.NewRequest(http.MethodGet, u, nil)
 	if err != nil {

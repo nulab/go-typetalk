@@ -64,6 +64,8 @@ type organizationsGetOptions struct {
 	ExcludesGuest bool `json:"excludesGuest,omitempty"`
 }
 
+// GetMyOrganizations fetches organizations list.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-spaces
 func (s *OrganizationsService) GetMyOrganizations(ctx context.Context, excludesGuest bool) ([]*Organization, *shared.Response, error) {
 	u, err := internal.AddQueries("spaces", &organizationsGetOptions{excludesGuest})
@@ -80,6 +82,8 @@ func (s *OrganizationsService) GetMyOrganizations(ctx context.Context, excludesG
 	return result.MySpaces, resp, nil
 }
 
+// GetOrganizationMembers fetches an organization's members list.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-space-members
 func (s *OrganizationsService) GetOrganizationMembers(ctx context.Context, spaceKey string) (*OrganizationMembers, *shared.Response, error) {
 	u := fmt.Sprintf("spaces/%s/members", spaceKey)

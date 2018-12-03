@@ -45,9 +45,9 @@ func Test_TopicsService_CreateTopic_should_create_a_topic(t *testing.T) {
 func Test_TopicsService_UpdateTopic_should_update_a_topic(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "update-topic.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodPut)
 			TestFormValues(t, r, Values{
@@ -57,7 +57,7 @@ func Test_TopicsService_UpdateTopic_should_update_a_topic(t *testing.T) {
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.UpdateTopic(context.Background(), topicId, &UpdateTopicOptions{"nulab", "This is a test topic."})
+	result, _, err := client.Topics.UpdateTopic(context.Background(), topicID, &UpdateTopicOptions{"nulab", "This is a test topic."})
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -71,15 +71,15 @@ func Test_TopicsService_UpdateTopic_should_update_a_topic(t *testing.T) {
 func Test_TopicsService_DeleteTopic_should_delete_a_topic(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "delete-topic.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.DeleteTopic(context.Background(), topicId)
+	result, _, err := client.Topics.DeleteTopic(context.Background(), topicID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -93,15 +93,15 @@ func Test_TopicsService_DeleteTopic_should_delete_a_topic(t *testing.T) {
 func Test_TopicsService_GetTopicDetails_should_get_a_topic_details(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "get-topic-details.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.GetTopicDetails(context.Background(), topicId)
+	result, _, err := client.Topics.GetTopicDetails(context.Background(), topicID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -115,9 +115,9 @@ func Test_TopicsService_GetTopicDetails_should_get_a_topic_details(t *testing.T)
 func Test_TopicsService_GetTopicMessages_should_get_some_topic_messages(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "get-topic-messages.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d", topicID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
@@ -128,7 +128,7 @@ func Test_TopicsService_GetTopicMessages_should_get_some_topic_messages(t *testi
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.GetTopicMessages(context.Background(), topicId, &GetTopicMessagesOptions{10, 3, "backward"})
+	result, _, err := client.Topics.GetTopicMessages(context.Background(), topicID, &GetTopicMessagesOptions{10, 3, "backward"})
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -142,9 +142,9 @@ func Test_TopicsService_GetTopicMessages_should_get_some_topic_messages(t *testi
 func Test_TopicsService_UpdateTopicMembers_should_add_some_topic_members(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "update-topic-members.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/members/update", topicId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/members/update", topicID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
@@ -159,14 +159,14 @@ func Test_TopicsService_UpdateTopicMembers_should_add_some_topic_members(t *test
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.UpdateTopicMembers(context.Background(), topicId, &UpdateTopicMembersOptions{
+	result, _, err := client.Topics.UpdateTopicMembers(context.Background(), topicID, &UpdateTopicMembersOptions{
 		AddAccountIds: []int{1},
 		AddGroupIds:   []int{1},
 		InvitationsEmail: []string{
 			"example1@nulab-inc.com",
 		},
 		InvitationsRole:                     []string{"Admin"},
-		RemoveAccountsId:                    []int{4},
+		RemoveAccountsID:                    []int{4},
 		RemoveAccountsCancelSpaceInvitation: []bool{true},
 		RemoveGroupIds:                      []bool{true},
 	})
@@ -183,15 +183,15 @@ func Test_TopicsService_UpdateTopicMembers_should_add_some_topic_members(t *test
 func Test_TopicsService_FavoriteTopic_should_favorite_topic(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "favorite-topic.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodPost)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.FavoriteTopic(context.Background(), topicId)
+	result, _, err := client.Topics.FavoriteTopic(context.Background(), topicID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -205,15 +205,15 @@ func Test_TopicsService_FavoriteTopic_should_favorite_topic(t *testing.T) {
 func Test_TopicsService_UnfavoriteTopic_should_unfavorite_topic(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "unfavorite-topic.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/favorite", topicID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.UnfavoriteTopic(context.Background(), topicId)
+	result, _, err := client.Topics.UnfavoriteTopic(context.Background(), topicID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -227,8 +227,8 @@ func Test_TopicsService_UnfavoriteTopic_should_unfavorite_topic(t *testing.T) {
 func Test_TopicsService_ReadMessagesInTopic_should_read_some_messages_in_topic(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
-	postId := 1
+	topicID := 1
+	postID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "read-messages-in-topic.json")
 	mux.HandleFunc("/bookmarks",
 		func(w http.ResponseWriter, r *http.Request) {
@@ -240,7 +240,7 @@ func Test_TopicsService_ReadMessagesInTopic_should_read_some_messages_in_topic(t
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Topics.ReadMessagesInTopic(context.Background(), topicId, postId)
+	result, _, err := client.Topics.ReadMessagesInTopic(context.Background(), topicID, postID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}

@@ -86,6 +86,8 @@ type Scheduled struct {
 	End     string `json:"end"`
 }
 
+// GetNotificationCount fetches notification counts.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/5/get-notification-status/
 func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*NotificationCount, *shared.Response, error) {
 	u := "notifications/status"

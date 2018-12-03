@@ -1,4 +1,4 @@
-package typetalk_token
+package main
 
 import (
 	"context"

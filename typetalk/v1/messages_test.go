@@ -15,9 +15,9 @@ import (
 func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
+	topicID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "post-message.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%v", topicId), func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc(fmt.Sprintf("/topics/%v", topicID), func(w http.ResponseWriter, r *http.Request) {
 		TestMethod(t, r, http.MethodPost)
 		TestFormValues(t, r, Values{
 			"message":                 "hello",
@@ -39,7 +39,7 @@ func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {
 		fmt.Fprint(w, string(b))
 	})
 
-	result, _, err := client.Messages.PostMessage(context.Background(), topicId, "hello", &PostMessageOptions{
+	result, _, err := client.Messages.PostMessage(context.Background(), topicID, "hello", &PostMessageOptions{
 		ReplyTo:      2,
 		ShowLinkMeta: true,
 		FileKeys:     []string{"key0", "key1", "key2"},
@@ -60,18 +60,18 @@ func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {
 func Test_MessagesService_UpdateMessage_should_update_a_message(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
-	postId := 1
+	topicID := 1
+	postID := 1
 	message := "hello"
 	b, _ := ioutil.ReadFile(fixturesPath + "update-message.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicID, postID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodPut)
 			TestFormValues(t, r, Values{"message": message})
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Messages.UpdateMessage(context.Background(), topicId, postId, message)
+	result, _, err := client.Messages.UpdateMessage(context.Background(), topicID, postID, message)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -85,16 +85,16 @@ func Test_MessagesService_UpdateMessage_should_update_a_message(t *testing.T) {
 func Test_MessagesService_DeleteMessage_should_delete_a_message(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
-	postId := 1
+	topicID := 1
+	postID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "delete-message.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicID, postID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Messages.DeleteMessage(context.Background(), topicId, postId)
+	result, _, err := client.Messages.DeleteMessage(context.Background(), topicID, postID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -108,16 +108,16 @@ func Test_MessagesService_DeleteMessage_should_delete_a_message(t *testing.T) {
 func Test_MessagesService_GetMessage_should_get_a_message(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
-	postId := 1
+	topicID := 1
+	postID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "get-message.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicId, postId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d", topicID, postID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Messages.GetMessage(context.Background(), topicId, postId)
+	result, _, err := client.Messages.GetMessage(context.Background(), topicID, postID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -131,16 +131,16 @@ func Test_MessagesService_GetMessage_should_get_a_message(t *testing.T) {
 func Test_MessagesService_LikeMessage_should_like_a_message(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
-	postId := 1
+	topicID := 1
+	postID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "like-message.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicID, postID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodPost)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Messages.LikeMessage(context.Background(), topicId, postId)
+	result, _, err := client.Messages.LikeMessage(context.Background(), topicID, postID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}
@@ -154,16 +154,16 @@ func Test_MessagesService_LikeMessage_should_like_a_message(t *testing.T) {
 func Test_MessagesService_UnikeMessage_should_unlike_a_message(t *testing.T) {
 	setup()
 	defer teardown()
-	topicId := 1
-	postId := 1
+	topicID := 1
+	postID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "unlike-message.json")
-	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicId, postId),
+	mux.HandleFunc(fmt.Sprintf("/topics/%d/posts/%d/like", topicID, postID),
 		func(w http.ResponseWriter, r *http.Request) {
 			TestMethod(t, r, http.MethodDelete)
 			fmt.Fprint(w, string(b))
 		})
 
-	result, _, err := client.Messages.UnlikeMessage(context.Background(), topicId, postId)
+	result, _, err := client.Messages.UnlikeMessage(context.Background(), topicID, postID)
 	if err != nil {
 		t.Errorf("Returned error: %v", err)
 	}

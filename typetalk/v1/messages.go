@@ -98,9 +98,11 @@ type postMessageOptions struct {
 	Message string `json:"message,omitempty"`
 }
 
+// PostMessage posts a message.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/post-message
-func (s *MessagesService) PostMessage(ctx context.Context, topicId int, message string, opt *PostMessageOptions) (*PostedMessageResult, *shared.Response, error) {
-	u := fmt.Sprintf("topics/%v", topicId)
+func (s *MessagesService) PostMessage(ctx context.Context, topicID int, message string, opt *PostMessageOptions) (*PostedMessageResult, *shared.Response, error) {
+	u := fmt.Sprintf("topics/%v", topicID)
 	if opt == nil {
 		opt = &PostMessageOptions{}
 	}
@@ -116,9 +118,11 @@ type updateMessageOptions struct {
 	Message string `json:"message"`
 }
 
+// UpdateMessage updates a message.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/update-message
-func (s *MessagesService) UpdateMessage(ctx context.Context, topicId, postId int, message string) (*UpdatedMessageResult, *shared.Response, error) {
-	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
+func (s *MessagesService) UpdateMessage(ctx context.Context, topicID, postID int, message string) (*UpdatedMessageResult, *shared.Response, error) {
+	u := fmt.Sprintf("topics/%d/posts/%d", topicID, postID)
 	var result *UpdatedMessageResult
 	resp, err := s.client.Put(ctx, u, &updateMessageOptions{Message: message}, &result)
 	if err != nil {
@@ -127,9 +131,11 @@ func (s *MessagesService) UpdateMessage(ctx context.Context, topicId, postId int
 	return result, resp, nil
 }
 
+// DeleteMessage deletes a message.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/delete-message
-func (s *MessagesService) DeleteMessage(ctx context.Context, topicId, postId int) (*Post, *shared.Response, error) {
-	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
+func (s *MessagesService) DeleteMessage(ctx context.Context, topicID, postID int) (*Post, *shared.Response, error) {
+	u := fmt.Sprintf("topics/%d/posts/%d", topicID, postID)
 	var result *Post
 	resp, err := s.client.Delete(ctx, u, &result)
 	if err != nil {
@@ -138,9 +144,11 @@ func (s *MessagesService) DeleteMessage(ctx context.Context, topicId, postId int
 	return result, resp, nil
 }
 
+// GetMessage gets a message.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-message
-func (s *MessagesService) GetMessage(ctx context.Context, topicId, postId int) (*Message, *shared.Response, error) {
-	u := fmt.Sprintf("topics/%d/posts/%d", topicId, postId)
+func (s *MessagesService) GetMessage(ctx context.Context, topicID, postID int) (*Message, *shared.Response, error) {
+	u := fmt.Sprintf("topics/%d/posts/%d", topicID, postID)
 	var result *Message
 	resp, err := s.client.Get(ctx, u, &result)
 	if err != nil {
@@ -149,9 +157,11 @@ func (s *MessagesService) GetMessage(ctx context.Context, topicId, postId int) (
 	return result, resp, nil
 }
 
+// LikeMessage marks a message as liked.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/1/favorite-topic
-func (s *MessagesService) LikeMessage(ctx context.Context, topicId, postId int) (*LikedMessageResult, *shared.Response, error) {
-	u := fmt.Sprintf("topics/%d/posts/%d/like", topicId, postId)
+func (s *MessagesService) LikeMessage(ctx context.Context, topicID, postID int) (*LikedMessageResult, *shared.Response, error) {
+	u := fmt.Sprintf("topics/%d/posts/%d/like", topicID, postID)
 	var result *LikedMessageResult
 	resp, err := s.client.Post(ctx, u, nil, &result)
 	if err != nil {
@@ -160,9 +170,11 @@ func (s *MessagesService) LikeMessage(ctx context.Context, topicId, postId int) 
 	return result, resp, nil
 }
 
+// UnlikeMessage marks a message as unliked.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/1/unfavorite-topic
-func (s *MessagesService) UnlikeMessage(ctx context.Context, topicId, postId int) (*Like, *shared.Response, error) {
-	u := fmt.Sprintf("topics/%d/posts/%d/like", topicId, postId)
+func (s *MessagesService) UnlikeMessage(ctx context.Context, topicID, postID int) (*Like, *shared.Response, error) {
+	u := fmt.Sprintf("topics/%d/posts/%d/like", topicID, postID)
 	var result *struct {
 		Like Like `json:"like"`
 	}
@@ -173,6 +185,8 @@ func (s *MessagesService) UnlikeMessage(ctx context.Context, topicId, postId int
 	return &result.Like, resp, nil
 }
 
+// PostDirectMessage posts direct message.
+//
 // Deprecated: Use PostDirectMessage in github.com/nulab/go-typetalk/typetalk/v2
 func (s *MessagesService) PostDirectMessage(ctx context.Context, accountName, message string, opt *PostMessageOptions) (*PostedMessageResult, *shared.Response, error) {
 	u := fmt.Sprintf("messages/@%s", accountName)
@@ -193,6 +207,8 @@ type GetMessagesOptions struct {
 	Direction string `json:"direction,omitempty"`
 }
 
+// GetDirectMessages fetches direct messages list.
+//
 // Deprecated: Use GetDirectMessages in github.com/nulab/go-typetalk/typetalk/v2
 func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName string, opt *GetMessagesOptions) (*DirectMessages, *shared.Response, error) {
 	u, err := internal.AddQueries(fmt.Sprintf("messages/@%s", accountName), opt)
@@ -207,6 +223,8 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName str
 	return result, resp, nil
 }
 
+// GetMyDirectMessageTopics fetches direct message topics list.
+//
 // Deprecated: Use GetMyDirectMessageTopics in github.com/nulab/go-typetalk/typetalk/v2
 func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context) ([]*DirectMessageTopic, *shared.Response, error) {
 	u := "messages"

@@ -15,14 +15,14 @@ import (
 func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {
 	setup()
 	defer teardown()
-	mentionId := 1
+	mentionID := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "read-mention.json")
-	mux.HandleFunc(fmt.Sprintf("/mentions/%d", mentionId), func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc(fmt.Sprintf("/mentions/%d", mentionID), func(w http.ResponseWriter, r *http.Request) {
 		TestMethod(t, r, http.MethodPut)
 		fmt.Fprint(w, string(b))
 	})
 
-	result, _, err := client.Mentions.ReadMention(context.Background(), mentionId)
+	result, _, err := client.Mentions.ReadMention(context.Background(), mentionID)
 	if err != nil {
 		t.Errorf("returned error: %v", err)
 	}

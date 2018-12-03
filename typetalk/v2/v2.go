@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	ApiVersion = "v2"
+	APIVersion = "v2"
 )
 
 type service struct {
@@ -34,7 +34,7 @@ func NewClient(httpClient *http.Client) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
-	baseURL, _ := url.Parse(internal.DefaultBaseURL + ApiVersion + "/")
+	baseURL, _ := url.Parse(internal.DefaultBaseURL + APIVersion + "/")
 
 	c := &Client{client: &internal.ClientCore{Client: httpClient, BaseURL: baseURL, UserAgent: internal.UserAgent}}
 
