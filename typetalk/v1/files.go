@@ -7,8 +7,8 @@ import (
 	"io"
 	"os"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type FilesService service
@@ -21,7 +21,7 @@ type AttachmentFile struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/upload-attachment
-func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, file *os.File) (*AttachmentFile, *Response, error) {
+func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicId int, file *os.File) (*AttachmentFile, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%v/attachments", topicId)
 	stat, err := file.Stat()
 	if err != nil {
@@ -54,13 +54,13 @@ func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicId, post
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("Accept", DefaultMediaType)
+	req.Header.Set("Accept", internal.DefaultMediaType)
 
 	resp, err := s.client.Client.Do(req)
 	if err != nil {
 		return nil, err
 	}
-	if err := CheckResponse(resp); err != nil {
+	if err := internal.CheckResponse(resp); err != nil {
 		resp.Body.Close()
 		return nil, err
 	}

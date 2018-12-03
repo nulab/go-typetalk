@@ -6,8 +6,8 @@ import (
 
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type MessagesService service
@@ -75,8 +75,8 @@ type GetMessagesOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-direct-messages
-func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accountName string, opt *GetMessagesOptions) (*DirectMessages, *Response, error) {
-	u, err := AddQueries(fmt.Sprintf("spaces/%s/messages/@%s", spaceKey, accountName), opt)
+func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accountName string, opt *GetMessagesOptions) (*DirectMessages, *shared.Response, error) {
+	u, err := internal.AddQueries(fmt.Sprintf("spaces/%s/messages/@%s", spaceKey, accountName), opt)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -89,7 +89,7 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accou
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/post-direct-message
-func (s *MessagesService) PostDirectMessage(ctx context.Context, spaceKey, accountName, message string, opt *PostMessageOptions) (*PostedMessageResult, *Response, error) {
+func (s *MessagesService) PostDirectMessage(ctx context.Context, spaceKey, accountName, message string, opt *PostMessageOptions) (*PostedMessageResult, *shared.Response, error) {
 	u := fmt.Sprintf("spaces/%s/messages/@%s", spaceKey, accountName)
 	if opt == nil {
 		opt = &PostMessageOptions{}
@@ -103,8 +103,8 @@ func (s *MessagesService) PostDirectMessage(ctx context.Context, spaceKey, accou
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/search-messages/
-func (s *MessagesService) SearchMessages(ctx context.Context, spaceKey, q string, opt *SearchMessagesOptions) (*SearchMessagesResult, *Response, error) {
-	u, err := AddQueries("search/posts", &searchMessagesOptions{SearchMessagesOptions: opt, SpaceKey: spaceKey, Q: q})
+func (s *MessagesService) SearchMessages(ctx context.Context, spaceKey, q string, opt *SearchMessagesOptions) (*SearchMessagesResult, *shared.Response, error) {
+	u, err := internal.AddQueries("search/posts", &searchMessagesOptions{SearchMessagesOptions: opt, SpaceKey: spaceKey, Q: q})
 	if err != nil {
 		return nil, nil, err
 	}

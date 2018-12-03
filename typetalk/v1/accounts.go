@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type AccountsService service
@@ -58,7 +58,7 @@ type OnlineStatus struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-profile
-func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *Response, error) {
+func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *shared.Response, error) {
 	u := "profile"
 	var result *MyProfile
 	resp, err := s.client.Get(ctx, u, &result)
@@ -69,7 +69,7 @@ func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *Respon
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-friend-profile
-func (s *AccountsService) GetFriendProfile(ctx context.Context, accountName string) (*Profile, *Response, error) {
+func (s *AccountsService) GetFriendProfile(ctx context.Context, accountName string) (*Profile, *shared.Response, error) {
 	u := fmt.Sprintf("profile/%s", accountName)
 	var result *Profile
 	resp, err := s.client.Get(ctx, u, &result)
@@ -86,8 +86,8 @@ type GetMyFriendsOptions struct {
 }
 
 // Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
-func (s *AccountsService) GetMyFriends(ctx context.Context, opt *GetMyFriendsOptions) (*Friends, *Response, error) {
-	u, err := AddQueries("search/friends", opt)
+func (s *AccountsService) GetMyFriends(ctx context.Context, opt *GetMyFriendsOptions) (*Friends, *shared.Response, error) {
+	u, err := internal.AddQueries("search/friends", opt)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -104,8 +104,8 @@ type searchAccountsOptions struct {
 }
 
 // Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
-func (s *AccountsService) SearchAccounts(ctx context.Context, nameOrEmailAddress string) (*Account, *Response, error) {
-	u, err := AddQueries("search/accounts", &searchAccountsOptions{nameOrEmailAddress})
+func (s *AccountsService) SearchAccounts(ctx context.Context, nameOrEmailAddress string) (*Account, *shared.Response, error) {
+	u, err := internal.AddQueries("search/accounts", &searchAccountsOptions{nameOrEmailAddress})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -122,8 +122,8 @@ type getOnlineStatusOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-online-status
-func (s *AccountsService) GetOnlineStatus(ctx context.Context, accountIds ...int) (*OnlineStatus, *Response, error) {
-	u, err := AddQueries("accounts/status", &getOnlineStatusOptions{accountIds})
+func (s *AccountsService) GetOnlineStatus(ctx context.Context, accountIds ...int) (*OnlineStatus, *shared.Response, error) {
+	u, err := internal.AddQueries("accounts/status", &getOnlineStatusOptions{accountIds})
 	if err != nil {
 		return nil, nil, err
 	}

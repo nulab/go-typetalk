@@ -3,7 +3,7 @@ package v3
 import (
 	"context"
 
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type NotificationsService service
@@ -29,7 +29,7 @@ type readNotificationOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/3/open-notification
-func (s *NotificationsService) ReadNotification(ctx context.Context, spaceKey string) (*ReadNotificationResult, *Response, error) {
+func (s *NotificationsService) ReadNotification(ctx context.Context, spaceKey string) (*ReadNotificationResult, *shared.Response, error) {
 	u := "notifications"
 	var result *ReadNotificationResult
 	resp, err := s.client.Put(ctx, u, &readNotificationOptions{spaceKey}, &result)

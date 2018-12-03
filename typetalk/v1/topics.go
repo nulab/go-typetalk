@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
 type TopicsService service
@@ -71,7 +71,7 @@ type CreateTopicOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/create-topic
-func (s *TopicsService) CreateTopic(ctx context.Context, opt *CreateTopicOptions) (*TopicDetails, *Response, error) {
+func (s *TopicsService) CreateTopic(ctx context.Context, opt *CreateTopicOptions) (*TopicDetails, *shared.Response, error) {
 	u := "topics"
 	var result *TopicDetails
 	resp, err := s.client.Post(ctx, u, opt, &result)
@@ -87,7 +87,7 @@ type UpdateTopicOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/update-topic
-func (s *TopicsService) UpdateTopic(ctx context.Context, topicId int, opt *UpdateTopicOptions) (*TopicDetails, *Response, error) {
+func (s *TopicsService) UpdateTopic(ctx context.Context, topicId int, opt *UpdateTopicOptions) (*TopicDetails, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d", topicId)
 	var result *TopicDetails
 	resp, err := s.client.Put(ctx, u, opt, &result)
@@ -98,7 +98,7 @@ func (s *TopicsService) UpdateTopic(ctx context.Context, topicId int, opt *Updat
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/delete-topic
-func (s *TopicsService) DeleteTopic(ctx context.Context, topicId int) (*Topic, *Response, error) {
+func (s *TopicsService) DeleteTopic(ctx context.Context, topicId int) (*Topic, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d", topicId)
 	var result *Topic
 	resp, err := s.client.Delete(ctx, u, &result)
@@ -109,7 +109,7 @@ func (s *TopicsService) DeleteTopic(ctx context.Context, topicId int) (*Topic, *
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-topic-details
-func (s *TopicsService) GetTopicDetails(ctx context.Context, topicId int) (*TopicDetails, *Response, error) {
+func (s *TopicsService) GetTopicDetails(ctx context.Context, topicId int) (*TopicDetails, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d", topicId)
 	var result *TopicDetails
 	resp, err := s.client.Get(ctx, u, &result)
@@ -126,8 +126,8 @@ type GetTopicMessagesOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-messages
-func (s *TopicsService) GetTopicMessages(ctx context.Context, topicId int, opt *GetTopicMessagesOptions) (*TopicMessages, *Response, error) {
-	u, err := AddQueries(fmt.Sprintf("topics/%d", topicId), opt)
+func (s *TopicsService) GetTopicMessages(ctx context.Context, topicId int, opt *GetTopicMessagesOptions) (*TopicMessages, *shared.Response, error) {
+	u, err := internal.AddQueries(fmt.Sprintf("topics/%d", topicId), opt)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -150,7 +150,7 @@ type UpdateTopicMembersOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/update-topic-members
-func (s *TopicsService) UpdateTopicMembers(ctx context.Context, topicId int, opt *UpdateTopicMembersOptions) (*TopicDetails, *Response, error) {
+func (s *TopicsService) UpdateTopicMembers(ctx context.Context, topicId int, opt *UpdateTopicMembersOptions) (*TopicDetails, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d/members/update", topicId)
 	var result *TopicDetails
 	resp, err := s.client.Post(ctx, u, opt, &result)
@@ -161,7 +161,7 @@ func (s *TopicsService) UpdateTopicMembers(ctx context.Context, topicId int, opt
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/favorite-topic
-func (s *TopicsService) FavoriteTopic(ctx context.Context, topicId int) (*FavoriteTopic, *Response, error) {
+func (s *TopicsService) FavoriteTopic(ctx context.Context, topicId int) (*FavoriteTopic, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d/favorite", topicId)
 	var result *FavoriteTopic
 	resp, err := s.client.Post(ctx, u, nil, &result)
@@ -172,7 +172,7 @@ func (s *TopicsService) FavoriteTopic(ctx context.Context, topicId int) (*Favori
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/unfavorite-topic
-func (s *TopicsService) UnfavoriteTopic(ctx context.Context, topicId int) (*FavoriteTopic, *Response, error) {
+func (s *TopicsService) UnfavoriteTopic(ctx context.Context, topicId int) (*FavoriteTopic, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%d/favorite", topicId)
 	var result *FavoriteTopic
 	resp, err := s.client.Delete(ctx, u, &result)
@@ -188,8 +188,8 @@ type readMessagesInTopicOptions struct {
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/save-read-topic
-func (s *TopicsService) ReadMessagesInTopic(ctx context.Context, topicId, postId int) (*Unread, *Response, error) {
-	u, err := AddQueries("bookmarks", &readMessagesInTopicOptions{topicId, postId})
+func (s *TopicsService) ReadMessagesInTopic(ctx context.Context, topicId, postId int) (*Unread, *shared.Response, error) {
+	u, err := internal.AddQueries("bookmarks", &readMessagesInTopicOptions{topicId, postId})
 	if err != nil {
 		return nil, nil, err
 	}
@@ -204,7 +204,7 @@ func (s *TopicsService) ReadMessagesInTopic(ctx context.Context, topicId, postId
 }
 
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-topics
-func (s *TopicsService) GetMyTopics(ctx context.Context) ([]*FavoriteTopicWithUnread, *Response, error) {
+func (s *TopicsService) GetMyTopics(ctx context.Context) ([]*FavoriteTopicWithUnread, *shared.Response, error) {
 	u := "topics"
 	var result *struct {
 		Topics []*FavoriteTopicWithUnread `json:"topics"`
