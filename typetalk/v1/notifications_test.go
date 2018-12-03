@@ -18,7 +18,7 @@ func Test_NotificationsService_GetNotificationList_should_get_some_notifications
 	b, _ := ioutil.ReadFile(fixturesPath + "get-notification-list.json")
 	mux.HandleFunc("/notifications",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -39,7 +39,7 @@ func Test_NotificationsService_GetNotificationCount_should_get_notification_coun
 	b, _ := ioutil.ReadFile(fixturesPath + "get-notification-count.json")
 	mux.HandleFunc("/notifications/status",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 
@@ -60,7 +60,7 @@ func Test_NotificationsService_ReadNotification_should_read_notification(t *test
 	b, _ := ioutil.ReadFile(fixturesPath + "read-notification.json")
 	mux.HandleFunc("/notifications",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "PUT")
+			TestMethod(t, r, http.MethodPut)
 			fmt.Fprint(w, string(b))
 		})
 

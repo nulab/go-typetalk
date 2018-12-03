@@ -18,7 +18,7 @@ func Test_NotificationsService_GetNotificationCount_should_get_notification_coun
 	b, _ := ioutil.ReadFile(fixturesPath + "get-notification-count.json")
 	mux.HandleFunc("/notifications/status",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			fmt.Fprint(w, string(b))
 		})
 

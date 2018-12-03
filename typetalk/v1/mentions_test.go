@@ -18,7 +18,7 @@ func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {
 	mentionId := 1
 	b, _ := ioutil.ReadFile(fixturesPath + "read-mention.json")
 	mux.HandleFunc(fmt.Sprintf("/mentions/%d", mentionId), func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "PUT")
+		TestMethod(t, r, http.MethodPut)
 		fmt.Fprint(w, string(b))
 	})
 
@@ -40,7 +40,7 @@ func Test_MentionsService_GetMentionList_should_get_some_mentions(t *testing.T) 
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-mention-list.json")
 	mux.HandleFunc("/mentions", func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "GET")
+		TestMethod(t, r, http.MethodGet)
 		TestQueryValues(t, r, Values{
 			"from":   10,
 			"unread": true,

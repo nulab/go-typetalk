@@ -18,7 +18,7 @@ func Test_TopicsService_GetMyTopics_should_get_some_topics(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-my-topics.json")
 	mux.HandleFunc("/topics",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"spaceKey": "qwerty",
 			})
@@ -44,7 +44,7 @@ func Test_MessagesService_GetMyDirectMessageTopics_should_get_some_direct_messag
 	b, _ := ioutil.ReadFile(fixturesPath + "get-dm-topics.json")
 	mux.HandleFunc("/messages",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"spaceKey": "qwerty",
 			})

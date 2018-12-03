@@ -18,7 +18,7 @@ func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-receive.json")
 	mux.HandleFunc("/likes/receive",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"from": 1,
 			})
@@ -44,7 +44,7 @@ func Test_LikesService_GetLikesGive_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-give.json")
 	mux.HandleFunc("/likes/give",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"from": 1,
 			})
@@ -70,7 +70,7 @@ func Test_LikesService_GetLikesDiscover_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "get-likes-discover.json")
 	mux.HandleFunc("/likes/discover",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "GET")
+			TestMethod(t, r, http.MethodGet)
 			TestQueryValues(t, r, Values{
 				"from": 1,
 			})
@@ -96,7 +96,7 @@ func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 	b, _ := ioutil.ReadFile(fixturesPath + "read-received-likes.json")
 	mux.HandleFunc("/likes/receive/bookmark/save",
 		func(w http.ResponseWriter, r *http.Request) {
-			TestMethod(t, r, "POST")
+			TestMethod(t, r, http.MethodPost)
 			TestFormValues(t, r, Values{
 				"likeId": 1,
 			})

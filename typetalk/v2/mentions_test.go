@@ -17,7 +17,7 @@ func Test_MentionsService_GetMentionList_should_get_some_mentions(t *testing.T) 
 	defer teardown()
 	b, _ := ioutil.ReadFile(fixturesPath + "get-mention-list.json")
 	mux.HandleFunc("/mentions", func(w http.ResponseWriter, r *http.Request) {
-		TestMethod(t, r, "GET")
+		TestMethod(t, r, http.MethodGet)
 		TestQueryValues(t, r, Values{
 			"spaceKey": "qwerty",
 			"from":     10,

@@ -95,7 +95,7 @@ func (c *ClientCore) NewMultipartRequest(urlStr string, values map[string]io.Rea
 		return nil, err
 	}
 	resolvedURL := c.BaseURL.ResolveReference(rel)
-	req, err := http.NewRequest("POST", resolvedURL.String(), &buffer)
+	req, err := http.NewRequest(http.MethodPost, resolvedURL.String(), &buffer)
 	if err != nil {
 		return nil, err
 	}
@@ -116,7 +116,7 @@ func (c *ClientCore) NewUploadRequest(urlStr string, reader io.Reader, size int6
 	}
 
 	resolvedURL := c.BaseURL.ResolveReference(rel)
-	req, err := http.NewRequest("POST", resolvedURL.String(), reader)
+	req, err := http.NewRequest(http.MethodPost, resolvedURL.String(), reader)
 	if err != nil {
 		return nil, err
 	}
@@ -191,19 +191,19 @@ func (c *ClientCore) Call(ctx context.Context, method string, url string, body i
 }
 
 func (c *ClientCore) Post(ctx context.Context, url string, body interface{}, v interface{}) (*shared.Response, error) {
-	return c.Call(ctx, "POST", url, body, v)
+	return c.Call(ctx, http.MethodPost, url, body, v)
 }
 
 func (c *ClientCore) Put(ctx context.Context, url string, body interface{}, v interface{}) (*shared.Response, error) {
-	return c.Call(ctx, "PUT", url, body, v)
+	return c.Call(ctx, http.MethodPut, url, body, v)
 }
 
 func (c *ClientCore) Delete(ctx context.Context, url string, v interface{}) (*shared.Response, error) {
-	return c.Call(ctx, "DELETE", url, nil, v)
+	return c.Call(ctx, http.MethodDelete, url, nil, v)
 }
 
 func (c *ClientCore) Get(ctx context.Context, url string, v interface{}) (*shared.Response, error) {
-	return c.Call(ctx, "GET", url, nil, v)
+	return c.Call(ctx, http.MethodGet, url, nil, v)
 }
 
 func CheckResponse(r *http.Response) error {
