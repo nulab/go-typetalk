@@ -1,4 +1,4 @@
-package typetalk_token
+package main
 
 import (
 	"context"
@@ -10,7 +10,7 @@ func main() {
 	client := v1.NewClient(nil)
 	client.SetTypetalkToken("yourTypetalkToken")
 	ctx := context.Background()
-	topicId := 1
+	topicID := 1
 	message := "Hello"
-	client.Messages.PostMessage(ctx, topicId, message, nil)
+	client.Messages.PostMessage(ctx, topicID, message, nil)
 }

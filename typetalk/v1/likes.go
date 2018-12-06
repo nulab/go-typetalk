@@ -39,6 +39,8 @@ type GetLikesOptions struct {
 	From int `json:"from,omitempty"`
 }
 
+// GetLikesReceive fetches received likes list.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-receive/
 func (s *LikesService) GetLikesReceive(ctx context.Context, opt *GetLikesOptions) ([]*ReceiveLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/receive", opt)
@@ -55,6 +57,8 @@ func (s *LikesService) GetLikesReceive(ctx context.Context, opt *GetLikesOptions
 	return result.LikedPosts, resp, nil
 }
 
+// GetLikesGive fetches given likes list. Those likes are given by your account.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-give/
 func (s *LikesService) GetLikesGive(ctx context.Context, opt *GetLikesOptions) ([]*GiveLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/give", opt)
@@ -71,6 +75,8 @@ func (s *LikesService) GetLikesGive(ctx context.Context, opt *GetLikesOptions) (
 	return result.GiveLikedPost, resp, nil
 }
 
+// GetLikesDiscover fetches given likes list. Those likes are given by all the accounts.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-discover/
 func (s *LikesService) GetLikesDiscover(ctx context.Context, opt *GetLikesOptions) ([]*DiscoverLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/discover", opt)
@@ -88,7 +94,7 @@ func (s *LikesService) GetLikesDiscover(ctx context.Context, opt *GetLikesOption
 }
 
 type readReceivedLikesOptions struct {
-	LikeId int `json:"likeId,omitempty"`
+	LikeID int `json:"likeId,omitempty"`
 }
 
 type ReadReceivedLikesResult struct {
@@ -100,12 +106,14 @@ type ReadReceivedLikesResult struct {
 	} `json:"like"`
 }
 
+// ReadReceivedLikes marks likes as read.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/save-read-likes/
-func (s *LikesService) ReadReceivedLikes(ctx context.Context, likeId int) (*ReadReceivedLikesResult, *shared.Response, error) {
+func (s *LikesService) ReadReceivedLikes(ctx context.Context, likeID int) (*ReadReceivedLikesResult, *shared.Response, error) {
 	u := "likes/receive/bookmark/save"
 
 	var result *ReadReceivedLikesResult
-	resp, err := s.client.Post(ctx, u, &readReceivedLikesOptions{likeId}, result)
+	resp, err := s.client.Post(ctx, u, &readReceivedLikesOptions{likeID}, result)
 	if err != nil {
 		return nil, resp, err
 	}

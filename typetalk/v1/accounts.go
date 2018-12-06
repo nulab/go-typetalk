@@ -19,7 +19,7 @@ type Account struct {
 	ImageURL       string     `json:"imageUrl"`
 	IsBot          bool       `json:"isBot"`
 	Lang           string     `json:"lang"`
-	TimezoneId     string     `json:"timezoneId"`
+	TimezoneID     string     `json:"timezoneId"`
 	CreatedAt      *time.Time `json:"createdAt"`
 	UpdatedAt      *time.Time `json:"updatedAt"`
 	ImageUpdatedAt *time.Time `json:"imageUpdatedAt"`
@@ -57,6 +57,8 @@ type OnlineStatus struct {
 	Accounts []*AccountStatus `json:"accounts"`
 }
 
+// GetMyProfile fetches the user's account information.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-profile
 func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *shared.Response, error) {
 	u := "profile"
@@ -68,6 +70,8 @@ func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *shared
 	return result, resp, nil
 }
 
+// GetFriendProfile fetches other user's account information.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-friend-profile
 func (s *AccountsService) GetFriendProfile(ctx context.Context, accountName string) (*Profile, *shared.Response, error) {
 	u := fmt.Sprintf("profile/%s", accountName)
@@ -85,6 +89,8 @@ type GetMyFriendsOptions struct {
 	Count  int    `json:"count,omitempty"`
 }
 
+// GetMyFriends searches other user who belong to a topic in common.
+//
 // Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
 func (s *AccountsService) GetMyFriends(ctx context.Context, opt *GetMyFriendsOptions) (*Friends, *shared.Response, error) {
 	u, err := internal.AddQueries("search/friends", opt)
@@ -103,6 +109,8 @@ type searchAccountsOptions struct {
 	NameOrEmailAddress string `json:"nameOrEmailAddress,omitempty"`
 }
 
+// SearchAccounts searches acocunts by name or mail address.
+//
 // Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
 func (s *AccountsService) SearchAccounts(ctx context.Context, nameOrEmailAddress string) (*Account, *shared.Response, error) {
 	u, err := internal.AddQueries("search/accounts", &searchAccountsOptions{nameOrEmailAddress})
@@ -121,6 +129,8 @@ type getOnlineStatusOptions struct {
 	AccountIds []int `json:"accountIds[%d],omitempty"`
 }
 
+// GetOnlineStatus fetches an user's online status.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-online-status
 func (s *AccountsService) GetOnlineStatus(ctx context.Context, accountIds ...int) (*OnlineStatus, *shared.Response, error) {
 	u, err := internal.AddQueries("accounts/status", &getOnlineStatusOptions{accountIds})

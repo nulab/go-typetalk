@@ -86,6 +86,8 @@ type Scheduled struct {
 	End     string `json:"end"`
 }
 
+// GetNotificationCount fetches notification counts.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-notification-status
 func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*NotificationCount, *shared.Response, error) {
 	u := "notifications/status"
@@ -97,6 +99,8 @@ func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*Notif
 	return result, resp, nil
 }
 
+// ReadNotification marks notifications as read.
+//
 // Deprecated: Use ReadNotification in github.com/nulab/go-typetalk/typetalk/v3
 func (s *NotificationsService) ReadNotification(ctx context.Context) (*ReadNotificationResult, *shared.Response, error) {
 	u := "notifications"

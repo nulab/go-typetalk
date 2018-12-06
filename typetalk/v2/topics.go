@@ -45,6 +45,8 @@ type DirectMessageTopic struct {
 	DirectMessage *DirectMessage `json:"directMessage"`
 }
 
+// GetMyTopics fetches topics list.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-topics/
 func (s *TopicsService) GetMyTopics(ctx context.Context, spaceKey string) ([]*FavoriteTopicWithUnread, *shared.Response, error) {
 	u, err := internal.AddQueries("topics", &getMyTopicsOptions{spaceKey})
@@ -61,6 +63,8 @@ func (s *TopicsService) GetMyTopics(ctx context.Context, spaceKey string) ([]*Fa
 	return result.Topics, resp, nil
 }
 
+// GetMyDirectMessageTopics fetches direct message topics list.
+//
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-dm-topics
 func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context, spaceKey string) ([]*DirectMessageTopic, *shared.Response, error) {
 	u, err := internal.AddQueries("messages", &getMyTopicsOptions{spaceKey})

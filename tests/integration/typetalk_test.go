@@ -23,8 +23,8 @@ var (
 	clientUsingTypetalkTokenV1 *v1.Client
 	clientUsingTypetalkTokenV2 *v2.Client
 	clientUsingTypetalkTokenV3 *v3.Client
-	topicId                    int
-	postId                     int
+	topicID                    int
+	postID                     int
 	spaceKey                   string
 )
 
@@ -37,20 +37,20 @@ type AccessToken struct {
 
 func init() {
 	spaceKey = os.Getenv("TT_SPACE_KEY")
-	clientId := os.Getenv("TT_CLIENT_ID")
+	clientID := os.Getenv("TT_CLIENT_ID")
 	clientSecret := os.Getenv("TT_CLIENT_SECRET")
 	if v, err := strconv.Atoi(os.Getenv("TT_TOPIC_ID")); err == nil {
-		topicId = v
+		topicID = v
 	}
 	if v, err := strconv.Atoi(os.Getenv("TT_POST_ID")); err == nil {
-		postId = v
+		postID = v
 	}
-	if clientId == "" || clientSecret == "" {
+	if clientID == "" || clientSecret == "" {
 		print("!!! Integration test using OAuth2 requires client_id and client_secret. !!!\n\n")
 		clientV1 = v1.NewClient(nil)
 	} else {
 		form := url.Values{}
-		form.Add("client_id", clientId)
+		form.Add("client_id", clientID)
 		form.Add("client_secret", clientSecret)
 		form.Add("grant_type", "client_credentials")
 		form.Add("scope", "topic.read,topic.post,topic.write,topic.delete,my")
