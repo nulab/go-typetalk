@@ -1,8 +1,6 @@
 language: go
 go:
-  - 1.10.1
-before_install:
-  - go get github.com/mattn/goveralls
+  - 1.11.x
 script:
-  - go test -v -race -covermode=atomic -coverprofile=coverage.out ./typetalk/...
-  - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service travis-ci
+  - make test
+  - make cover
