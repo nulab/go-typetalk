@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+current_version=$(gobump show -r ./typetalk/internal)
+
+echo "current version: $current_version"
+read -p "input next version: " next_version
+
+echo "--> Bumping version $next_version"
+gobump set $next_version -w ./typetalk/internal
+echo "--> Generating CHANGELOG"
+ghch -w -N "v$next_version"
+
+git add ./typetalk/internal/internal.go CHANGELOG.md
+git commit -m "Bump version v$next_version"
+git tag v$next_version
+git push && git push --tags
