@@ -49,7 +49,7 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicID int, fi
 	return attachmentFile, resp, nil
 }
 
-// DownloadAttachmentFile downloads attachemnt file.
+// DownloadAttachmentFile downloads attachment file.
 //
 // Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/download-attachment
 func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicID, postID, attachmentID int, filename string) (io.ReadCloser, error) {
