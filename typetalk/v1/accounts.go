@@ -9,8 +9,10 @@ import (
 	"github.com/nulab/go-typetalk/typetalk/shared"
 )
 
+// AccountsService handles communication with the account related API.
 type AccountsService service
 
+// Account represents Typetalk account information.
 type Account struct {
 	ID             int        `json:"id"`
 	Name           string     `json:"name"`
@@ -25,19 +27,23 @@ type Account struct {
 	ImageUpdatedAt *time.Time `json:"imageUpdatedAt"`
 }
 
+// Status represents online status of the user.
 type Status struct {
 	Presence *string     `json:"presence"`
 	Web      interface{} `json:"web"`
 	Mobile   interface{} `json:"mobile"`
 }
 
+// AccountStatus contains account and status information.
 type AccountStatus struct {
 	Account *Account `json:"account"`
 	Status  *Status  `json:"status"`
 }
 
+// Profile is alias for AccountStatus.
 type Profile AccountStatus
 
+// MyProfile represents the user's information.
 type MyProfile struct {
 	Account *Account `json:"account"`
 	Lang    string   `json:"lang"`
@@ -48,11 +54,13 @@ type MyProfile struct {
 	} `json:"post"`
 }
 
+// Friends represents accounts search result.
 type Friends struct {
 	Count    int              `json:"count"`
 	Accounts []*AccountStatus `json:"accounts"`
 }
 
+// OnlineStatus contains accounts information.
 type OnlineStatus struct {
 	Accounts []*AccountStatus `json:"accounts"`
 }
@@ -83,6 +91,7 @@ func (s *AccountsService) GetFriendProfile(ctx context.Context, accountName stri
 	return result, resp, nil
 }
 
+// GetMyFriendsOptions represents request parameters for "search/friends" API.
 type GetMyFriendsOptions struct {
 	Q      string `json:"q,omitempty"`
 	Offset int    `json:"offset,omitempty"`
