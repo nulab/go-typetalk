@@ -3,7 +3,7 @@ package v3
 import (
 	"context"
 
-	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/shared"
 )
 
 type NotificationsService service

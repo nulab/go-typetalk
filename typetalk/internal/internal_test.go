@@ -9,7 +9,7 @@ import (
 
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/shared"
+	. "github.com/nulab/go-typetalk/v3/typetalk/shared"
 )
 
 func Test_CheckResponse_should_return_invalid_request_error(t *testing.T) {

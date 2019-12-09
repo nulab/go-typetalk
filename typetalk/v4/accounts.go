@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/nulab/go-typetalk/typetalk/internal"
-	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/internal"
+	"github.com/nulab/go-typetalk/v3/typetalk/shared"
 )
 
 type AccountsService service

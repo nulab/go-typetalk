@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
 func Test_MessagesService_PostMessage_should_post_a_message(t *testing.T) {

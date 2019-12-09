@@ -6,7 +6,7 @@ import (
 
 	"time"
 
-	. "github.com/nulab/go-typetalk/typetalk/v2"
+	. "github.com/nulab/go-typetalk/v3/typetalk/v2"
 )
 
 func Test_V1_Messages_GetMessage_should_get_a_message(t *testing.T) {

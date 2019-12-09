@@ -5,7 +5,7 @@ import (
 
 	"time"
 
-	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/shared"
 )
 
 type NotificationsService service
@@ -101,7 +101,7 @@ func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*Notif
 
 // ReadNotification marks notifications as read.
 //
-// Deprecated: Use ReadNotification in github.com/nulab/go-typetalk/typetalk/v3
+// Deprecated: Use ReadNotification in github.com/nulab/go-typetalk/v3/typetalk/v3
 func (s *NotificationsService) ReadNotification(ctx context.Context) (*ReadNotificationResult, *shared.Response, error) {
 	u := "notifications"
 	var result *ReadNotificationResult

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nulab/go-typetalk/typetalk/internal"
-	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/internal"
+	"github.com/nulab/go-typetalk/v3/typetalk/shared"
 )
 
 type MessagesService service
@@ -187,7 +187,7 @@ func (s *MessagesService) UnlikeMessage(ctx context.Context, topicID, postID int
 
 // PostDirectMessage posts direct message.
 //
-// Deprecated: Use PostDirectMessage in github.com/nulab/go-typetalk/typetalk/v2
+// Deprecated: Use PostDirectMessage in github.com/nulab/go-typetalk/v3/typetalk/v2
 func (s *MessagesService) PostDirectMessage(ctx context.Context, accountName, message string, opt *PostMessageOptions) (*PostedMessageResult, *shared.Response, error) {
 	u := fmt.Sprintf("messages/@%s", accountName)
 	if opt == nil {
@@ -209,7 +209,7 @@ type GetMessagesOptions struct {
 
 // GetDirectMessages fetches direct messages list.
 //
-// Deprecated: Use GetDirectMessages in github.com/nulab/go-typetalk/typetalk/v2
+// Deprecated: Use GetDirectMessages in github.com/nulab/go-typetalk/v3/typetalk/v2
 func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName string, opt *GetMessagesOptions) (*DirectMessages, *shared.Response, error) {
 	u, err := internal.AddQueries(fmt.Sprintf("messages/@%s", accountName), opt)
 	if err != nil {
@@ -225,7 +225,7 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, accountName str
 
 // GetMyDirectMessageTopics fetches direct message topics list.
 //
-// Deprecated: Use GetMyDirectMessageTopics in github.com/nulab/go-typetalk/typetalk/v2
+// Deprecated: Use GetMyDirectMessageTopics in github.com/nulab/go-typetalk/v3/typetalk/v2
 func (s *MessagesService) GetMyDirectMessageTopics(ctx context.Context) ([]*DirectMessageTopic, *shared.Response, error) {
 	u := "messages"
 	var result *struct {

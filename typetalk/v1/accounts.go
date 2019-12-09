@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nulab/go-typetalk/typetalk/internal"
-	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/internal"
+	"github.com/nulab/go-typetalk/v3/typetalk/shared"
 )
 
 // AccountsService handles communication with the account related API.
@@ -100,7 +100,7 @@ type GetMyFriendsOptions struct {
 
 // GetMyFriends searches other user who belong to a topic in common.
 //
-// Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
+// Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/v3/typetalk/v4
 func (s *AccountsService) GetMyFriends(ctx context.Context, opt *GetMyFriendsOptions) (*Friends, *shared.Response, error) {
 	u, err := internal.AddQueries("search/friends", opt)
 	if err != nil {
@@ -120,7 +120,7 @@ type searchAccountsOptions struct {
 
 // SearchAccounts searches acocunts by name or mail address.
 //
-// Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/typetalk/v4
+// Deprecated: Use GetMyFrieands in github.com/nulab/go-typetalk/v3/typetalk/v4
 func (s *AccountsService) SearchAccounts(ctx context.Context, nameOrEmailAddress string) (*Account, *shared.Response, error) {
 	u, err := internal.AddQueries("search/accounts", &searchAccountsOptions{nameOrEmailAddress})
 	if err != nil {

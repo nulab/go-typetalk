@@ -9,10 +9,10 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/nulab/go-typetalk/typetalk/shared"
-	"github.com/nulab/go-typetalk/typetalk/v1"
-	"github.com/nulab/go-typetalk/typetalk/v2"
-	"github.com/nulab/go-typetalk/typetalk/v3"
+	v1 "github.com/nulab/go-typetalk/v3/typetalk/v1"
+	v2 "github.com/nulab/go-typetalk/v3/typetalk/v2"
+	v3 "github.com/nulab/go-typetalk/v3/typetalk/v3"
+	"github.com/nulab/go-typetalk/v3/typetalk/shared"
 	"golang.org/x/oauth2"
 )
 
