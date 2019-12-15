@@ -1,5 +1,11 @@
 # Changelog
 
+## [v2.1.1](https://github.com/nulab/go-typetalk/compare/v2.1.0...v2.1.1) (2019-12-15)
+
+* Updated golint path [#56](https://github.com/nulab/go-typetalk/pull/56) ([is2ei](https://github.com/is2ei))
+* Added comments to accounts.go [#52](https://github.com/nulab/go-typetalk/pull/52) ([is2ei](https://github.com/is2ei))
+* Fix typo [#51](https://github.com/nulab/go-typetalk/pull/51) ([is2ei](https://github.com/is2ei))
+
 ## [v2.1.0](https://github.com/nulab/go-typetalk/compare/2.0.3...v2.1.0) (2018-12-08)
 
 * update go version used in CI to go1.11 (#49) [#50](https://github.com/nulab/go-typetalk/pull/50) ([vvatanabe](https://github.com/vvatanabe))
