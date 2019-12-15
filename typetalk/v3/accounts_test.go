@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
 func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {

@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
 func Test_MentionsService_ReadMention_should_read_a_mention(t *testing.T) {

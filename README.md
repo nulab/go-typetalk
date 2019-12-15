@@ -15,29 +15,24 @@ go-typetalk is a GO client library for accessing the [Typetalk API](http://devel
 
 To use this library, you must have a valid [client id and client secret](https://developer.nulab-inc.com/docs/typetalk/auth#oauth2) provided by Typetalk and register a new client application. Or you can use the [Typetalk Token](https://developer.nulab-inc.com/docs/typetalk/auth#tttoken).
 
-## Installation
-
-This package can be installed with the go get command:
-
-```
-$ go get github.com/nulab/go-typetalk
-```
-
 ## Usage
 
 ### Import
 
 Use v1:
 ``` go
-import "github.com/nulab/go-typetalk/typetalk/v1"
+import "github.com/nulab/go-typetalk/v3/typetalk/v1" // with go modules enabled (GO111MODULE=on or outside GOPATH)
+import "github.com/nulab/go-typetalk/typetalk/v1" // with go modules disabled
 ```
 Use v2:
 ``` go
-import "github.com/nulab/go-typetalk/typetalk/v2"
+import "github.com/nulab/go-typetalk/v3/typetalk/v2" // with go modules enabled (GO111MODULE=on or outside GOPATH)
+import "github.com/nulab/go-typetalk/typetalk/v2" // with go modules disabled
 ```
 Use v3:
 ``` go
-import "github.com/nulab/go-typetalk/typetalk/v3"
+import "github.com/nulab/go-typetalk/v3/typetalk/v3" // with go modules enabled (GO111MODULE=on or outside GOPATH)
+import "github.com/nulab/go-typetalk/typetalk/v3" // with go modules disabled
 ```
 
 ### Access APIs using Typetalk Token

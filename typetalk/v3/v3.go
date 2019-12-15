@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/nulab/go-typetalk/typetalk/internal"
+	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
 const (
