@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	. "github.com/nulab/go-typetalk/typetalk/internal"
+	. "github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
 func Test_AccountsService_GetMyProfile_should_get_a_profile(t *testing.T) {
