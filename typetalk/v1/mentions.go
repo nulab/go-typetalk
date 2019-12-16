@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
 type MentionsService service
@@ -39,7 +39,7 @@ type GetMentionListOptions struct {
 
 // GetMentionList fetches mentions list.
 //
-// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-mentions
+// Deprecated: Use GetMentionList v2
 func (s *MentionsService) GetMentionList(ctx context.Context, opt *GetMentionListOptions) ([]*Mention, *shared.Response, error) {
 	u, err := internal.AddQueries("mentions", opt)
 	if err != nil {
