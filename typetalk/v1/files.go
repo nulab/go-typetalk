@@ -23,7 +23,7 @@ type AttachmentFile struct {
 
 // UploadAttachmentFile uploads attachment file.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/upload-attachment
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/upload-attachment
 func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicID int, file *os.File) (*AttachmentFile, *shared.Response, error) {
 	u := fmt.Sprintf("topics/%v/attachments", topicID)
 	stat, err := file.Stat()
@@ -51,7 +51,7 @@ func (s *FilesService) UploadAttachmentFile(ctx context.Context, topicID int, fi
 
 // DownloadAttachmentFile downloads attachment file.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/download-attachment
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/download-attachment
 func (s *FilesService) DownloadAttachmentFile(ctx context.Context, topicID, postID, attachmentID int, filename string) (io.ReadCloser, error) {
 	u := fmt.Sprintf("topics/%d/posts/%d/attachments/%d/%s", topicID, postID, attachmentID, filename)
 

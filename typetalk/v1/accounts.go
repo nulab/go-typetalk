@@ -67,7 +67,7 @@ type OnlineStatus struct {
 
 // GetMyProfile fetches the user's account information.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-profile
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-profile
 func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *shared.Response, error) {
 	u := "profile"
 	var result *MyProfile
@@ -80,7 +80,7 @@ func (s *AccountsService) GetMyProfile(ctx context.Context) (*MyProfile, *shared
 
 // GetFriendProfile fetches other user's account information.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-friend-profile
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-friend-profile
 func (s *AccountsService) GetFriendProfile(ctx context.Context, accountName string) (*Profile, *shared.Response, error) {
 	u := fmt.Sprintf("profile/%s", accountName)
 	var result *Profile
@@ -140,7 +140,7 @@ type getOnlineStatusOptions struct {
 
 // GetOnlineStatus fetches an user's online status.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-online-status
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-online-status
 func (s *AccountsService) GetOnlineStatus(ctx context.Context, accountIds ...int) (*OnlineStatus, *shared.Response, error) {
 	u, err := internal.AddQueries("accounts/status", &getOnlineStatusOptions{accountIds})
 	if err != nil {

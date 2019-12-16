@@ -19,7 +19,7 @@ type Mention struct {
 
 // ReadMention marks a mention as read.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/save-read-mention
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/save-read-mention
 func (s *MentionsService) ReadMention(ctx context.Context, mentionID int) (*Mention, *shared.Response, error) {
 	u := fmt.Sprintf("mentions/%d", mentionID)
 	var result *struct {
@@ -39,7 +39,7 @@ type GetMentionListOptions struct {
 
 // GetMentionList fetches mentions list.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-mentions
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-mentions
 func (s *MentionsService) GetMentionList(ctx context.Context, opt *GetMentionListOptions) ([]*Mention, *shared.Response, error) {
 	u, err := internal.AddQueries("mentions", opt)
 	if err != nil {

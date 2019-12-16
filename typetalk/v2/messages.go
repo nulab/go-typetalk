@@ -76,7 +76,7 @@ type GetMessagesOptions struct {
 
 // GetDirectMessages fetches direct messages.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-direct-messages
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/get-direct-messages
 func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accountName string, opt *GetMessagesOptions) (*DirectMessages, *shared.Response, error) {
 	u, err := internal.AddQueries(fmt.Sprintf("spaces/%s/messages/@%s", spaceKey, accountName), opt)
 	if err != nil {
@@ -92,7 +92,7 @@ func (s *MessagesService) GetDirectMessages(ctx context.Context, spaceKey, accou
 
 // PostDirectMessage posts direct message.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/post-direct-message
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/post-direct-message
 func (s *MessagesService) PostDirectMessage(ctx context.Context, spaceKey, accountName, message string, opt *PostMessageOptions) (*PostedMessageResult, *shared.Response, error) {
 	u := fmt.Sprintf("spaces/%s/messages/@%s", spaceKey, accountName)
 	if opt == nil {
@@ -108,7 +108,7 @@ func (s *MessagesService) PostDirectMessage(ctx context.Context, spaceKey, accou
 
 // SearchMessages searches messages.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/search-messages/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/search-messages/
 func (s *MessagesService) SearchMessages(ctx context.Context, spaceKey, q string, opt *SearchMessagesOptions) (*SearchMessagesResult, *shared.Response, error) {
 	u, err := internal.AddQueries("search/posts", &searchMessagesOptions{SearchMessagesOptions: opt, SpaceKey: spaceKey, Q: q})
 	if err != nil {

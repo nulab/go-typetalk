@@ -50,7 +50,7 @@ type getMyFriendsOptions struct {
 
 // GetMyFriends searches accounts.
 //
-// https://developer.nulab-inc.com/docs/typetalk/api/4/get-friends
+// https://developer.nulab.com/docs/typetalk/api/4/get-friends
 func (s *AccountsService) GetMyFriends(ctx context.Context, spaceKey, q string, opt *GetMyFriendsOptions) (*Friends, *shared.Response, error) {
 	u, err := internal.AddQueries("search/friends", &getMyFriendsOptions{GetMyFriendsOptions: opt, SpaceKey: spaceKey, Q: q})
 	if err != nil {
