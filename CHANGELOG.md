@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.0.0](https://github.com/nulab/go-typetalk/compare/v2.1.1...v3.0.0) (2019-12-16)
+
+* Support Go Modules [#57](https://github.com/nulab/go-typetalk/pull/57) ([is2ei](https://github.com/is2ei))
+
 ## [v2.1.1](https://github.com/nulab/go-typetalk/compare/v2.1.0...v2.1.1) (2019-12-15)
 
 * Updated golint path [#56](https://github.com/nulab/go-typetalk/pull/56) ([is2ei](https://github.com/is2ei))
