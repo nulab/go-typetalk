@@ -45,7 +45,7 @@ type NotificationCount struct {
 
 // GetNotificationList fetches notifications list.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-notifications
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-notifications
 func (s *NotificationsService) GetNotificationList(ctx context.Context) (*NotificationList, *shared.Response, error) {
 	u := "notifications"
 	var result *NotificationList
@@ -58,7 +58,7 @@ func (s *NotificationsService) GetNotificationList(ctx context.Context) (*Notifi
 
 // GetNotificationCount fetches notification counts.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-notification-status
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-notification-status
 func (s *NotificationsService) GetNotificationCount(ctx context.Context) (*NotificationCount, *shared.Response, error) {
 	u := "notifications/status"
 	var result *NotificationCount

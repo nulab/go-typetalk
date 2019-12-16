@@ -98,7 +98,7 @@ type getLikesOptions struct {
 
 // GetLikesReceive fetches received likes list.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-receive/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/get-likes-receive/
 func (s *LikesService) GetLikesReceive(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*ReceiveLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/receive", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
 	if err != nil {
@@ -116,7 +116,7 @@ func (s *LikesService) GetLikesReceive(ctx context.Context, spaceKey string, opt
 
 // GetLikesGive fetches given likes list. Those likes are given by your accounts.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-give/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/get-likes-give/
 func (s *LikesService) GetLikesGive(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*GiveLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/give", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
 	if err != nil {
@@ -134,7 +134,7 @@ func (s *LikesService) GetLikesGive(ctx context.Context, spaceKey string, opt *G
 
 // GetLikesDiscover fetches given likes list. Those likes are given by other accounts.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-likes-discover/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/get-likes-discover/
 func (s *LikesService) GetLikesDiscover(ctx context.Context, spaceKey string, opt *GetLikesOptions) ([]*DiscoverLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/discover", &getLikesOptions{GetLikesOptions: opt, SpaceKey: spaceKey})
 	if err != nil {
@@ -170,7 +170,7 @@ type ReadReceivedLikesResult struct {
 
 // ReadReceivedLikes marks likes as read.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/save-read-likes/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/save-read-likes/
 func (s *LikesService) ReadReceivedLikes(ctx context.Context, spaceKey string, opt *ReadReceivedLikesOptions) (*ReadReceivedLikesResult, *shared.Response, error) {
 	u := "likes/receive/bookmark/save"
 	var result *ReadReceivedLikesResult

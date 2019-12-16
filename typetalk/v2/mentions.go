@@ -28,7 +28,7 @@ type getMentionListOptions struct {
 
 // GetMentionList fetches mentions list.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/2/get-mentions
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/2/get-mentions
 func (s *MentionsService) GetMentionList(ctx context.Context, spaceKey string, opt *GetMentionListOptions) ([]*Mention, *shared.Response, error) {
 	u, err := internal.AddQueries("mentions", &getMentionListOptions{opt, spaceKey})
 	if err != nil {

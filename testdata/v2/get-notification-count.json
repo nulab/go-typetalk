@@ -6,7 +6,7 @@
           "key": "xxxxxxxxx",
           "name": "Awesome Tech Inc.",
           "enabled": true,
-          "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+          "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
         },
         "myRole": "ADMIN",
         "isPaymentAdmin": true,
@@ -34,7 +34,7 @@
         "key": "xxxxxxxxx",
         "name": "Awesome Tech Inc.",
         "enabled": true,
-        "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+        "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
       },
       "access": {
         "unopened": 0,
@@ -56,7 +56,7 @@
           "key": "xxxxxxxxx",
           "name": "Example Organization",
           "enabled": true,
-          "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+          "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
         },
         "myRole": "ADMIN",
         "isPaymentAdmin": true,
@@ -87,7 +87,7 @@
         "key": "xxxxxxxxx",
         "name": "Example Organization",
         "enabled": true,
-        "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+        "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
       },
       "access": {
         "unopened": 0,
@@ -109,7 +109,7 @@
           "key": "xxxxxxxxx",
           "name": "Fabulous Tech Inc.",
           "enabled": true,
-          "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+          "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
         },
         "myRole": "ADMIN",
         "isPaymentAdmin": true,
@@ -137,7 +137,7 @@
         "key": "xxxxxxxxx",
         "name": "Fabulous Tech Inc.",
         "enabled": true,
-        "imageUrl": "https://dev.apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
+        "imageUrl": "https://apps.nulab-inc.com/spaces/xxxxxxxxx/photo/large"
       },
       "access": {
         "unopened": 0,

@@ -30,7 +30,7 @@ type readNotificationOptions struct {
 
 // ReadNotification marks notifications as read.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/ja/docs/typetalk/api/3/open-notification
+// Typetalk API docs: https://developer.nulab.com/ja/docs/typetalk/api/3/open-notification
 func (s *NotificationsService) ReadNotification(ctx context.Context, spaceKey string) (*ReadNotificationResult, *shared.Response, error) {
 	u := "notifications"
 	var result *ReadNotificationResult

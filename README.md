@@ -9,11 +9,11 @@ go-typetalk
 [coveralls]: https://coveralls.io/github/nulab/go-typetalk?branch=master
 [godocs]: http://godoc.org/github.com/nulab/go-typetalk
 
-go-typetalk is a GO client library for accessing the [Typetalk API](http://developer.nulab-inc.com/docs/typetalk).
+go-typetalk is a GO client library for accessing the [Typetalk API](https://developer.nulab.com/docs/typetalk).
 
 ## Prerequisite
 
-To use this library, you must have a valid [client id and client secret](https://developer.nulab-inc.com/docs/typetalk/auth#oauth2) provided by Typetalk and register a new client application. Or you can use the [Typetalk Token](https://developer.nulab-inc.com/docs/typetalk/auth#tttoken).
+To use this library, you must have a valid [client id and client secret](https://developer.nulab.com/docs/typetalk/auth#oauth2) provided by Typetalk and register a new client application. Or you can use the [Typetalk Token](https://developer.nulab.com/docs/typetalk/auth#tttoken).
 
 ## Usage
 

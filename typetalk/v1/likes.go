@@ -41,7 +41,7 @@ type GetLikesOptions struct {
 
 // GetLikesReceive fetches received likes list.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-receive/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-likes-receive/
 func (s *LikesService) GetLikesReceive(ctx context.Context, opt *GetLikesOptions) ([]*ReceiveLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/receive", opt)
 	if err != nil {
@@ -59,7 +59,7 @@ func (s *LikesService) GetLikesReceive(ctx context.Context, opt *GetLikesOptions
 
 // GetLikesGive fetches given likes list. Those likes are given by your account.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-give/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-likes-give/
 func (s *LikesService) GetLikesGive(ctx context.Context, opt *GetLikesOptions) ([]*GiveLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/give", opt)
 	if err != nil {
@@ -77,7 +77,7 @@ func (s *LikesService) GetLikesGive(ctx context.Context, opt *GetLikesOptions) (
 
 // GetLikesDiscover fetches given likes list. Those likes are given by all the accounts.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/get-likes-discover/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-likes-discover/
 func (s *LikesService) GetLikesDiscover(ctx context.Context, opt *GetLikesOptions) ([]*DiscoverLikedPost, *shared.Response, error) {
 	u, err := internal.AddQueries("likes/discover", opt)
 	if err != nil {
@@ -108,7 +108,7 @@ type ReadReceivedLikesResult struct {
 
 // ReadReceivedLikes marks likes as read.
 //
-// Typetalk API docs: https://developer.nulab-inc.com/docs/typetalk/api/1/save-read-likes/
+// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/save-read-likes/
 func (s *LikesService) ReadReceivedLikes(ctx context.Context, likeID int) (*ReadReceivedLikesResult, *shared.Response, error) {
 	u := "likes/receive/bookmark/save"
 
