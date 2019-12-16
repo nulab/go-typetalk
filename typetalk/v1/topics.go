@@ -223,7 +223,7 @@ func (s *TopicsService) ReadMessagesInTopic(ctx context.Context, topicID, postID
 
 // GetMyTopics fetches topics list.
 //
-// Typetalk API docs: https://developer.nulab.com/docs/typetalk/api/1/get-topics
+// Deprecated: Use GetMyTopics v2
 func (s *TopicsService) GetMyTopics(ctx context.Context) ([]*FavoriteTopicWithUnread, *shared.Response, error) {
 	u := "topics"
 	var result *struct {
