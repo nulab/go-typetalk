@@ -8,12 +8,14 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
+// FilesService handles attachment file related Typetalk API.
 type FilesService service
 
+// AttachmentFile represents uploaded file.
 type AttachmentFile struct {
 	ContentType string `json:"contentType"`
 	FileKey     string `json:"fileKey"`
