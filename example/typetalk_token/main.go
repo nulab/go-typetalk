@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/nulab/go-typetalk/typetalk/v1"
+	v1 "github.com/nulab/go-typetalk/typetalk/v1"
 	"golang.org/x/oauth2"
 )
 

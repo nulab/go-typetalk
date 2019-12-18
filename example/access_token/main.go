@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 
-	"github.com/nulab/go-typetalk/typetalk/v1"
+	v1 "github.com/nulab/go-typetalk/typetalk/v1"
 )
 
 func main() {
