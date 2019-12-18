@@ -4,37 +4,44 @@ import (
 	"context"
 	"time"
 
-	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 	"github.com/nulab/go-typetalk/typetalk/shared"
+	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
+// LikesService handles likes activity.
 type LikesService service
 
+// LikedPost represents a post and its likes.
 type LikedPost struct {
 	Post          *Post          `json:"post"`
 	Likes         []*Like        `json:"likes"`
 	DirectMessage *DirectMessage `json:"directMessage"`
 }
 
+// DiscoverLikedPost represents like in an organization.
 type DiscoverLikedPost struct {
 	*LikedPost
 }
 
+// ReceiveLikedPost represents received like.
 type ReceiveLikedPost struct {
 	*LikedPost
 }
 
+// GiveLikedPost represents given like.
 type GiveLikedPost struct {
 	*ReceiveLikedPost
 	MyLike *MyLike `json:"myLike"`
 }
 
+// MyLike represents own like.
 type MyLike struct {
 	ID        int       `json:"id"`
 	Comment   string    `json:"comment"`
 	CreatedAt time.Time `json:"createdAt"`
 }
 
+// GetLikesOptions represents parameters for likes API.
 type GetLikesOptions struct {
 	From int `json:"from,omitempty"`
 }
@@ -97,6 +104,7 @@ type readReceivedLikesOptions struct {
 	LikeID int `json:"likeId,omitempty"`
 }
 
+// ReadReceivedLikesResult represents a like that is marked as read.
 type ReadReceivedLikesResult struct {
 	Like struct {
 		Receive struct {
