@@ -9,8 +9,10 @@ import (
 	"github.com/nulab/go-typetalk/v3/typetalk/internal"
 )
 
+// MentionsService handles mentions related API.
 type MentionsService service
 
+// Mention represents a mention.
 type Mention struct {
 	ID     int        `json:"id"`
 	ReadAt *time.Time `json:"readAt"`
@@ -32,6 +34,7 @@ func (s *MentionsService) ReadMention(ctx context.Context, mentionID int) (*Ment
 	return &result.Mention, resp, nil
 }
 
+// GetMentionListOptions represents parameters for getting mentions API.
 type GetMentionListOptions struct {
 	From   int  `json:"from,omitempty"`
 	Unread bool `json:"unread,omitempty"`
