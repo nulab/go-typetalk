@@ -33,6 +33,13 @@ func Test_NotificationsService_GetNotificationCount_should_get_notification_coun
 	}
 }
 
+func Test_NotificationsService_GetNotificationCount_errorResponse(t *testing.T) {
+	_, _, err := client.Notifications.GetNotificationCount(context.Background())
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
+
 func Test_NotificationsService_ReadNotification_should_read_notification(t *testing.T) {
 	setup()
 	defer teardown()
@@ -51,5 +58,12 @@ func Test_NotificationsService_ReadNotification_should_read_notification(t *test
 	json.Unmarshal(b, &want)
 	if !reflect.DeepEqual(result, want) {
 		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
+	}
+}
+
+func Test_NotificationsService_ReadNotification_errorResponse(t *testing.T) {
+	_, _, err := client.Notifications.ReadNotification(context.Background())
+	if err == nil {
+		t.Errorf("Expected error to be returned")
 	}
 }
