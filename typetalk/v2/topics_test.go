@@ -38,6 +38,13 @@ func Test_TopicsService_GetMyTopics_should_get_some_topics(t *testing.T) {
 	}
 }
 
+func Test_TopicsService_GetMyTopics_errorResponse(t *testing.T) {
+	_, _, err := client.Topics.GetMyTopics(context.Background(), "qwerty")
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
+
 func Test_MessagesService_GetMyDirectMessageTopics_should_get_some_direct_message_topics(t *testing.T) {
 	setup()
 	defer teardown()
@@ -61,5 +68,12 @@ func Test_MessagesService_GetMyDirectMessageTopics_should_get_some_direct_messag
 	json.Unmarshal(b, &want)
 	if !reflect.DeepEqual(result, want.DirectMessageTopics) {
 		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
+	}
+}
+
+func Test_MessagesService_GetMyDirectMessageTopics_errorResponse(t *testing.T) {
+	_, _, err := client.Messages.GetMyDirectMessageTopics(context.Background(), "qwerty")
+	if err == nil {
+		t.Errorf("Expected error to be returned")
 	}
 }
