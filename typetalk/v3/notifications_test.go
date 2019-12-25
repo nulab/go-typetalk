@@ -35,3 +35,10 @@ func Test_NotificationsService_ReadNotification_should_read_notification(t *test
 		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
 	}
 }
+
+func Test_NotificationsService_ReadNotification_errorResponse(t *testing.T) {
+	_, _, err := client.Notifications.ReadNotification(context.Background(), "qwerty")
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
