@@ -32,3 +32,10 @@ func Test_NotificationsService_GetNotificationCount_should_get_notification_coun
 		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
 	}
 }
+
+func Test_NotificationService_GetNotificationCount_errorResponse(t *testing.T) {
+	_, _, err := client.Notifications.GetNotificationCount(context.Background())
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
