@@ -41,3 +41,13 @@ func Test_AccountsService_GetMyFriends_should_get_some_friends(t *testing.T) {
 		t.Errorf("returned content: got %v, want %v", result, want)
 	}
 }
+
+func Test_AccountsService_GetMyFriends_errorResponse(t *testing.T) {
+	_, _, err := client.Accounts.GetMyFriends(context.Background(), "qwerty", "hello", &GetMyFriendsOptions{
+		Offset: 10,
+		Count:  2,
+	})
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
