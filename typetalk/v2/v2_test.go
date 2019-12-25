@@ -19,6 +19,7 @@ func setup() {
 	server = httptest.NewServer(mux)
 
 	client = NewClient(nil)
+	client.SetTypetalkToken("DUMMY_TOKEN")
 	parsedURL, _ := url.Parse(server.URL)
 	client.client.BaseURL = parsedURL
 }
