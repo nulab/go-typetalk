@@ -39,6 +39,13 @@ func Test_LikesService_GetLikesReceive_should_get_Likes(t *testing.T) {
 	}
 }
 
+func Test_LikesService_GetLikesReceive_errorResponse(t *testing.T) {
+	_, _, err := client.Likes.GetLikesReceive(context.Background(), "qwerty", &GetLikesOptions{1})
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
+
 func Test_LikesService_GetLikesGive_should_get_Likes(t *testing.T) {
 	setup()
 	defer teardown()
@@ -63,6 +70,13 @@ func Test_LikesService_GetLikesGive_should_get_Likes(t *testing.T) {
 	json.Unmarshal(b, &want)
 	if !reflect.DeepEqual(result, want.LikedPosts) {
 		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
+	}
+}
+
+func Test_LikesService_GetLikesGive_errorResponse(t *testing.T) {
+	_, _, err := client.Likes.GetLikesGive(context.Background(), "qwerty", &GetLikesOptions{1})
+	if err == nil {
+		t.Errorf("Expected error to be returned")
 	}
 }
 
@@ -93,6 +107,13 @@ func Test_LikesService_GetLikesDiscover_should_get_Likes(t *testing.T) {
 	}
 }
 
+func Test_LikesService_GetLikesDiscover_errorResponse(t *testing.T) {
+	_, _, err := client.Likes.GetLikesDiscover(context.Background(), "qwerty", &GetLikesOptions{1})
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
+
 func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 	setup()
 	defer teardown()
@@ -115,5 +136,12 @@ func Test_LikesService_ReadReceivedLikes_should_get_Likes(t *testing.T) {
 	json.Unmarshal(b, want)
 	if !reflect.DeepEqual(result, want) {
 		t.Errorf("Returned result:\n result  %v,\n want %v", result, want)
+	}
+}
+
+func Test_LikesService_ReadReceivedLikes_errorResponse(t *testing.T) {
+	_, _, err := client.Likes.ReadReceivedLikes(context.Background(), "qwerty", &ReadReceivedLikesOptions{1})
+	if err == nil {
+		t.Errorf("Expected error to be returned")
 	}
 }
