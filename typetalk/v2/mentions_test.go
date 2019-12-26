@@ -38,3 +38,10 @@ func Test_MentionsService_GetMentionList_should_get_some_mentions(t *testing.T) 
 		t.Errorf("returned content: got  %v, want %v", result, want.Mentions)
 	}
 }
+
+func Test_MentionsService_GetMentionList_errorResponse(t *testing.T) {
+	_, _, err := client.Mentions.GetMentionList(context.Background(), "qwerty", &GetMentionListOptions{10, true})
+	if err == nil {
+		t.Errorf("Expected error to be returned")
+	}
+}
