@@ -27,6 +27,7 @@ type Client struct {
 	Talks         *TalksService
 	Topics        *TopicsService
 	Likes         *LikesService
+	Statuses      *StatusesService
 }
 
 func (c *Client) SetTypetalkToken(token string) *Client {
@@ -53,6 +54,6 @@ func NewClient(httpClient *http.Client) *Client {
 	c.Talks = (*TalksService)(common)
 	c.Topics = (*TopicsService)(common)
 	c.Likes = (*LikesService)(common)
-
+	c.Statuses = (*StatusesService)(common)
 	return c
 }
