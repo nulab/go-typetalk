@@ -23,16 +23,16 @@ type UserStatus struct {
 }
 
 type SaveUserStatusOptions struct {
-	Message                *string `json:"message"`
-	ClearAt                *string `json:"clearAt"`
-	IsNotificationDisabled *bool   `json:"isNotificationDisabled"`
+	Message                string
+	ClearAt                string
+	IsNotificationDisabled bool
 }
 
 type saveUserStatusOptions struct {
-	Emoji                  string  `json:"emoji"`
-	Message                *string `json:"message"`
-	ClearAt                *string `json:"clearAt"`
-	IsNotificationDisabled *bool   `json:"isNotificationDisabled"`
+	Emoji                  string `json:"emoji"`
+	Message                string `json:"message,omitempty"`
+	ClearAt                string `json:"clearAt,omitempty"`
+	IsNotificationDisabled bool   `json:"isNotificationDisabled,omitempty"`
 }
 
 type SaveUserStatusResult struct {
