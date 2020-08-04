@@ -6,7 +6,7 @@ endif
 devel-deps:
 	go get ${u} github.com/mattn/goveralls
 	go get ${u} golang.org/x/lint/golint
-	go get ${u} github.com/motemen/gobump/cmd/gobump
+	go get ${u} github.com/x-motemen/gobump/cmd/gobump
 	go get ${u} github.com/Songmu/ghch/cmd/ghch
 
 .PHONY: test

@@ -1,0 +1,13 @@
+{
+  "userStatus": {
+    "id": 123,
+    "accountId": 2500,
+    "spaceId": 34,
+    "emoji": ":spiral_note_pad:",
+    "message": "Meeting",
+    "clearAt": "2019-09-06T10:49:00Z",
+    "isNotificationDisabled": true,
+    "createdAt": "2019-09-02T06:28:02Z",
+    "updatedAt": "2019-09-06T10:19:43Z"
+  }
+}
