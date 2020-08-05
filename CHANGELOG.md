@@ -1,5 +1,30 @@
 # Changelog
 
+## [v3.1.0](https://github.com/nulab/go-typetalk/compare/v3.0.0...v3.1.0) (2020-08-04)
+
+* Support the save user status API (#82) [#83](https://github.com/nulab/go-typetalk/pull/83) ([vvatanabe](https://github.com/vvatanabe))
+* Improved coverage v1.go [#81](https://github.com/nulab/go-typetalk/pull/81) ([is2ei](https://github.com/is2ei))
+* Improved coverage v2/likes.go [#80](https://github.com/nulab/go-typetalk/pull/80) ([is2ei](https://github.com/is2ei))
+* Improved coverage v2/mentions.go [#79](https://github.com/nulab/go-typetalk/pull/79) ([is2ei](https://github.com/is2ei))
+* Improved coverage v2/messages.go [#78](https://github.com/nulab/go-typetalk/pull/78) ([is2ei](https://github.com/is2ei))
+* Improvied coverage v2/notifications.go [#77](https://github.com/nulab/go-typetalk/pull/77) ([is2ei](https://github.com/is2ei))
+* Improved coverage v2/topics.go [#76](https://github.com/nulab/go-typetalk/pull/76) ([is2ei](https://github.com/is2ei))
+* Improved coverage v2.go [#75](https://github.com/nulab/go-typetalk/pull/75) ([is2ei](https://github.com/is2ei))
+* Improved coverage v3/accounts/.go [#74](https://github.com/nulab/go-typetalk/pull/74) ([is2ei](https://github.com/is2ei))
+* Improved coverage v3/notifications.go [#73](https://github.com/nulab/go-typetalk/pull/73) ([is2ei](https://github.com/is2ei))
+* Improved coverage v3.go [#72](https://github.com/nulab/go-typetalk/pull/72) ([is2ei](https://github.com/is2ei))
+* Improved coverage v4 accounts.go [#71](https://github.com/nulab/go-typetalk/pull/71) ([is2ei](https://github.com/is2ei))
+* Improve coverage v4.go [#70](https://github.com/nulab/go-typetalk/pull/70) ([is2ei](https://github.com/is2ei))
+* Improve coverage v5/notifications.go [#69](https://github.com/nulab/go-typetalk/pull/69) ([is2ei](https://github.com/is2ei))
+* Improves coverage [#68](https://github.com/nulab/go-typetalk/pull/68) ([is2ei](https://github.com/is2ei))
+* Fixes linter warnings in v1 mentions.go [#67](https://github.com/nulab/go-typetalk/pull/67) ([is2ei](https://github.com/is2ei))
+* Fixes linter warnings in v1/likes.go [#66](https://github.com/nulab/go-typetalk/pull/66) ([is2ei](https://github.com/is2ei))
+* Fixes linter errors in v1/files.go [#65](https://github.com/nulab/go-typetalk/pull/65) ([is2ei](https://github.com/is2ei))
+* Updated examples [#63](https://github.com/nulab/go-typetalk/pull/63) ([is2ei](https://github.com/is2ei))
+* Updates comments for GetMentionList v1 [#62](https://github.com/nulab/go-typetalk/pull/62) ([is2ei](https://github.com/is2ei))
+* Updates comments for GetMyTopics v1 [#60](https://github.com/nulab/go-typetalk/pull/60) ([is2ei](https://github.com/is2ei))
+* Uses nulab.com for API docs URL [#58](https://github.com/nulab/go-typetalk/pull/58) ([is2ei](https://github.com/is2ei))
+
 ## [v3.0.0](https://github.com/nulab/go-typetalk/compare/v2.1.1...v3.0.0) (2019-12-16)
 
 * Support Go Modules [#57](https://github.com/nulab/go-typetalk/pull/57) ([is2ei](https://github.com/is2ei))
