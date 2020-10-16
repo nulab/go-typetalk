@@ -12,7 +12,10 @@
       "updatedAt": "2018-10-29T03:01:43Z"
   },
   "lang": "en-US",
-  "theme": "light",
+  "theme": {
+    "source": "typetalk",
+    "name": "light"
+  },
   "post": {
       "useCtrl": false,
       "emojiSkinTone": "skin-tone-4"

@@ -27,6 +27,12 @@ type Account struct {
 	ImageUpdatedAt *time.Time `json:"imageUpdatedAt"`
 }
 
+// Theme represents the appearance information used in Typetalk.
+type Theme struct {
+	Source string `json:"source"`
+	Name   string `json:"name"`
+}
+
 // Status represents online status of the user.
 type Status struct {
 	Presence *string     `json:"presence"`
@@ -47,7 +53,7 @@ type Profile AccountStatus
 type MyProfile struct {
 	Account *Account `json:"account"`
 	Lang    string   `json:"lang"`
-	Theme   string   `json:"theme"`
+	Theme   *Theme   `json:"theme"`
 	Post    *struct {
 		UseCtrl       bool   `json:"useCtrl"`
 		EmojiSkinTone string `json:"emojiSkinTone"`
