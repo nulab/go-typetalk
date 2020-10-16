@@ -1,5 +1,9 @@
 # Changelog
 
+## [v3.2.0](https://github.com/nulab/go-typetalk/compare/v3.1.0...v3.2.0) (2020-10-16)
+
+* fix to support latest theme response [#84](https://github.com/nulab/go-typetalk/pull/84) ([tsuyoshizawa](https://github.com/tsuyoshizawa))
+
 ## [v3.1.0](https://github.com/nulab/go-typetalk/compare/v3.0.0...v3.1.0) (2020-08-04)
 
 * Support the save user status API (#82) [#83](https://github.com/nulab/go-typetalk/pull/83) ([vvatanabe](https://github.com/vvatanabe))
