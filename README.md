@@ -1,11 +1,11 @@
 go-typetalk
 =========
 
-[![Build Status](https://travis-ci.org/nulab/go-typetalk.svg?branch=master)][travis]
+[![Build Status](https://travis-ci.com/nulab/go-typetalk.svg?branch=master)][travis]
 [![Coverage Status](https://coveralls.io/repos/github/nulab/go-typetalk/badge.svg?branch=master)][coveralls]
 [![Documentation](https://godoc.org/github.com/nulab/go-typetalk?status.svg)][godocs]
 
-[travis]: https://travis-ci.org/nulab/go-typetalk
+[travis]: https://travis-ci.com/nulab/go-typetalk
 [coveralls]: https://coveralls.io/github/nulab/go-typetalk?branch=master
 [godocs]: http://godoc.org/github.com/nulab/go-typetalk
 
